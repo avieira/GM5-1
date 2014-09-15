@@ -1,0 +1,40 @@
+\documentclass{article}
+\input{../../preambule}
+
+\def\restriction#1#2{\mathchoice
+              {\setbox1\hbox{${\displaystyle #1}_{\scriptstyle #2}$}
+              \restrictionaux{#1}{#2}}
+              {\setbox1\hbox{${\textstyle #1}_{\scriptstyle #2}$}
+              \restrictionaux{#1}{#2}}
+              {\setbox1\hbox{${\scriptstyle #1}_{\scriptscriptstyle #2}$}
+              \restrictionaux{#1}{#2}}
+              {\setbox1\hbox{${\scriptscriptstyle #1}_{\scriptscriptstyle #2}$}
+              \restrictionaux{#1}{#2}}}
+\def\restrictionaux#1#2{{#1\,\smash{\vrule height .8\ht1 depth .85\dp1}}_{\,#2}}
+
+
+\title{Automatique non linéaire}
+
+\hypersetup{colorlinks=true, urlcolor=bleu, linkcolor=red}
+
+%Def = Definition
+%Theo = Théorème
+%Prop = Propriété
+%Coro = Corollaire
+%Lem = Lemme
+
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
+
+\begin{document}
+
+\maketitle
+\setcounter{tocdepth}{4}
+\tableofcontents
+\newpage
+
+\include{part1}
+%\include{part2}
+
+\end{document}

@@ -1,0 +1,75 @@
+\section*{Introduction}
+On s'intéresse aux équations de la forme :
+\[\Pi : \left\{\begin{array}{l c l}
+	\dot{x}(t)&=&F(x(t),u(t))\\
+	x(0)&=&x_0
+\end{array}\right.\]
+$u\in\mathbb{R}^m$ le contrôle\\
+$y\in\mathbb{R}^p$ les observations\\
+$x\in\mathbb{R}^n$ l'état.
+
+\bigskip
+La solution à cette équation est en générale lisse, de dimension finie mais elle n'est pas uniquement déterminée par la condition initiale $x_0$.\\
+Comment choisir $u$ ?
+\begin{itemize}
+	\item $u=u(t)$ : $\Pi$ est une équation différentielle non autonome. On peut avoir unicité des solutions. Contrôle en boucle ouverte.
+	\item $u=u(x)$ : $\Pi$ est une équation différentielle autonome, uncité des solutions. Contrôle en boucle fermée / par bouclage / par feedback.
+\end{itemize}
+
+\section{Outils mathématiques}
+\subsection{Difféomorphismes}
+\Def{}{$h:X\to\mathbb{R},\ X\subset \mathbb{R}$ ouvert est $\mathcal{C}^{\infty}$ si $\frac{\partial^ih}{\partial x_1^{i_1}...\partial x_n^{i_n}$, $i=\sum_{j=1}^n i_j$ existent et sont continues pour tout n-uplet $(i_j)_j$.\\
+Si maintenant, $h:X\to Y,\ Y\subset\mathbb{R}^m$ ouvert, h est $\mathcal{C}^{\infty}$ si $h_1,...,h_m$ est $\mathcal{C}^{\infty}$.}
+
+\Def{Difféomorphisme}{$h$ est un difféomorphisme si :
+\begin{itemize}
+	\item $h$ est injective : $x\neq \tilde{x} \Rightarrow h(x)\neq h(\tilde{x})$
+	\item $h$ est surjective : $\forall y\in Y, \exists x\in X;\ y=h(x)$
+	\item $h$ et $h^{-1}$ sont $\mathcal{C}^{\infty}$.
+\end{itemize}}
+
+\Def{Difféormorphisme local}{$h:X\to Y$ est un difféormorphisme local autour de $x_0$ et $y_0$ s'il existe $X_{x_0}$ et $Y_{y_0}$, deux voisinages ouverts, tels que : \begin{itemize}
+	\item $h(X_0)=Y_0$
+	\item $\restriction{h}{X_0}$ est un difféomorphisme.
+\end{itemize}}
+
+\Theo{}{Supposon $h:X\to Y$ tel que $h(x_0)=y_0$ et :
+\begin{enumerate}
+	\item $h\in\mathcal{C}^{\infty}$
+	\item $\frac{\partial h}{\partial x}(x_0)$ inversible
+\end{enumerate}
+alors $h$ est un difféomorphisme local en $x_0$ et $y_0$.}
+
+\subsection{Application tangente}
+\Def{Vecteur tangent}{Soit $\gamma:]-\varepsilon;\varepsilon[\to X$. Le vecteur tangent à $\gamma(t)$ en $p=\gamma(0)$ est $\dot{\gamma}(0)$.}
+
+\Def{Espace tangent en p}{Soit $X\subset\mathbb{R}^n$ un ouvert. On appelle espace tangent en p :
+	\[T_pX=\{\dot{\gamma}(0), \gamma \text{ une sourbe passant par } p\}\]}
+
+\Def{Champ de vecteurs}{Un champ de vecteur $f$ sur $X$ est : \[p\in X\mapsto f(p)\in T_pX\]
+On note : \[f(x)=\begin{pmatrix} f_1(x)\\\vdots\\f_n(x)\end{pmatrix}=\sum_{i=1}^n f_i(x)\frac{\partial}{\partial x_i}\]}
+
+A chaque $f$, un champ de vecteurs, on associe l'équation différentielle $\dot{x}=f(x)$. $f$ est $\mathcal{C}^{\infty}$.\\
+On va noter $V^{\infty}(X)$ l'ensemble des champs de vecteurs $\mathcal{X}^{\infty}$. 
+
+\bigskip
+Soit $\gamma_t(x_0)=x(t,x_0)=x_t(x_0)$ la solution passant par $x_0$. 
+
+\Propo{}{$\gamma_t$ satisfait : \begin{enumerate}
+	\item $\gamma_0=id$
+	\item $\gamma_s\circ\gamma_t(x_0)=\gamma_{s+t}(x_0)=\gamma_{t+s}(x_0)$
+	\item $\gamma_t^{-1}=\gamma_{-t}$
+\end{enumerate}}
+
+On prend à présent $h$, un difféormorphisme :
+	\[h:X\to Y,\ \dim X=\dim Y=n\]
+$h\circ \gamma$ est une courbe dans $Y$.
+\begin{eqnarray*}
+	\frac{d}{dt}(h\circ \gamma)(0)&=&Dh(\gamma(0)) \frac{d}{dt}\gamma(0)\\
+					&=& Dh(p) v
+\end{eqnarray*}
+Si on note $w$ le vecteur tangent dans $Y$, on a :
+	\[W=\frac{\partial h}{\partial x} v \in T_{h(p)}Y\]
+	\[W_i=\sum_{j=1}^n \frac{\partial h_i}{\partial x_j} v_j\]
+
+En partan de $H$, non linéaire, on arrive à $Dh=\frac{\partial h}{\partial x}=h_*$ une application linéaire qui tranforme $T_pX$ en $T_{h(p)}Y$. Cette application linéaire est appelée application tangente.
