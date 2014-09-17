@@ -1,0 +1,16 @@
+\section{Calcul variationnel}
+Ici : recherche d'optimum non plus dans un espace de réels, mais dans un espace de fonctions. On cherche $y^*$ tel que :
+	\[I(y^*)=\min_{y\in\mathcal{F}}I(y)\]
+
+Considérons $y:[x_1,x_2]\to \mathbb{R}$ et $L:[x_1,x_2]\times\mathbb{R}\times\mathbb{R}\to\mathbb{R}$. Parmis tous les $y$, dérivable et tel que $y(x_1)=y_1$ et $y(x_2)=y_2$, trouver la courbe minimisant : \[I(y)=\int_{x_1}^{x_2} L(x,y(x),y'(x)) dx\]
+
+\Theo{Euler-Lagrange}{Si $y\in\mathcal{C}^1[x_1,x_2]$ minimise $\int_{x_1}^{x_2} L(x,y,y')dx$ parmi toutes les fonctions telles que $y(x_1)=y_1$ et $y(x_2)=y_2$ où $L\in\mathcal{C}^2$, alors $y$ satisfait : \[\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'}=0\]}
+
+\textbf{Idée de la démonstration :} On prend $y$ minimisant $I$, et on pose $Y=y+\varepsilon \eta$, avec $\eta(x_1)=\eta(x_2)=0$, puis on reprend $I$ dépendant de $\varepsilon$. $I$ est minimal pour $\varpeilon=0$, on dérive, on trouve ce qu'il faut !
+
+\Def{}{$g$ est une intégrale première de l'équation d'Euler-Lagrange si $g$ est contante le long des solutions de l'équation d'Euler-Lagrange.}
+
+\Prop{}{\begin{enumerate}
+	\item Si $L=L(x,y')$, alors $\frac{\partial L}{\partial y'}=C$
+	\item Si $L=L(y,y')$ alors $L-y'\frac{\partial L}{\partial y}=C$.
+\end{enumerate}}
