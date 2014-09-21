@@ -1,0 +1,34 @@
+\part{Points fixes, syst\`{e}mes diff\'{e}rentiels}
+
+On va travailler avec des systèmes de la forme 
+\begin{equation}\label{eq} \frac{dX}{dt}=f(X),\ X\in\mathbb{R}^n,\ f:\mathbb{R}^n\to\mathbb{R}^n\end{equation}
+
+C'est une équation autonome : $\frac{\partial f}{\partial t}=0$
+$\mathbb{R}^n$ : espace des phases\\
+$f$ : champ de vecteurs
+
+\Def{}{On appelle orbite, trajectoire ou orbite solution issue de $X_0$ : \[\left\{ X(t), t\geq 0 \text{ avec } X(0)=X_0 \right\}\]}
+
+\Theo{d'existence locale et d'unicité de la solution}{$U\subset\mathbb{R}^n$ ouvert, $f:U\to\mathbb{R}^n$ cpntinument différentiable. Soit $X_0\in U$.\\
+Alors $\exists C>0$ et une solution unique $\phi_0(X_0,\bullet):[-C,C]\to U$ qui satisfait $\dot{X}=f(X)$ avec $X(0)=X_0$.}
+
+\Def{Point fixe}{$x^*$ est un point fixe si et seulement si $f(x^*)=0$}
+\Def{Stabilité}{Stabilité simple : toute orbite issue d'un voisinage de $X^*$ ranste dans le voisinage de $X^*$ pour $t>0$.\\
+Stabilité asymptotique : $X^*$ stable et $\lim_{t\to+\infty}X(t)=X^*$}
+
+\Theo{de Lyapounov}{Si $X^*$ est un point fixe de (\ref{eq}) et si on peut définir une fonction $V:W\to\mathbb{R}$, $W\subset V_{X^*}$, et si : 
+\begin{enumerate}
+	\item $V(X^*)=0$ et $V(X)>0$ pour $X\neq X^*$.
+	\item $\frac{dV}{dt}=\sum_{j=1}^n \frac{\partial V}{\partial x_j} \dot{x_j}=\nabla V.f\leq 0$ dans $W\backslash \{X^*\}$\\
+alors $X^*$ est stable.\\
+Et si : \item $\frac{dV}{dt}<0$, alors $X^*$ est asymptotiquement stable.
+\end{enumerate}}
+
+V difficile à trouver sauf quand on a une formulation variationnelle (Mécanique, éléctromagnétisme).
+
+\Prop{Exponentielle de matrice}{\begin{enumerate}
+	\item Si $\exists T$, inversible, telle que $B=TAT^{-1}$, alors $e^B=Te^AT^{-1}$
+	\item Si $AB=BA$ alors $e^{A+B}=e^Ae^B$
+	\item $e^{-A}=(e^A)^{-1}$
+	\item Si $A=\begin{pmatrix} \alpha & -\beta \\ \beta & \alpha \end{pmatrix}$ alors $e^A=e^{\alpha} \begin{pmatrix} \cos \beta & -\sin \beta \\ \sin \beta & \cos \beta \end{pmatrix}$
+\end{enumerate}}
