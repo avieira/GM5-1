@@ -73,3 +73,19 @@ Si on note $w$ le vecteur tangent dans $Y$, on a :
 	\[W_i=\sum_{j=1}^n \frac{\partial h_i}{\partial x_j} v_j\]
 
 En partant de $H$, non linéaire, on arrive à $Dh=\frac{\partial h}{\partial x}=h_*$ une application linéaire qui tranforme $T_pX$ en $T_{h(p)}Y$. Cette application linéaire est appelée application tangente.
+
+\Propo{}{Le diagramme suivant commute :\\
+\begin{center}
+\begin{tikzpicture}
+	\node (Pi) at (0,0) {$\dot{x}=f(x)$};
+	\node[below= of Pi] (solPi) {$x(t)$};
+	\node[right=5cm of Pi] (PiTr) {$\dot{y}=(\phi_*f)(y)$};
+	\node[below= of PiTr] (solPiTr) {$y(t)=\phi(x(t))$};
+	\draw (Pi)--(PiTr) node[midway, below]{$\phi_*$ transforme};
+	\draw (solPi)--(solPiTr) node[midway, below]{$\phi$ transforme};
+	\draw (Pi)--(solPi) node[midway, right]{résolution};
+	\draw (PiTr)--(solPiTr) node[midway, right]{résolution};
+\end{tikzpicture}
+\end{center}}
+
+\Propo{}{Soit $\gamma_t$ le flot de $\dot{x}=f(x)$. Alors $\sigma_t$, le flot de $\dot{y}=(\phi_*f)(y)$ est : \[\sigma_t=\phi\circ\gamma_t\circ\phi^{-1}\]}
