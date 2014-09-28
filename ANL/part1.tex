@@ -50,7 +50,7 @@ alors $h$ est un difféomorphisme local en $x_0$ et $y_0$.}
 On note : \[f(x)=\begin{pmatrix} f_1(x)\\\vdots\\f_n(x)\end{pmatrix}=\sum_{i=1}^n f_i(x)\frac{\partial}{\partial x_i}\]}
 
 A chaque $f$, un champ de vecteurs, on associe l'équation différentielle $\dot{x}=f(x)$. $f$ est $\mathcal{C}^{\infty}$.\\
-On va noter $V^{\infty}(X)$ l'ensemble des champs de vecteurs $\mathcal{X}^{\infty}$. 
+On va noter $V^{\infty}(X)$ l'ensemble des champs de vecteurs $\mathcal{C}^{\infty}$. 
 
 \bigskip
 Soit $\gamma_t(x_0)=x(t,x_0)=x_t(x_0)$ la solution passant par $x_0$. 
@@ -74,6 +74,8 @@ Si on note $w$ le vecteur tangent dans $Y$, on a :
 
 En partant de $H$, non linéaire, on arrive à $Dh=\frac{\partial h}{\partial x}=h_*$ une application linéaire qui tranforme $T_pX$ en $T_{h(p)}Y$. Cette application linéaire est appelée application tangente.
 
+\Lem{}{On a : \[(\phi_* f)(p)=D\phi(\phi^{-1}(p)) f(\phi^{-1}(p))\]}
+
 \Propo{}{Le diagramme suivant commute :\\
 \begin{center}
 \begin{tikzpicture}
@@ -81,11 +83,58 @@ En partant de $H$, non linéaire, on arrive à $Dh=\frac{\partial h}{\partial x}
 	\node[below= of Pi] (solPi) {$x(t)$};
 	\node[right=5cm of Pi] (PiTr) {$\dot{y}=(\phi_*f)(y)$};
 	\node[below= of PiTr] (solPiTr) {$y(t)=\phi(x(t))$};
-	\draw (Pi)--(PiTr) node[midway, below]{$\phi_*$ transforme};
-	\draw (solPi)--(solPiTr) node[midway, below]{$\phi$ transforme};
-	\draw (Pi)--(solPi) node[midway, right]{résolution};
-	\draw (PiTr)--(solPiTr) node[midway, right]{résolution};
+	\draw[->] (Pi)--(PiTr) node[midway, below]{$\phi_*$ transforme};
+	\draw[->] (solPi)--(solPiTr) node[midway, below]{$\phi$ transforme};
+	\draw[->] (Pi)--(solPi) node[midway, right]{résolution};
+	\draw[->] (PiTr)--(solPiTr) node[midway, right]{résolution};
 \end{tikzpicture}
 \end{center}}
 
 \Propo{}{Soit $\gamma_t$ le flot de $\dot{x}=f(x)$. Alors $\sigma_t$, le flot de $\dot{y}=(\phi_*f)(y)$ est : \[\sigma_t=\phi\circ\gamma_t\circ\phi^{-1}\]}
+
+\textbf{Idée de la démonstration :} On vérifie simplement que le flot $\sigma_t$ vérifie bien l'équation $\frac{d}{dt} \sigma_t = (\phi_* f)(\sigma_t)$.
+
+\subsection{Crochet de Lie}
+\Def{}{On note $V^{\infty}(X)$ l'ensemble de tous les champs de vecteurs sur $X$ de classe $\mathcal{C}^{\infty}$.}
+
+\Def{Crochet de Lie}{Soit $f,g\in V^{\infty}(X)$. On définit : \[[f,g](p)=\restriction{\frac{\partial}{\partial t} (\gamma_{-t}^f)_* g(p)}{t=0}\]}
+
+\Lem{}{On a également, en coordonnées $x=(x_1,...,x_n)$ : \[[f,g](p)=\frac{\partial g}{\partial x}(p) f(p) - \frac{\partial f}{\partial x}(p)g(p)\]}
+
+\section{Controlabilité des systèmes}
+$\dot{x}=u_1f(x)+u_2g(x)$, où $x\in X\subset \mathbb{R}^n$, ouvert. $u_1, u_2\in\mathbb{R}$.
+
+\Propo{}{\[\forall p\in X,\ \forall t,s\in\mathbb{R},\  \gamma_s^{-g}\circ\gamma_t^{-f}\circ\gamma_s^g\circ\gamma_t^f(p)=p \Leftrightarrow [f,g]\equiv 0\]}
+
+\Lem{}{Soient $f,g\in V^{\infty}(X)$ et $\phi$ un difféomorphisme. Alors : \[\phi_*[f,g]=[\phi_*f,\phi_*g]\]}
+
+\subsection{Les systèmes linéaires}
+$\dot{x}=Ax+Bu$, $x\in\mathbb{R}^n$, $u\in\mathbb{R}^m$, $A\in\mathcal{M}_{n\times n}(\mathbb{R})$, $B\in\mathcal{M}_{n\times m}(\mathbb{R})$.
+
+On note $R_T(x_0)$ l'ensemble des points accessibles depuis $x_0$ au temps $T$. \\
+$R(x_0)=\bigcup_{t>0} R_t(x_0)$ : ensemble d'accessibilité depuis $x_0$. 
+
+\Theo{}{Les conditions suivantes sont équivalentes : 
+\begin{enumerate}
+	\item $R(0)=\mathbb{R}^n$
+	\item $\exists T>0;\ R_T(0)=\mathbb{R}^n$
+	\item $\forall T>0,\ R_T(0)=\mathbb{R}^n$
+	\item $\forall x_0\in\mathbb{R}^n,\ R(x_0)=\mathbb{R}^n$
+	\item $\exists T>0; \forall x_0\in\mathbb{R}^n, R_T(x_0)=\mathbb{R}^n$
+	\item $\exists T>0; \forall x_0\in\mathbb{R}^n, R_T(x_0)=\mathbb{R}^n$
+	\item Rg$(B,...,A^{n-1}B)=n$
+\end{enumerate}}
+
+\subsection{Systèmes non linéaires}
+On note \ref{Pi} le problème  : 
+\begin{equation} \label{Pi} \tag{$\Pi$} \dot{x}=F(x,u),\ x\in X,\text{ ouvert de } \mathbb{R}^n,\ u\in U\subset \mathbb{R}^m \end{equation}
+$U$ est la classe des contrôles admissibles.\\
+\[PC_U\subset U \subset \mathcal{M}_U\]
+Où $PC_U$ est l'ensemble des contrôles constants par morceaux à valeur dans $U$ et $\mathcal{M}_U$ est l'ensemble des contrôles mesurables à valeur dans $U$.
+
+\[R_T(x_0)=\left\{x(T,u,x_0), u\in U([0,T])\right\}\]
+où $x(T,u,x_0)$ est la trajectoire de $\dot{x}=F(x,u)$ oassabt par $x_0$ en $t=0$. 
+
+\Def{}{\ref{Pi} est accessible en $x_0$ si $\widering{R(x_0)}=\emptyset$\\
+\ref{Pi} est fortement accessible en $x_0$ si $\forall T>0,\ \widering{R_T(x_0)}=\emptyset$}
+
