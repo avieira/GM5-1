@@ -138,3 +138,40 @@ où $x(T,u,x_0)$ est la trajectoire de $\dot{x}=F(x,u)$ oassabt par $x_0$ en $t=
 \Def{}{\ref{Pi} est accessible en $x_0$ si $\widering{R(x_0)}=\emptyset$\\
 \ref{Pi} est fortement accessible en $x_0$ si $\forall T>0,\ \widering{R_T(x_0)}=\emptyset$}
 
+Supposons que $(x_e,u_e)$ soit un point d'équilibre, et on linéarise \ref{Pi} autour de ce point d'équilibre : 
+\begin{eqnarray*}
+	z&=&x-x_e\\
+	v&=&u-u_e
+\end{eqnarray*}
+
+On aura donc : \[\dot{z}=\underbrace{\frac{\partial F}{\partial x} (x_e,u_e)}_{=A}(x-x_e)+\underbrace{\frac{\partial F}{\partial u}(x_e,u_e)}_{=B}(u-u_e) + ... \]
+
+\Propo{}{Si (A,B) est contrôlable en $(x_0,u_0)$, alors \[x_0\in \widering{R_T(x_0)}, \forall T>0\] (controlabilité locale)\\
+Cela implique que si \ref{Pi} est fortement accessible en $x_0$, donc il est accessible en $x_0$.}
+
+On pose $\mathcal{F}=\{F_u=F(\bullet,u),u\in \mathcal{U}\}$, appelée collection de champ de vecteurs.
+
+\Def{Algèbre de Lie}{L'algèbre de Lie $\mathcal{L}$ de $\Pi$ est le plus petit espace vectoriel (sur $\mathbb{R}$) tel que : 
+\begin{enumerate}
+	\item $\mathcal{F}\subset\mathcal{L}$
+	\item $\mathcal{L}$ est fermée par rapport au $[\bullet,\bullet]$, ie : \[f,g\in\mathcal{L}\Rightarrow [f,g]\in\mathcal{L}\]
+\end{enumerate}}
+
+\Theo{de Sussman-Jevdjevic}{Considérons \ref{Pi} où $X\subset\mathbb{R}^n$, ouvert, et $x_0\in X$. 
+\begin{enumerate}
+	\item Si dim $\mathcal{L}(x_0)=n \Rightarrow$ \ref{Pi} est accessible en $x_0$
+	\item Si \ref{Pi} est analytique, alors dim $\mathcal{L}(x_0)=n \Leftrightarrow$ \ref{Pi} accessible en $x_0$.
+\end{enumerate}}
+
+\Propo{}{Pour \ref{Pi}, on a : \[\mathcal{L}=vect\left\{ [F_{u_1},...[F_{u_{k-1}},F_{u_k}]], k\geq 1, u_j\in\mathcal{U}\right\}\]}
+
+\Def{Algèbre de Lie}{Une algèbre de Lie A est un espace vectoriel A munie d'une opération $[\bullet,\bullet]:A\times A\to A$ tel que : 
+\begin{enumerate}
+	\item $[\bullet,\bullet]$ est bilinéaire
+	\item $[\bullet,\bullet]$ est antisymétrique
+	\item $[\bullet,\bullet]$ satisfait l'identité de Jacobi : \[\forall a,b,c\in A,\ \left[ a,\left[b,c\right]\right]=\left[ \left[a,b\right],c\right] + \left[ b,\left[a,c\right]\right]\]
+\end{enumerate}}
+
+\Def{Sous-variété}{Une sous-variété dans $\mathbb{R}^d$ de dimension $n$ est : \[X=\left\{ x\in\mathbb{R}^d; \phi(x)=0\right\}\]
+où $\phi:\mathbb{R}^d\to\mathbb{R}^k$ tel que rg$\frac{d\phi}{dx}(x)=k$, $\forall x\in X$ et $n=d-k$.\\
+(Par force, $d\geq k$)}

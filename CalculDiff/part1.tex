@@ -2,7 +2,7 @@
 Ici : recherche d'optimum non plus dans un espace de réels, mais dans un espace de fonctions. On cherche $y^*$ tel que :
 	\[I(y^*)=\min_{y\in\mathcal{F}}I(y)\]
 
-Considérons $y:[x_1,x_2]\to \mathbb{R}$ et $L:[x_1,x_2]\times\mathbb{R}\times\mathbb{R}\to\mathbb{R}$. Parmis tous les $y$, dérivable et tel que $y(x_1)=y_1$ et $y(x_2)=y_2$, trouver la courbe minimisant : \[I(y)=\int_{x_1}^{x_2} L(x,y(x),y'(x)) dx\]
+Considérons $y:[x_1,x_2]\to \mathbb{R}$ et $L:[x_1,x_2]\times\mathbb{R}\times\mathbb{R}\to\mathbb{R}$. Parmis tous les $y$, dérivable et tel que $y(x_1)=y_1$ et $y(x_2)=y_2$, trouver la courbe minimisant : \begin{equation} \label{P} \tag{P} I(y)=\int_{x_1}^{x_2} L(x,y(x),y'(x)) dx\end{equation}
 
 \Theo{Euler-Lagrange}{Si $y\in\mathcal{C}^1[x_1,x_2]$ minimise $\int_{x_1}^{x_2} L(x,y,y')dx$ parmi toutes les fonctions telles que $y(x_1)=y_1$ et $y(x_2)=y_2$ où $L\in\mathcal{C}^2$, alors $y$ satisfait : \[\frac{\partial L}{\partial y} - \frac{d}{dx}\frac{\partial L}{\partial y'}=0\]}
 
@@ -13,4 +13,40 @@ Considérons $y:[x_1,x_2]\to \mathbb{R}$ et $L:[x_1,x_2]\times\mathbb{R}\times\m
 \Prop{}{\begin{enumerate}
 	\item Si $L=L(x,y')$, alors $\frac{\partial L}{\partial y'}=C$
 	\item Si $L=L(y,y')$ alors $L-y'\frac{\partial L}{\partial y}=C$.
+\end{enumerate}}
+
+\Def{Topologie dans $\mathcal{C}([x_1,x_2])$}{On définit une topologie dans $\mathcal{C}^0([x_1,x_2])$ :
+\[\forall y\in\mathcal{C}^0; \|y\|_{\mathcal{C}^0} = \max_{x\in[x_1,x_2]}\|y(x)\|_2\]
+\[\forall y\in\mathcal{C}^0([x_1,x_2]),\ V_{\varepsilon}^0(y)= \left\{\tilde{y}\in\mathcal{C}^0\left([x_1,x_2]\right); \|y-\tilde{y}\|_{\mathcal{C}^0}<\varepsilon\right\}\]
+On fait de même dans $\mathcal{C}^1([x_1,x_2])$ : 
+\[\forall y\in\mathcal{C}^1; \|y\|_{\mathcal{C}^1} = \max_{x\in[x_1,x_2]}\|y(x)\|_2+\max_{x\in[x_1,x_2]}\|y'(x)\|_2\]
+\[\forall y\in\mathcal{C}^1([x_1,x_2]),\ V_{\varepsilon}^1(y)= \left\{\tilde{y}\in\mathcal{C}^1\left([x_1,x_2]\right); \|y-\tilde{y}\|_{\mathcal{C}^1}<\varepsilon\right\}\]}
+
+\Def{}{On considère que le problème \ref{P} admet comme solution $y^*$.\\
+$y^*$ est un minimum fort strict s'il existe un voisinage dans $\mathcal{C}^0([x_1,x_2])$ (ie $V_{\varepsilon}^0(y^*)$) tel que : 
+		\[I(y^*)<I(y) \forall y\in V_{\varepsilon}^0 (y^*)\]
+C'est un maximum fort strict si : \[I(y^*)>I(y) \forall y\in V_{\varepsilon}^0(y^*)\]
+
+\[\exists V_{\varepsilon}^1(y^*);\ I(y^*)<I(y) \Rightarrow y* \text{ minimum faible strict}\]
+\[\exists V_{\varepsilon}^1(y^*);\ I(y^*)>I(y) \Rightarrow y* \text{ maximum faible strict}\]}
+
+\Def{}{Soit $D=[x_1,x_2]\times \mathbb{R}$.\\
+$y(x,C), C\in\mathbb{R}$ est un champ d'extrémales, si : 
+\begin{enumerate}
+	\item $(x,y(x,C))\in D,\ \forall C\in\mathbb{R}$
+	\item $\forall C\in\mathbb{R},$ $y(x)$ satisfait les équations d'Euler-Lagrange.
+\end{enumerate}
+
+Ce champ est dit propre si $\forall (x_0,y_0)\in D,\ \exists !y(x,C)$ extrémale.\\
+Ce champ est dit central si $y(X,C)=y_1,\ \forall C\in\mathbb{R}$ et $y(x,C)\neq y(x,\tilde{C})$, $\forall C\neq \tilde{C}$, $\forall x\neq \tilde{x}$.}
+
+\Theo{Jacobi-Weierstrass}{Supposons $L\in\mathcal{C}^3$. Considérons toujours le même problème de minimisation \ref{P}.\\
+Si $y^*$ satisfait :
+\begin{enumerate}
+	\item $y^*(x_1)=y_1$ et $y^*(x_2)=y_2$
+	\item $y^*$ peut être plongé dans un champ d'extrémale soit propre soit central
+	\item $\frac{\partial^2 L}{\partial y'^2}(x,y^*,(y^*)')>0$ (resp $<0$)\\
+Alors $y^*$ est un minimum (resp. maximum) faible
+	\item $\frac{\partial^2 L}{\partial y'^2}(x,y,y')>0$ (resp $<0$) $\forall y\in V_{\varepsilon}^0(y^*)$\\
+Alors $y^*$ est un minimum (resp. maximum) fort.
 \end{enumerate}}

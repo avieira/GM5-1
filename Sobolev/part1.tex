@@ -1,0 +1,55 @@
+\section*{Introduction}
+On s'intéresse aux problèmes de la forme : \begin{equation} \label{pblm} \tag{P}
+\left\{ \begin{array}{c}
+	Lu=-\sum_{i,j=1}^N a_{ij}\frac{\partial^2 u}{\partial x_i \partial x_j} + \sum_{i=1}^N b_i \frac{\partial u}{\partial x_i} + cu = f \text{ sur } \Omega\subset \mathbb{R}^N \text{ borné ouvert}\\
+	u=g \text{ sur } \partial\Omega
+\end{array}\right.
+\end{equation}
+
+\Def{Hölderienne}{$f$ hölderienne d'exposant $\alpha$ si : \[\exists c>0; \forall x,y, |f(x)-f(y)|\leq c|x-y|^\alpha, 0<\alpha<1\]}
+
+\Theo{Unicité et existence}{Soit $\partial\Omega$ de classe $\mathcal{C}^1$, L uniformément elliptique : \[\exists \alpha>0; \forall x\in\overline{\Omega}, \forall \xi\in\mathbb{R}^N, \sum_{i,j=1}^N a_{ij}(x) \xi_i \xi_j \geq \alpha |\xi|^2\]
+On suppose $a_{ij}, b_i, c\in\mathcal{C}^{0,\alpha}(\Omega)$ (continue et hölderienne), $\alpha\in]0,1[, c\geq 0$.\\
+$f\in\mathcal{C}^{0,\alpha}(\overline{\Omega}), g\in\mathcal{C}^0(\partial \Omega)$.\\
+Alors $\exists ! u$ solution de (\ref{pblm}) tel que $u\in\mathcal{C}^{2,\alpha}(\Omega)\cap\mathcal{C}^0(\overline{\Omega})$. }
+
+\Theo{estimation de Schender}{Si de plus, $\partial \Omega$ de classe $\mathcal{C}^{2,\alpha}$, $g\in\mathcal{C}^{2,\alpha}(\partial \Omega)$, alors $u\in\mathcal{C}^{2,\alpha}(\overline{\Omega})$ et on a : 
+\[\|u\|_{\mathcal{C}^{2,\alpha}(\overline{\Omega})}\leq c\left( \|f\|_{\mathcal{C}^{0,\alpha}(\overline{\Omega})} + \|g\|_{\mathcal{C}^{2,\alpha}(\partial\Omega)} \right)\]}
+
+\section{Les espaces $L^p$}
+\subsection{Rappels d'analyse fonctionnelle}
+\Def{Dual}{Soit $X$ un evn. On appelle dual de $X$ l'espace \[X'=\mathcal{L}(X,\mathbb{R})\]
+Si $\phi\in X'$ et $x\in X$, on note souvent : \[\phi(x)=\langle \phi, x\rangle_{X'X}\]
+appelé crochet de dualité.}
+
+\Def{Bidual}{Soit $X$ un evn. On appelle bidual de $X$ l'espace \[X''=(X')'\] qui est un Banach.}
+
+\textbf{Remarque : } On peut identifier $X$ avec un sous-espace de $X''$ à travers une isométrie, de la manière suiva,te : $\forall x\in X$, on définit : \[f_x : x'\in X' \mapsto \langle x',x\rangle_{X'X}\in\mathbb{R}\]
+$f_x$ est dans $X''$ car linéaire, et $|\langle x',x\rangle|\leq \|x\|_X \|x'\|_{X'}$ donc $f_x$ est borné.
+
+On peut montrer que : \[\mathcal{F} : x\in X \mapsto f_x\in X''\] est une isométrie, ie $\|x\|_X=\|f_x\|_{X''},\ \forall x\in X$. Donc on identifie $x$ avec $f_x$ et on écrit $X\subset X''$.\\
+Question : a-t-on $X=X''$ ? autrement dit, $\mathcal{F}$ est-elle surjective ? En général, non.
+
+\Def{Reflexif}{Si $\mathcal{F}$ est surjective, on dit que $C$ est reflexif.}
+
+\Theo{représentation de Riesz-Fréchet}{Soit $H$ de Hilbert. \[\forall F\in H', \exists ! \tau(F)\in H; \forall x\in H, \langle F,x\rangle_{H'H}=(\tau(F), x)_H\]
+De plus, l'application \begin{eqnarray*} \Phi : H'&\to&H \\ F&\mapsto& \tau(F) \end{eqnarray*} est une isométrie.}
+
+\subsection{Les espaces $L^p$}
+Dans la suite, $O$ est un ouvert de $\mathbb{R}^N$, $N\geq 2$\\
+$\Omega$ est un ouvert borné de $\mathbb{R}^N$\\
+$dx$ la mesure de Lebesgue\\
+
+\Def{}{Soit $1\leq p< +\infty$.
+\[L^p(O)=\{f:O\to\mathbb{R} \text{ mesurable }; \int|f|^p dx<\infty\}\]
+\[L^p(O)=\{f:O\to\mathbb{R} \text{ mesurable }; |f|<\infty \text{ p.p. dans } O\}\]
+\[\forall 1\leq p\leq+\infty, L^p_{loc}(O)=\{f\in L^p(\omega), \forall \omega \text{ ouvert borné}, \bar{\omega}\subset O\}\]}
+
+\Prop{}{$L^p(O)$ est de Banach muni de la norme : \[\|f\|_{L^p(O)}=\left| \begin{array}{r c l} 
+	\left(\int_O |f|^p dx \right)^{\frac{1}{p}} &\text{ si }& p<\infty\\
+	\inf\{C; |f|\leq C \text{ pp}\} &\text{ si }& p=\infty
+\end{array}\right.\]}
+
+\Rem{}{Si $p=2$, $L^2(O)$ est un Hilbert par rapport au produit scalaire \[(f,g)_{L^2(O)}=\int_O f(x)g(x)dx\]}
+
+
