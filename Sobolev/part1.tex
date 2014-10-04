@@ -52,4 +52,18 @@ $dx$ la mesure de Lebesgue\\
 
 \Rem{}{Si $p=2$, $L^2(O)$ est un Hilbert par rapport au produit scalaire \[(f,g)_{L^2(O)}=\int_O f(x)g(x)dx\]}
 
+\Prop{inégalité de Holder}{Soit $1\leq p\leq +\infty$. On pose 
+\[p'=\left| \begin{array}{c c c}
+	\frac{p}{p-1} &\text{ si }& 1<p<+\infty\\
+	1 &\text{ si }& p=+\infty\\
+	+\infty &\text{ si }& p=1
+\end{array}\right.\]
+appelé le conjugué.\\
+\[\forall f\in L^p(O), \forall g\in L^{p'}(O), \int_O |f(x)g(x)|dx \leq \|f\|_{L^p(O)} \|g\|_{L^{p'}(O)}\]}
+
+\Coro{}{$1\leq p\leq +\infty$, $p'$ son conjugué.\\
+Si $f_n\to f$ dans $L^p(O)$ et $g\in L^{p'}(O)$ alors : \[\lim_{n\to +\infty} \int_O f_n g dx = \int_O fg dx\]}
+
+\Coro{}{$1\leq p < q \leq +\infty$, $\Omega$ ouvert borné de $\mathbb{R}^N$. Alors $L^q(\Omega)\subset L^p(\Omega)$ et $\|f\|_{L^p(\Omega)}\leq c \|f\|_{L^q(\Omega)}$ où $c=c(|\Omega|, p, q)$.}
+
 
