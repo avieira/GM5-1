@@ -151,16 +151,11 @@ Cela implique que si \ref{Pi} est fortement accessible en $x_0$, donc il est acc
 
 On pose $\mathcal{F}=\{F_u=F(\bullet,u),u\in \mathcal{U}\}$, appelée collection de champ de vecteurs.
 
+\subsubsection{Algèbre de Lie et variété}
 \Def{Algèbre de Lie}{L'algèbre de Lie $\mathcal{L}$ de $\Pi$ est le plus petit espace vectoriel (sur $\mathbb{R}$) tel que : 
 \begin{enumerate}
 	\item $\mathcal{F}\subset\mathcal{L}$
 	\item $\mathcal{L}$ est fermée par rapport au $[\bullet,\bullet]$, ie : \[f,g\in\mathcal{L}\Rightarrow [f,g]\in\mathcal{L}\]
-\end{enumerate}}
-
-\Theo{de Sussman-Jevdjevic}{Considérons \ref{Pi} où $X\subset\mathbb{R}^n$, ouvert, et $x_0\in X$. 
-\begin{enumerate}
-	\item Si dim $\mathcal{L}(x_0)=n \Rightarrow$ \ref{Pi} est accessible en $x_0$
-	\item Si \ref{Pi} est analytique, alors dim $\mathcal{L}(x_0)=n \Leftrightarrow$ \ref{Pi} accessible en $x_0$.
 \end{enumerate}}
 
 \Propo{}{Pour \ref{Pi}, on a : \[\mathcal{L}=vect\left\{ [F_{u_1},...[F_{u_{k-1}},F_{u_k}]], k\geq 1, u_j\in\mathcal{U}\right\}\]}
@@ -175,3 +170,46 @@ On pose $\mathcal{F}=\{F_u=F(\bullet,u),u\in \mathcal{U}\}$, appelée collection
 \Def{Sous-variété}{Une sous-variété dans $\mathbb{R}^d$ de dimension $n$ est : \[X=\left\{ x\in\mathbb{R}^d; \phi(x)=0\right\}\]
 où $\phi:\mathbb{R}^d\to\mathbb{R}^k$ tel que rg$\frac{d\phi}{dx}(x)=k$, $\forall x\in X$ et $n=d-k$.\\
 (Par force, $d\geq k$)}
+
+\Lem{}{Soit $S$ une sous-variété de $\mathbb{R}^n$. Si $f$ et $g$ sont deux champs de vecteurs tangents à $S$, ie $f(q), g(q)\in T_q S$, $\forall q\in S$, alors \[[f,g](q)\in T_q S\]}
+
+\Theo{de Sussman-Jevdjevic}{Considérons \ref{Pi} où $X\subset\mathbb{R}^n$, ouvert, et $x_0\in X$. 
+\begin{enumerate}
+	\item Si dim $\mathcal{L}(x_0)=n \Rightarrow$ \ref{Pi} est accessible en $x_0$
+	\item Si \ref{Pi} est analytique, alors dim $\mathcal{L}(x_0)=n \Leftrightarrow$ \ref{Pi} accessible en $x_0$.
+\end{enumerate}}
+
+\subsubsection{Distribution}
+\Def{Distribution}{Une distribution sur $X$, une variété de dimension $n$, est une application $p\in X \mapsto \mathcal{D}(p)\subset T_p X$.\\
+$\mathcal{D}(p)$ étant un sous-espace linéaire, une distribution est donc un champ de sous-espaces.}
+
+\Def{Rang constant}{Soient $\mathcal{D}$ une distribution et $f_1,...,f_k\in V^{\infty}(X)$. On pose \[\mathcal{D}(p)=vect\{f_1(p),...,f_k(p)\}\]
+On dit alors que $\mathcal{D}$ est de rang constant $(=k)$.}
+
+\Def{}{On dit que $\mathcal{D}$, une distribution, est $\mathcal{C}^{\infty}$ si \[\exists f_1,...,f_k \in V^{\infty}(X); \mathcal{D}=vect\{f_1,...,f_k\}\]}
+
+\Def{}{$\mathcal{D}$ est dite intégrale si $\forall p\in X$, $\exists S$ une variété, $p\in S$ tel que \[T_q S=\mathcal{D}(q),\ \forall q\in S\]}
+
+\Def{Involutive}{$f\in V^{\infty}(X)$. On dit $f\in \mathcal{D}$ si $\forall p\in X$, $f(p)\in \mathcal{D}(p)$.\\
+$\mathcal{D}$ est dite involutive si $f,g\in \mathcal{D}\Rightarrow [f,g]\in\mathcal{D}$.}
+
+\Def{Opérateur associé à un champ de vecteur}{À chaque $f\in V^{\infty}(X)$, il correspond un opérateur différentiel d'ordre 1 $L_f$ :
+\[\begin{array}{c c c c}L_f :& \mathcal{C}^{\infty} &\to& \mathcal{C}^{\infty} \\ & a &\mapsto& \nabla a.f\end{array}\]}
+
+\Theo{Frobenius}{Soit $\mathcal{D}$ une distribution de rang constant $k$. Alors les conditions suivants sont équivalentes : 
+\begin{enumerate}
+	\item $\mathcal{D}$ intégrable
+	\item $\mathcal{D}$ involutive
+	\item localement, autour de chaque point $p\in X$, \[\exists (x_1,...,x_k,...,x_n); \mathcal{D}=span\{\frac{\partial}{\partial x_1},...,\frac{\partial}{\partial x_k}\}\]
+\end{enumerate}}
+
+\subsubsection{Orbites}
+\Def{Orbite}{On définit l'orbite de $x_0$ comme : \[Orb(x_0)=\{x; x=\gamma_{t_k}^{F_{u_k}}\circ...\circ\gamma_{t_1}^{F_{u_1}}(x_0), u_j\in U, t_j\in\mathbb{R}, 0<j\leq k \}\]
+On a évidemment : \[\mathcal{R}_T(x_0)\subset \mathcal{R}(x_0)\subset Orb(x_0)\]}
+
+\Lem{}{$q\sim p$ si et seulement si $q\in Orb(p)$ est une relation d'équivalence : 
+\begin{enumerate}
+	\item symétrique : $q\sim p \Leftrightarrow p\sim q$
+	\item refkexive : $p\sim p$
+	\item transitive : $q\sim p$ et $p\sim r \Rightarrow q\sim r$
+\end{enumerate}}
