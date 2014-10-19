@@ -16,6 +16,7 @@ Alors $\exists ! u$ solution de (\ref{pblm}) tel que $u\in\mathcal{C}^{2,\alpha}
 \Theo{estimation de Schender}{Si de plus, $\partial \Omega$ de classe $\mathcal{C}^{2,\alpha}$, $g\in\mathcal{C}^{2,\alpha}(\partial \Omega)$, alors $u\in\mathcal{C}^{2,\alpha}(\overline{\Omega})$ et on a : 
 \[\|u\|_{\mathcal{C}^{2,\alpha}(\overline{\Omega})}\leq c\left( \|f\|_{\mathcal{C}^{0,\alpha}(\overline{\Omega})} + \|g\|_{\mathcal{C}^{2,\alpha}(\partial\Omega)} \right)\]}
 
+\part{Rappels divers}
 \section{Les espaces $L^p$}
 \subsection{Rappels d'analyse fonctionnelle}
 \Def{Dual}{Soit $X$ un evn. On appelle dual de $X$ l'espace \[X'=\mathcal{L}(X,\mathbb{R})\]
@@ -66,4 +67,118 @@ Si $f_n\to f$ dans $L^p(O)$ et $g\in L^{p'}(O)$ alors : \[\lim_{n\to +\infty} \i
 
 \Coro{}{$1\leq p < q \leq +\infty$, $\Omega$ ouvert borné de $\mathbb{R}^N$. Alors $L^q(\Omega)\subset L^p(\Omega)$ et $\|f\|_{L^p(\Omega)}\leq c \|f\|_{L^q(\Omega)}$ où $c=c(|\Omega|, p, q)$.}
 
+\Lem{inégalité de Young}{Soient $a,b\geq 0$ et $1<p<+\infty$. Alors \[ab\leq \frac{1}{p}a^p + \frac{1}{p'}b^{p'}\] avec $p'$ le conjugué de $p$.}
 
+\Theo{inégalité d'interpolation}{Soit $1\leq p\leq r<+\infty$.\\
+Si $f\in L^p(O)\cap L^r(O)$ alors $f\in L^q(O)$, $\forall p\leq q\leq r$.\\
+De plus, \[\|f\|_{L^q(O)}\leq \|f\|^{\alpha}_{L^p(O)}\|f\|^{1-\alpha}_{L^r(O)}\]avec $\alpha\in[0,1]$ tel que $\frac{\alpha}{p} + \frac{1-\alpha}{r} = \frac{1}{q}$}
+
+\subsection{2 rappels de mesure}
+\Lem{de Fatou}{Soit $\{f_n\}\subset L^1(O)$ positives bornées dans $L^1(O)$. On pose \[f(x)=\liminf_{n\to +\infty} f_n(x) \text{ p.p. dans } O\]
+Alors $f\in L^1(O)$ et \[\|f\|_{L^1(O)} \leq \liminf_{n\to +\infty} \|f_n\|_{L^1(O)}\]}
+
+\Theo{convergence dominée de Lebesgue}{$\{f_n\}\subset L^1(O)$ telle que : 
+\begin{enumerate}
+	\item $f_n \to f$ presque partout dans $O$
+	\item $\exists h\in L^1(O)$ telle que $|f_n(x)|\leq h(x)$ presque partout dans $O$, $\forall n\in \mathbb{N}$.
+\end{enumerate}
+alors $f_n \xrightarrow{L^1(O)} f$.}
+
+\Prop{}{$1\leq p \leq +\infty$ tel que $f_n \xrightarrow{L^p} f$.\\
+Alors $\exists \{f_{n_k}\}$ une sous-suite telle que $f_{n_k}\to f$ presque partout dans $O$.}
+
+\subsection{Supportabilité}
+\Def{Séparable}{Soit $B$ un espace de Banach.\\
+$B$ est dit séparable s'il existse $A\subset B$ avec $A$ au plus dénombrable tel que $\overline{A}=B$.}
+
+\Prop{}{$L^p(O)$ est séparable si $1\leq p < +\infty$.}
+
+\subsection{Caractérisation du dual}
+\Theo{représentation de Green}{$1\leq p<+\infty$, $p'$ son conjugué.\\
+Si $f\in \left(L^p(O) \right)'$, alors $\exists ! g_f\in L^p(O)$ tel que \[\forall v\in L^{p'}(O), \langle f,v\rangle_{(L^p(O))'L^p(O)} = \int_O g_f(x) v(x) dx\]
+De plus, \[\begin{array}{c c c c} \Phi : & \left(L^p(O)\right)' &\to& L^p(O) \\ &f&\mapsto& g_f \end{array}\] est une isométrie.}
+
+\textbf{Remarque : } On peut donc identifier $f$ avec $g_f$.\\
+De plus, $\Phi$ est surjective. On identifie donc $(L^p)'$ avec $L^{p'}$ si $1\leq p\leq +\infty$.
+\begin{itemize}
+	\item $1<p<+\infty$, $(L^p)'=L^{p'}$
+	\item $p=1$, $(L^1)'=L^{\infty}$
+	\item $p=+\infty$, $L^1 \subset (L^{\infty})'$
+\end{itemize}
+Ceci implique en particulier que $L^p(O)$ reflexif si $1<p<+\infty$. Mais $L^1$ et $L^{\infty}$ non reflexifs.
+
+\section{Densité dans $L^p$}
+\subsection{Notion de support}
+\Def{}{$\phi : O \to \mathbb{R}$ continue. \[supp(\phi)=\{x\in O ; \phi(x)\neq 0\}\] (fermé de $O$)}
+
+\Def{}{\[\mathcal{D}(O)=\{v:O\to \mathbb{R}; v\in\mathcal{C}^{\infty}(O) \text{ et } supp(v) \text{ est un compact de } \mathbb{R}^n \text{ contenu dans } O\}\]
+\[\mathcal{C}^0_C(O)=\{v:O\to \mathbb{R}; v\in\mathcal{C}^0(O) \text{ et } supp(v) \text{ est un compact de } \mathbb{R}^n \text{ contenu dans } O\}\]}
+
+\Prop{}{$1\leq p\leq +\infty$, $f\in L^p(O)$.\\
+On pose \[\mathcal{A}=\{A \text{ ouvert de } O; f=0 \text{ p.p. dans } A\}\]
+Alors si $w=\bigcup_{A\in\mathcal{A}} A$, on a $f=0$ p.p. dans $A$.}
+
+\Def{}{On pose alors $supp(f)=O\backslash w$.}
+
+\Def{}{\[L^p_c(O)=\{f\in L^p(O); supp(f) \text{ est un compact de } \mathbb{R}^n \text{ inclu de } O\}\]}
+
+\subsection{Convolution}
+\Def{}{$1\leq p\leq +\infty$, $f\in L^1(\mathbb{R}^N)$, $g\in L^p(\mathbb{R}^n)$. 
+On définit le produit de convolution par : \[\forall x\in \mathbb{R}^n, (f*g)(x)=\in_{\mathbb{R}}f(x-y)g(y)dy \text{ p.p.}\]}
+
+\Prop{}{\begin{enumerate}
+	\item $f\in L^1(\mathbb{R}^N)$, $g\in L^p(\mathbb{R}^N)$. \\
+$f*g$ est bien définie et $f*g\in L^p(\mathbb{R}^N)$, et : \[\|f*g\|_{L^p(\mathbb{R}^n)} \leq \|f\|_{L^1(\mathbb{R}^N)} \|g\|_{L^p(\mathbb{R}^N)}\]
+	\item $f,g\in L^1(\mathbb{R}^N)$, $f*g=g*f$
+	\item Si $f\in\mathcal{D}(\mathbb{R}^N)$, $g\in L^p(\mathbb{R}^N)$, alors $f*g\in \mathcal{C}^{\infty}(\mathbb{R}^N)$ (mais pas nécessairement à support compact).
+		\[\frac{\partial}{\partial x_i} (f*g) = \frac{\partial f}{\partial x_i} * g\]
+Si de plus, $g\in L^p_c(\mathbb{R}^N)$, alors $f*g\in\mathcal{D}(\mathbb{R}^N)$ et $supp(f*g)\subset supp(f) + supp(g)$.
+\end{enumerate}}
+
+\subsubsection{Suites régularisantes}
+\Def{}{$B(0,1)\subset \mathbb{R}^N$. Soit $\rho \in \mathcal{D}(\mathbb{R}^N)$, $\rho\geq 0$, $\|\rho\|_{L^1(\mathbb{R}^N)}=1$, $supp(\rho)\subset \overline{B(0,1)}$.\\
+$\forall n\in\mathbb{N}$, on pose $\rho_n(x)=n^N \rho(nx)$, $\forall x\in\mathbb{R}^N$. $\{\rho_n\}_n$ s'appelle une suite régularisante.}
+
+\Theo{}{$1\leq p<+\infty$, $f\in L^p(\mathbb{R}^N)$. $\forall \{\rho\}_n$ suite régularisante : \[\underbrace{\rho_n * f}_{\in\mathcal{C}^{\infty}(\mathbb{R}^N)} \to f \text{ dans } L^p(\mathbb{R}^N)\]}
+
+\Theo{}{$\mathcal{D}(\mathbb{R}^N)$ est dense dans $L^p(\mathbb{R}^N)$, $\forall 1\leq p<+\infty$. (Faux pour $L^{\infty}$ !)}
+
+\Lem{de Urysohn}{$O$ ouvert de $\mathbb{R}^N$, $K$ compact de $\mathbb{R}^N$, $K\subset O$.\\
+Alors $\exists \psi\in\mathcal{D}(0)$ telle que $\psi\equiv 1$ sur $K$ et $0\leq \psi<1$.}
+
+\Coro{}{$\forall O\subset \mathbb{R}^N$, $\exists \{\psi_n\}\subset \mathcal{D}(O)$ tel que \[\forall n\in\mathbb{N}, 0\leq \psi_n\leq 1, \psi_n \to 1 \text{ p.p. dans } O\]}
+
+\Theo{}{$1\leq p<\infty$.\\
+Soit $v\in L^p(\mathbb{R}^N)$. On prolonge $v$ par zéro : \[\tilde{v}=\left\{ \begin{array}{c c c}
+v &\text{ dans }& O \\
+0 \text{ sinon}&
+\end{array}\right.\]
+Donc $\tilde{v}\in L^p(\mathbb{R}^N)$}
+
+\Theo{}{$f\in L^1_{loc}(O)$ tel que \[\int_O f(x)\phi(x) dx = 0\ \forall \phi\in\mathcal{D}(O)\]
+alors $f=0$ presque partout dans $O$.}
+
+\section{Distributions}
+\Def{Convergence des suites dans $\mathcal{D}(O)$}
+{$\{\phi_n\}\subset \mathcal{D}(O)$, $\phi\in\mathcal{D}(O)$\\
+$\phi_n\to \phi$ dans $\mathcal{D}(O)$ si : \begin{enumerate}
+	\item $\exists K$ compact, $K\subset O$; \[\forall n, supp(\phi_n)\subset K\] \[supp(\phi)\subset K\]
+	\item $\forall \alpha=(\alpha_1,...,\alpha_n)\in\mathbb{N}^n$, $\partial^{\alpha} \phi_n \to \partial^{\alpha} \phi$ uniformément dans $K$
+\end{enumerate}}
+
+\textbf{Remarque :} $\mathcal{D}(O)$ n'est pas métrisable, cela ne définit pas une topologie mais on peut en définir une telle que la convergence des suites dans cette topologie soit celle-ci.\\
+
+\Def{}{Une application $T:\mathcal{D}(O)\to\mathbb{R}$ est une distribution si : \begin{enumerate}
+	\item $T$ linéaire
+	\item Si $\phi_n\to\phi$ dans $\mathcal{D}(O)$, alors $T(\phi_n)\to T(\phi)$
+\end{enumerate}
+L'ensemble des distributions sur $O$ est noté $\mathcal{D}'(O)$. On notera : \[\langle T,\phi\rangle_{\mathcal{D}'(O)\mathcal{D}(O)}=T(\phi)\]}
+
+\textbf{Remarque :} L'application $\Phi : f\in L^1_{loc}(O) \to T_f\in\mathcal{D}'(O)$ est injective et linéaire car si $T_f(\phi)=O \forall \phi\in\mathcal{D}(O)$ alors $f=0$\\
+Donc on identifie $f$ et $T_f$ et on écrit : \[L^1_{loc}(O)\subset \mathcal{D}'(O)\]
+
+\Def{Distribution régulière}{$T\in\mathcal{D}'(O)$ est une régulière si : \[\exists f\in L^1_{loc}(O); T=T_f\]}
+
+\textbf{Remarque :} On peut montrer qu'il existe des distributions non régulières.
+
+\Def{Dérivée d'une distribution}{Soit $T\in\mathcal{D}'(O)$. On appelle dérivée de $T$ (au sens des distributions) par rapport à la ième variable et on la note $\frac{\partial T}{\partial x_i}$ la distribution définie par : \[\forall \phi\in\mathcal{D}(O), \langle \frac{\partial T}{\partial x_i} \rangle_{\mathcal{D}'(O)\mathcal{D}(O)}=-\langle T, \frac{\partial \phi}{\partial x_i}\rangle_{\mathcal{D}'(O)\mathcal{D}(O)}\]}

@@ -1,0 +1,25 @@
+\part{Espaces de Sobolev}
+\Def{}{$1\leq p\leq +\infty$. On définit, pour $O$ ouvert de $\mathbb{R}^N$ : \[W^{1,p}(O)=\{v\in L^p(O); \frac{\partial v}{\partial x_i}\in L^p(O), \forall i=1,...,N\}\]
+où $\frac{\partial v}{\partial x_i}$ est donnée au sens des distributions.\\
+On munit cet espace de la norme : \[\|w\|_{W^{1,p}(O)}=\|w\|_{L^p(O)} + \sum_{i=1}^N \left\|\frac{\partial w}{\partial x_i}\right\|_{L^p(O)}\]
+Pour $p=2$, on note $W^{1,p}(O)=H^1(O)$.}
+
+\Prop{}{$1\leq p<+\infty$. La norme $\|\bullet\|_{W^{1,p}(O)}$ est équivalente à la norme : \[\|u\|=\left( \|u\|^p_{L^p(O)} + \|\nabla u\|^p_{L^p(O)}\right)^{\frac{1}{p}} \]
+où \[\|\nabla u\|^p_{L^p(O)}=\sum_{i=1}^N \left\|\frac{\partial u}{\partial x_i} \right\|^p_{L^p(O)}\]}
+
+\textbf{Remarque :} Puisque les constantes de l'inégalité sont indépendantes de l'ouvert et ne dépend que de $W$ et $p$, on utilisera l'une des deux indifférement.
+
+\Prop{}{\begin{itemize}
+	\item $1\leq p\leq +\infty$, $W^{1,P}(O)$ est un espace de Banach avec la norme associée
+	\item $H^1(O)$ est un Hilbert par rapport au produit scalaire : \[(u,v)_{H^1(O)}=(u,v)_{L^2(O)} + \sum_{i=1}^N \left( \frac{\partial u}{\partial x_i}, \frac{\partial v}{\partial x_i}\right)_{L^2(O)}\]
+\end{itemize}}
+
+\Prop{}{$W^{1,p}(O)$ séparable si $1\leq p<+\infty$, réflexif si $1<p<+\infty$}
+
+\Prop{}{\begin{itemize}
+	\item $1\leq p<+\infty$, $\forall O_1\subset O$, $u\in W^{1,p}(O)\Rightarrow u\in W^{1,p}(O_1)$
+	\item $\psi\in\mathcal{D}(O)$, $u\in W^{1,p}(O)$, alors $\psi u\in W^{1,p}(O)$ et \[\frac{\partial (\psi u)}{\partial x_i} = u\frac{\partial \psi}{\partial x_i} + \psi \frac{\partial u}{\partial x_i}\]
+\end{itemize}}
+
+\Lem{}{$1\leq p\leq +\infty$, $\phi\in\mathcal{D}(\mathbb{R}^N)$, $u\in W^{1,p}(\mathbb{R}^N)$.
+\[\phi * u \in \mathcal{C}^{\infty}(\mathbb{R}^N) \text{ et } \frac{\partial}{\partial x_i} (\phi * u)=\phi * \frac{\partial u}{\partial x_i}\]}

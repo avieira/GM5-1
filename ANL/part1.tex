@@ -167,7 +167,7 @@ On pose $\mathcal{F}=\{F_u=F(\bullet,u),u\in \mathcal{U}\}$, appelée collection
 	\item $[\bullet,\bullet]$ satisfait l'identité de Jacobi : \[\forall a,b,c\in A,\ \left[ a,\left[b,c\right]\right]=\left[ \left[a,b\right],c\right] + \left[ b,\left[a,c\right]\right]\]
 \end{enumerate}}
 
-\Def{Sous-variété}{Une sous-variété dans $\mathbb{R}^d$ de dimension $n$ est : \[X=\left\{ x\in\mathbb{R}^d; \phi(x)=0\right\}\]
+\Def{Sous-variété plongée}{Une sous-variété dans $\mathbb{R}^d$ de dimension $n$ est : \[X=\left\{ x\in\mathbb{R}^d; \phi(x)=0\right\}\]
 où $\phi:\mathbb{R}^d\to\mathbb{R}^k$ tel que rg$\frac{d\phi}{dx}(x)=k$, $\forall x\in X$ et $n=d-k$.\\
 (Par force, $d\geq k$)}
 
@@ -213,3 +213,41 @@ On a évidemment : \[\mathcal{R}_T(x_0)\subset \mathcal{R}(x_0)\subset Orb(x_0)\
 	\item refkexive : $p\sim p$
 	\item transitive : $q\sim p$ et $p\sim r \Rightarrow q\sim r$
 \end{enumerate}}
+
+\Prop{}{$\forall p,q\in X; p\sim q$, on a : \[\left\{\begin{array}{r c l} Orb(p)&=&Orb(q) \\ &\text{ou}& \\ Orb(p)\cap Orb(q)&=&\emptyset\end{array}\right.\]}
+
+\Def{Sous variété immersée}{$V$ est une sous-variété immersée si \[V=\bigcup_{i=1}^{+\infty} V_i,\ V_i\subset V_{i+1},\ V_i \text{ variété plongée}\]}
+
+\Theo{}{Pour $\dot{x}=F(x,u)$ on a : 
+\begin{enumerate}
+	\item $\forall x_0\in X$, $Orb(x_0)$ est une sous-variété immersée de X
+	\item $T_p Orb(x_0)=\Gamma(p)$ où $\Gamma$ est la plus petite distribution tel que : 
+		\begin{enumerate}
+			\item $F_u\in\Gamma, \forall u\in U$
+			\item Si $g\in \Gamma$, alors $\left(\gamma_t^{F_u} \right)_*g \in \Gamma$
+		\end{enumerate}
+	\item $\mathcal{L}(p)\subset T_p Orb(p)$, où $\mathcal{L}$ est l'algèbre de Lie de \ref{Pi}
+	\item Si \ref{Pi} analytique, alors $T_p Orb(p)=\mathcal{L}(p)$
+	\item $\forall p\in X$, si $\dim \mathcal{L}(p)$ constant $\Rightarrow$ $T_p Orb(p)=\mathcal{L}(p)$
+\end{enumerate}}
+
+\Prop{forme normale d'accessibilité}{Supposon dim $\mathcal{L}(X)$ constant $(=k)$.\\
+Localement, autour de chaque point $p$, il existe des coordonnées $z_a^1=(z_1^1,...,z_k^1)$ et $z_a^2=(z_1^2,...,z_{n-k}^2)$ tel que \[(FN_a) \begin{array}{c c c} \dot{z}_a^1 &=& F^1(z_a^1, z_a^2,....) \\ \dot{z}^2_a &=& 0\end{array}\]}
+
+\subsection{$R_T(x_0)$}
+\Def{Idéal de Lie}{L'idéal de Lie $\mathcal{L}_0$ de \ref{Pi} est le plus petit espace vectoriel tel que : 
+\begin{enumerate}
+	\item $\forall u, \tilde{u}\in U$, $F_u - F_{\tilde{u}}\in \mathcal{L}_0$
+	\item $g\in \mathcal{L}_0 \rightarrow [F_u, g]\in\mathcal{L}_0$\\
+	Par l'identité de Jacobi, cela correspond également à : \\
+	$g\in \mathcal{L}_0$, $f\in \mathcal{L} \Rightarrow [f,g]\in\mathcal{L}_0$
+\end{enumerate}}
+
+\Theo{}{\begin{enumerate}
+	\item Si dim$\mathcal{L}_0(p)=n$, alors $\widering{R_T(x_0)}\neq \emptyset$ $\forall T>0$ (accessibilité forte)
+	\item Si \ref{Pi} analytique, alors dim $\mathcal{L}_0=n \Leftrightarrow \widering{R_T(x_0)}\neq \emptyset$
+\end{enumerate}}
+
+\Prop{}{Fixons $u^*\in U$ arbitraire. On a \[\mathcal{L}=vect\{\mathcal{L}_0, F_{u^*}\}\]}
+
+\Coro{}{Pour $\dot{x}=f(x)+\sum_{i=1}^n u_ig_i(x)$, on a : \[\mathcal{L}=vect\{\mathcal{L}_0, f\}\] (en prenant $u^*=0$)}

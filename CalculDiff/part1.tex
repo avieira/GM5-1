@@ -58,13 +58,45 @@ On prend à présent $y:[x_1,x_2]\to\mathbb{R}^n$, $P_1=(x_1,y_1)$, $P_2=(x_2,y_
 On veut minimiser $I(y)=\int_{x_1}^{x_2} L(x,y(x),y'(x)) dx$
 \Theo{Euler-Lagrange}{Si $y\in\mathcal{C}^1[x_1,x_2]$ minimise $\int_{x_1}^{x_2} L(x,y,y')dx$ parmi toutes les fonctions telles que $y(x_1)=y_1$ et $y(x_2)=y_2$ où $L\in\mathcal{C}^2$, alors $y$ satisfait : \[\frac{\partial L}{\partial y_i} - \frac{d}{dx}\frac{\partial L}{\partial y_i'}=0,\ 1\leq i\leq n\]}
 
+\subsection{Hamiltonien}
 On pose à présent : \begin{eqnarray*}
 	p_i&=&\frac{\partial L}{\partial y_i}\\
 	H&=&-L+\sum_{i=1}^n y_i'p_i
 \end{eqnarray*}
 
-En calculant $dH$, on arrive au système suivant : \[\left\{ \begin{array}{c c c}
+En calculant $dH$, on arrive au système suivant : \begin{equation} \tag{SH} \label{SystHam}
+\left\{ \begin{array}{c c c}
 	y_i'&=&\frac{\partial H}{\partial p_i}\\
 	p_i'&=&-\frac{\partial H}{\partial y_i}
-\end{array} \right.\]
+\end{array} \right.
+\end{equation}
 ce qui est un système hamiltonnien.
+
+\Propo{}{$I:\mathbb{R}\times\mathbb{R}^d\to \mathbb{R}$ est une intégrale première de $\dot{z}=f(z)$ si et seulement si \[\frac{\partial I}{\partial t} + \sum_{i=1}^d \frac{\partial I}{\partial z_i} f_i \equiv 0\]}
+
+\Coro{}{Si $I=I(z)$, alors la condition devient : \[\sum_{i=1}^d \frac{\partial I}{\partial z_i} f_i =L_f I \equiv 0\]}
+
+\Propo{}{Si $L=L(y_1,...,x_n, y_1',...,y_n')$ alors $H$ est une intégrale première.}
+
+\Propo{}{\begin{enumerate}
+	\item $I=I(y,p)$ est une intégrale première de (\ref{SystHam}) si : \[L_fI=\underbrace{\sum_{i=1}^n \frac{\partial I}{\partial y_i}\frac{\partial H}{\partial p_i} - \frac{\partial I}{\partial p_i} \frac{\partial H}{\partial y_i}}_{=\{I,H\} \text{ crochet de Poisson de I et H}} = 0\]
+	\item $I=I(x,y,p)$ est une intégrale première de (\ref{SystHam}) si et seulement si \[\frac{\partial I}{\partial x} + \{I,H\}\equiv 0\]
+\end{enumerate}} 
+
+\Propo{}{$H$ est une intégrale première si et seulement si $L$ est invariant par rapport à $x\mapsto x+\alpha$, $\forall \alpha\in\mathbb{R}$.}
+
+\Coro{}{H est est une intégrale première si et seulement si $I=\int_{x_1}^{x_2} L(x,y,y') dx$ est invariant par rapport à $x\mapsto x+\alpha$, $\forall \alpha\in\mathbb{R}$.}
+
+Considérons la transformation \begin{eqnarray*}
+\tilde{x} &=& \phi_0(x,y_1,...,y_n)\\
+\tilde{y}_i &=& \phi_i (x,y_1,...,y_n)
+\end{eqnarray*}
+
+\Def{}{$I=\int_{x_1}^{x_2} L(x,y,y') dx$ est invariant par rapport à $\phi$ si \[I=\int_{x_1}^{x_2} L(x,y,y') dx = \int_{x_1}^{x_2} L(\tilde{x}, \tilde{y}, \tilde{y}') d\tilde{x}\]}
+
+On considère à présent une famille de transformation paramétré par $\alpha$ :  \begin{eqnarray*}
+\tilde{x} &=& \phi_0(x,y_1,...,y_n, \alpha),\ \phi_0(x,y_1,...,y_n, 0)=x\\
+\tilde{y}_i &=& \phi_i (x,y_1,...,y_n, \alpha),\ \phi_i (x,y_1,...,y_n,0)=y_i
+\end{eqnarray*}
+
+\Theo{Emmy Noether}{Si $\phi$ préserve \[I(y)=\int_{x_1}^{x_2} L(x,y,y') dx\] alors le système d'Euler-Lagrange (ou de façon équivalente, (\ref{SystHam})) possède une intégrale première.}
