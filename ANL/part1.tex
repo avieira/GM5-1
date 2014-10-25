@@ -231,7 +231,7 @@ On a évidemment : \[\mathcal{R}_T(x_0)\subset \mathcal{R}(x_0)\subset Orb(x_0)\
 	\item $\forall p\in X$, si $\dim \mathcal{L}(p)$ constant $\Rightarrow$ $T_p Orb(p)=\mathcal{L}(p)$
 \end{enumerate}}
 
-\Prop{forme normale d'accessibilité}{Supposon dim $\mathcal{L}(X)$ constant $(=k)$.\\
+\Prop{Forme normale d'accessibilité}{Supposons dim $\mathcal{L}(X)$ constant $(=k)$.\\
 Localement, autour de chaque point $p$, il existe des coordonnées $z_a^1=(z_1^1,...,z_k^1)$ et $z_a^2=(z_1^2,...,z_{n-k}^2)$ tel que \[(FN_a) \begin{array}{c c c} \dot{z}_a^1 &=& F^1(z_a^1, z_a^2,....) \\ \dot{z}^2_a &=& 0\end{array}\]}
 
 \subsection{$R_T(x_0)$}
@@ -251,3 +251,31 @@ Localement, autour de chaque point $p$, il existe des coordonnées $z_a^1=(z_1^1
 \Prop{}{Fixons $u^*\in U$ arbitraire. On a \[\mathcal{L}=vect\{\mathcal{L}_0, F_{u^*}\}\]}
 
 \Coro{}{Pour $\dot{x}=f(x)+\sum_{i=1}^n u_ig_i(x)$, on a : \[\mathcal{L}=vect\{\mathcal{L}_0, f\}\] (en prenant $u^*=0$)}
+
+\Theo{}{Supposons dim $\mathcal{L}(X)=k-1$ \\
+Localement, autour de chaque point $p$, il existe des coordonnées $z_a^1=(z_1^1,...,z_{k-1}^1)$ et $z_a^2=(z_1^2,...,z_{n-k+1}^2)$ tel que \[(FN_a) \begin{array}{c c c} \dot{z}_a^1 &=& F_a^1(z_a^1, z_a^2,u) \\ \dot{z}^2_a &=& F^2_a(z_a^2)\end{array}\]}
+
+\Theo{}{Supposons dim $\mathcal{L}(X)=k$, dim $\mathcal{L}_0(x)=k-1$, $\forall x\in X$\\
+Localement, autour de chaque point $p$, il existe des coordonnées $z_a^1=(z_1^1,...,z_{k-1}^1)$, $z_k^1$, et $z_a^2=(z_1^2,...,z_{n-k+1}^2)$ tel que \[(FN_a) \begin{array}{c c c} \dot{z}_a^1 &=& F_a^1(z_a^1,z_k^1, z_a^2,u) \\ \dot{z}_k^1&=&1 \\ \dot{z}^2_a &=& 0\end{array}\]}
+
+\subsection{Controlabilité totale}
+\Def{Complètement controlable}{\ref{Pi} est dit complètempent controlable si $\forall x\in X$, $R(x)=X$.}
+
+\Def{Reversible}{\ref{Pi} est reversible si $\forall u\in U$, $\exists \tilde{u}\in U$ tel que $\forall x\in X$, \[-F(x,u)=F(x,\tilde{u})\]}
+
+\Prop{}{Si \ref{Pi} reversible, alors $R(p)=Orb(p)$, $\forall p\in X$.}
+
+\Def{Connexe}{$X$ connexe si : \[X=X_1\cup X_2,\ X_1\cap X_2=\emptyset,\ X_1,X_2 \text{ ouverts} \Rightarrow \text{ Soit }X_1=\emptyset \text{ soit } X_2=\emptyset\]}
+
+\Theo{}{Supposons \ref{Pi} reversible et $X$ connexe. Si dim $\mathcal{L}(x)=n$, $\forall x\in X$, alors \ref{Pi} est complètement controlable.}
+
+\subsubsection{Problèmes de contraintes}
+
+\subsubsection{Stabilité à la Poisson}
+\Def{Stable à la Poisson}{$p\in X$ est dit stable à la Poisson avec $\dot{x}=f(x)$, $x\in X$ si $\forall V$, voisinage de $p$, $\forall T>0$, $\exists t>T$; $\gamma_t(p)\in V$.}
+
+\Theo{Bonnard-Crouch}{Supposons que pour $\Sigma : \dot{x}=f(x)+\sum_{i=1}^m u_i g_i(x)$, on a : \begin{enumerate}
+	\item L'ensemble $X'$ de points Poisson stable pour $\dot{x}=f(x)$ est dense dans $X$
+	\item dim $\mathcal{L}(X)=n$, $\forall x\in X$ (accessible en chaque point)
+\end{enumerate}
+Alors $\Sigma$ est complètement contrôlable.}
