@@ -23,3 +23,71 @@ où \[\|\nabla u\|^p_{L^p(O)}=\sum_{i=1}^N \left\|\frac{\partial u}{\partial x_i
 
 \Lem{}{$1\leq p\leq +\infty$, $\phi\in\mathcal{D}(\mathbb{R}^N)$, $u\in W^{1,p}(\mathbb{R}^N)$.
 \[\phi * u \in \mathcal{C}^{\infty}(\mathbb{R}^N) \text{ et } \frac{\partial}{\partial x_i} (\phi * u)=\phi * \frac{\partial u}{\partial x_i}\]}
+
+\Theo{}{$1\leq p<+\infty$\\
+$\mathcal{D}(\mathbb{R}^N)$ est dense dans $W^{1,p}(\mathbb{R}^N)$}
+
+\section{Restriction à un ouvert}
+\Def{ouvert à frontière lipschitzienne}{Soit $N\geq 2$, $\Omega$ ouvert borné.\\
+On définit un système de coordonnées locales de la manière suivante : \\
+On suppose qu'il existe $m\in \mathbb{N}^*$ et m fonctions \[\psi_i : Q=]-1,1[^{N-1}\times\mathbb{R}\to\mathbb{R}\]
+et $\exists r>0$ tel que : \[\begin{array}{c c c c}
+\psi_i : & U=Q\times]-r,r[&\to& \psi_i(U) \\
+	& (y',y_N) &\mapsto& (y', y_N+\psi_i(y'))
+\end{array}\]
+alors $\psi_i$ est un homéomorphisme entre $U$ et $\psi_i(U)$ et $\forall i$ :
+\begin{eqnarray*}
+	\Gamma_i&=&\psi_i(Q\times\{0\})\subset\partial\Omega\\
+	U_i^+&=&\psi_i(Q\times ]0,r[)\subset\Omega\\
+	U_i^-&=&\psi_i(Q\times ]-r,0[)\subset\Omega\\
+\end{eqnarray*}
+et \[\partial \Omega=\bigcup_{i=1}^m \Gamma_i\]
+On dit que $\partial \Omega$ est lipschitienne (resp. $\mathcal{C}^k$) s'il existe un système de coordonnées locales tel que $\forall i$, $\psi_i$ est lipschitzienne (resp. $\mathcal{C}^k$)}
+
+\Theo{de prolongement}{$1\leq p\leq +\infty$\\
+Soit $\Omega\subset \mathbb{R}^N$ et on suppose 3 cas : 
+\begin{itemize}
+	\item $N=1$ : $\Omega$ est un intervalle ouvert de $\mathbb{R}$ (borné ou non)
+	\item $N\geq 2$ : \begin{itemize}
+		\item $\Omega$ est le demi-espace $\mathbb{R}^{n-1}\times \mathbb{R}^*_+$
+		\item $\Omega$ ouvert borné avec $\partial\Omega$ lipschitzienne
+	\end{itemize}
+\end{itemize}
+Alors il existe un opérateur de prolongement $p$ linéaire et continu \[p : W^{1,p}(\Omega)\to W^{1,p}(\mathbb{R}^N)\]
+tel que : \begin{enumerate}
+	\item $Pu=u$ sur $\Omega$
+	\item $\|Pu\|_{L^p(\mathbb{R}^N)}\leq c\|u\|_{L^p(\Omega)}$\\
+		$\|Pu\|_{W^{1,p}(\mathbb{R}^N)}\leq c\|u\|_{W^{1,p}(\Omega)}$\\
+	où $c=c(\Omega,p)$.
+\end{enumerate}}
+
+\Def{}{$\Omega\subset\mathbb{R}^N$ comme dans le théorème de prolongement.\\
+On note $\mathcal{D}(\overline{\Omega})$ (resp. $\mathcal{C}^1_c(\overline{\Omega})$) l'ensemble des restrictions à $\overline{\Omega}$ de fonctions de $\mathcal{D}(\mathbb{R}^N)$ (resp. $\mathcal{C}^1_c(\mathbb{R}^N)$).\\
+Si $\Omega=\mathbb{R}^{N-1}\times\mathbb{R}^+_*$, on note $\mathcal{D}(\mathbb{R}^{N-1}\times\mathbb{R}^+)$}
+
+\textbf{Remarque :} $\mathcal{D}(\Omega) \subsetneq \mathcal{D}(\overline{\Omega})$ car les fonctions de $\mathcal{D}'\overline{\Omega})$ ne s'annulent pas forcément sur $\partial\Omega$.
+
+\Theo{}{$\Omega$ ouvert de $\mathbb{R}^N$ comme dans le théorème de prolongement, $1\leq p<+\infty$.\\
+Alors $\mathcal{D}(\overline{\Omega})$ est dense dans $W^{1,p}(\Omega)$.}
+
+\Theo{chain rule}{$1\leq p\leq +\infty$, $\Omega\subset\mathbb{R}^N$ comme dans le théorème de prolongement.\\
+Soit $G\in\mathcal{C}^1(\mathbb{R})$ tel que $G(0)=0$ et $\forall s$, $|G'(s)|\leq M$\\
+Alors $\forall u\in W^{A,p}(\Omega)$, $G(u)\in W^{1,p}(\Omega)$ et on a (au sens des distributions) : \[\nabla G(u) = G'(u) \nabla u\]}
+
+\Theo{Stampacchia}{$1\leq p\leq +\infty$, $\Omega\subset\mathbb{R}^N$ comme dans le théorème de prolongement.\\
+$\forall u\in W^{1,p}(\Omega)$, on pose \[u_+=\max\{u,0\},\ u_-=\min\{u,0\},\ _=u_-+u_+\]
+Alors $u_+$, $u_-$ et $|u|$  appartiennent ) $W^{1,p}(\Omega)$ et on a presque partout : 
+\[\nabla u_+ = \left| \begin{array}{c c c}
+	\nabla u &\text{ où }& u>0 \\
+	0 &\text{ où }& u\leq 0
+\end{array}\right.\]
+\[\nabla u_- = \left| \begin{array}{c c c}
+	0 &\text{ où }& u\geq 0 \\
+	\nabla u &\text{ où }& u< 0
+\end{array}\right.\]
+\[\nabla| u| = \left| \begin{array}{c c c}
+	\nabla u &\text{ où }& u>0 \\
+	0 &\text{ où }& u=0 \\
+	-\nabla u &\text{ où }& u<0
+\end{array}\right.\]
+}
