@@ -43,7 +43,7 @@ $dx$ la mesure de Lebesgue\\
 
 \Def{}{Soit $1\leq p< +\infty$.
 \[L^p(O)=\{f:O\to\mathbb{R} \text{ mesurable }; \int|f|^p dx<\infty\}\]
-\[L^p(O)=\{f:O\to\mathbb{R} \text{ mesurable }; |f|<\infty \text{ p.p. dans } O\}\]
+\[L^\infty(O)=\{f:O\to\mathbb{R} \text{ mesurable }; |f|<\infty \text{ p.p. dans } O\}\]
 \[\forall 1\leq p\leq+\infty, L^p_{loc}(O)=\{f\in L^p(\omega), \forall \omega \text{ ouvert borné}, \bar{\omega}\subset O\}\]}
 
 \Prop{}{$L^p(O)$ est de Banach muni de la norme : \[\|f\|_{L^p(O)}=\left| \begin{array}{r c l} 
@@ -120,11 +120,11 @@ Alors si $w=\bigcup_{A\in\mathcal{A}} A$, on a $f=0$ p.p. dans $A$.}
 
 \Def{}{On pose alors $supp(f)=O\backslash w$.}
 
-\Def{}{\[L^p_c(O)=\{f\in L^p(O); supp(f) \text{ est un compact de } \mathbb{R}^n \text{ inclu de } O\}\]}
+\Def{}{\[L^p_c(O)=\{f\in L^p(O); supp(f) \text{ est un compact de } \mathbb{R}^n \text{ inclu dans } O\}\]}
 
 \subsection{Convolution}
 \Def{}{$1\leq p\leq +\infty$, $f\in L^1(\mathbb{R}^N)$, $g\in L^p(\mathbb{R}^n)$. 
-On définit le produit de convolution par : \[\forall x\in \mathbb{R}^n, (f*g)(x)=\in_{\mathbb{R}}f(x-y)g(y)dy \text{ p.p.}\]}
+On définit le produit de convolution par : \[\forall x\in \mathbb{R}^n, (f*g)(x)=\int_{\mathbb{R}}f(x-y)g(y)dy \text{ p.p.}\]}
 
 \Prop{}{\begin{enumerate}
 	\item $f\in L^1(\mathbb{R}^N)$, $g\in L^p(\mathbb{R}^N)$. \\
@@ -139,19 +139,19 @@ Si de plus, $g\in L^p_c(\mathbb{R}^N)$, alors $f*g\in\mathcal{D}(\mathbb{R}^N)$ 
 \Def{}{$B(0,1)\subset \mathbb{R}^N$. Soit $\rho \in \mathcal{D}(\mathbb{R}^N)$, $\rho\geq 0$, $\|\rho\|_{L^1(\mathbb{R}^N)}=1$, $supp(\rho)\subset \overline{B(0,1)}$.\\
 $\forall n\in\mathbb{N}$, on pose $\rho_n(x)=n^N \rho(nx)$, $\forall x\in\mathbb{R}^N$. $\{\rho_n\}_n$ s'appelle une suite régularisante.}
 
-\Theo{}{$1\leq p<+\infty$, $f\in L^p(\mathbb{R}^N)$. $\forall \{\rho\}_n$ suite régularisante : \[\underbrace{\rho_n * f}_{\in\mathcal{C}^{\infty}(\mathbb{R}^N)} \to f \text{ dans } L^p(\mathbb{R}^N)\]}
+\Theo{}{$1\leq p<+\infty$, $f\in L^p(\mathbb{R}^N)$. $\forall \{\rho_n\}_n$ suite régularisante : \[\underbrace{\rho_n * f}_{\in\mathcal{C}^{\infty}(\mathbb{R}^N)} \to f \text{ dans } L^p(\mathbb{R}^N)\]}
 
 \Theo{}{$\mathcal{D}(\mathbb{R}^N)$ est dense dans $L^p(\mathbb{R}^N)$, $\forall 1\leq p<+\infty$. (Faux pour $L^{\infty}$ !)}
 
 \Lem{de Urysohn}{$O$ ouvert de $\mathbb{R}^N$, $K$ compact de $\mathbb{R}^N$, $K\subset O$.\\
-Alors $\exists \psi\in\mathcal{D}(0)$ telle que $\psi\equiv 1$ sur $K$ et $0\leq \psi<1$.}
+Alors $\exists \psi\in\mathcal{D}(O)$ telle que $\psi\equiv 1$ sur $K$ et $0\leq \psi<1$.}
 
 \Coro{}{$\forall O\subset \mathbb{R}^N$, $\exists \{\psi_n\}\subset \mathcal{D}(O)$ tel que \[\forall n\in\mathbb{N}, 0\leq \psi_n\leq 1, \psi_n \to 1 \text{ p.p. dans } O\]}
 
 \Theo{}{$1\leq p<\infty$.\\
 Soit $v\in L^p(\mathbb{R}^N)$. On prolonge $v$ par zéro : \[\tilde{v}=\left\{ \begin{array}{c c c}
 v &\text{ dans }& O \\
-0 \text{ sinon}&
+0 &\text{ sinon}&
 \end{array}\right.\]
 Donc $\tilde{v}\in L^p(\mathbb{R}^N)$}
 
@@ -181,4 +181,4 @@ Donc on identifie $f$ et $T_f$ et on écrit : \[L^1_{loc}(O)\subset \mathcal{D}'
 
 \textbf{Remarque :} On peut montrer qu'il existe des distributions non régulières.
 
-\Def{Dérivée d'une distribution}{Soit $T\in\mathcal{D}'(O)$. On appelle dérivée de $T$ (au sens des distributions) par rapport à la ième variable et on la note $\frac{\partial T}{\partial x_i}$ la distribution définie par : \[\forall \phi\in\mathcal{D}(O), \langle \frac{\partial T}{\partial x_i} \rangle_{\mathcal{D}'(O)\mathcal{D}(O)}=-\langle T, \frac{\partial \phi}{\partial x_i}\rangle_{\mathcal{D}'(O)\mathcal{D}(O)}\]}
+\Def{Dérivée d'une distribution}{Soit $T\in\mathcal{D}'(O)$. On appelle dérivée de $T$ (au sens des distributions) par rapport à la ième variable et on la note $\frac{\partial T}{\partial x_i}$ la distribution définie par : \[\forall \phi\in\mathcal{D}(O), \langle \frac{\partial T}{\partial x_i} ,\phi\rangle_{\mathcal{D}'(O)\mathcal{D}(O)}=-\langle T, \frac{\partial \phi}{\partial x_i}\rangle_{\mathcal{D}'(O)\mathcal{D}(O)}\]}

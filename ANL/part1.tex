@@ -18,7 +18,7 @@ Comment choisir $u$ ?
 
 \section{Outils mathématiques}
 \subsection{Difféomorphismes}
-\Def{}{$h:X\to\mathbb{R},\ X\subset \mathbb{R}$ ouvert est $\mathcal{C}^{\infty}$ si $\frac{\partial^ih}{\partial x_1^{i_1}...\partial x_n^{i_n}}$, $i=\sum_{j=1}^n i_j$ existent et sont continues pour tout n-uplet $(i_j)_j$.\\
+\Def{}{$h:X\to\mathbb{R},\ X\subset \mathbb{R}^n$ ouvert est $\mathcal{C}^{\infty}$ si $\frac{\partial^ih}{\partial x_1^{i_1}...\partial x_n^{i_n}}$, $i=\sum_{j=1}^n i_j$ existent et sont continues pour tout n-uplet $(i_j)_j$.\\
 Si maintenant, $h:X\to Y,\ Y\subset\mathbb{R}^m$ ouvert, h est $\mathcal{C}^{\infty}$ si $h_1,...,h_m$ est $\mathcal{C}^{\infty}$.}
 
 \Def{Difféomorphisme}{$h$ est un difféomorphisme si :
@@ -44,7 +44,7 @@ alors $h$ est un difféomorphisme local en $x_0$ et $y_0$.}
 \Def{Vecteur tangent}{Soit $\gamma:]-\varepsilon;\varepsilon[\to X$. Le vecteur tangent à $\gamma(t)$ en $p=\gamma(0)$ est $\dot{\gamma}(0)$.}
 
 \Def{Espace tangent en p}{Soit $X\subset\mathbb{R}^n$ un ouvert. On appelle espace tangent en p :
-	\[T_pX=\{\dot{\gamma}(0), \gamma \text{ une sourbe passant par } p\}\]}
+	\[T_pX=\{\dot{\gamma}(0), \gamma \text{ une courbe passant par } p\}\]}
 
 \Def{Champ de vecteurs}{Un champ de vecteur $f$ sur $X$ est : \[p\in X\mapsto f(p)\in T_pX\]
 On note : \[f(x)=\begin{pmatrix} f_1(x)\\\vdots\\f_n(x)\end{pmatrix}=\sum_{i=1}^n f_i(x)\frac{\partial}{\partial x_i}\]}
@@ -69,10 +69,10 @@ $h\circ \gamma$ est une courbe dans $Y$.
 					&=& Dh(p) v
 \end{eqnarray*}
 Si on note $w$ le vecteur tangent dans $Y$, on a :
-	\[W=\frac{\partial h}{\partial x} v \in T_{h(p)}Y\]
-	\[W_i=\sum_{j=1}^n \frac{\partial h_i}{\partial x_j} v_j\]
+	\[w=\frac{\partial h}{\partial x} v \in T_{h(p)}Y\]
+	\[w_i=\sum_{j=1}^n \frac{\partial h_i}{\partial x_j} v_j\]
 
-En partant de $H$, non linéaire, on arrive à $Dh=\frac{\partial h}{\partial x}=h_*$ une application linéaire qui tranforme $T_pX$ en $T_{h(p)}Y$. Cette application linéaire est appelée application tangente.
+En partant de $h$, non linéaire, on arrive à $Dh=\frac{\partial h}{\partial x}=h_*$ une application linéaire qui tranforme $T_pX$ en $T_{h(p)}Y$. Cette application linéaire est appelée application tangente.
 
 \Lem{}{On a : \[(\phi_* f)(p)=D\phi(\phi^{-1}(p)) f(\phi^{-1}(p))\]}
 
@@ -121,7 +121,7 @@ $R(x_0)=\bigcup_{t>0} R_t(x_0)$ : ensemble d'accessibilité depuis $x_0$.
 	\item $\forall T>0,\ R_T(0)=\mathbb{R}^n$
 	\item $\forall x_0\in\mathbb{R}^n,\ R(x_0)=\mathbb{R}^n$
 	\item $\exists T>0; \forall x_0\in\mathbb{R}^n, R_T(x_0)=\mathbb{R}^n$
-	\item $\exists T>0; \forall x_0\in\mathbb{R}^n, R_T(x_0)=\mathbb{R}^n$
+	\item $\forall T>0; \forall x_0\in\mathbb{R}^n, R_T(x_0)=\mathbb{R}^n$
 	\item Rg$(B,...,A^{n-1}B)=n$
 \end{enumerate}}
 
@@ -133,10 +133,10 @@ $U$ est la classe des contrôles admissibles.\\
 Où $PC_U$ est l'ensemble des contrôles constants par morceaux à valeur dans $U$ et $\mathcal{M}_U$ est l'ensemble des contrôles mesurables à valeur dans $U$.
 
 \[R_T(x_0)=\left\{x(T,u,x_0), u\in U([0,T])\right\}\]
-où $x(T,u,x_0)$ est la trajectoire de $\dot{x}=F(x,u)$ oassabt par $x_0$ en $t=0$. 
+où $x(T,u,x_0)$ est la trajectoire de $\dot{x}=F(x,u)$ passant par $x_0$ en $t=0$. 
 
-\Def{}{\ref{Pi} est accessible en $x_0$ si $\widering{R(x_0)}=\emptyset$\\
-\ref{Pi} est fortement accessible en $x_0$ si $\forall T>0,\ \widering{R_T(x_0)}=\emptyset$}
+\Def{}{\ref{Pi} est accessible en $x_0$ si $\widering{R(x_0)}\neq\emptyset$\\
+\ref{Pi} est fortement accessible en $x_0$ si $\forall T>0,\ \widering{R_T(x_0)}\neq\emptyset$}
 
 Supposons que $(x_e,u_e)$ soit un point d'équilibre, et on linéarise \ref{Pi} autour de ce point d'équilibre : 
 \begin{eqnarray*}
@@ -210,7 +210,7 @@ On a évidemment : \[\mathcal{R}_T(x_0)\subset \mathcal{R}(x_0)\subset Orb(x_0)\
 \Lem{}{$q\sim p$ si et seulement si $q\in Orb(p)$ est une relation d'équivalence : 
 \begin{enumerate}
 	\item symétrique : $q\sim p \Leftrightarrow p\sim q$
-	\item refkexive : $p\sim p$
+	\item reflexive : $p\sim p$
 	\item transitive : $q\sim p$ et $p\sim r \Rightarrow q\sim r$
 \end{enumerate}}
 
@@ -238,7 +238,7 @@ Localement, autour de chaque point $p$, il existe des coordonnées $z_a^1=(z_1^1
 \Def{Idéal de Lie}{L'idéal de Lie $\mathcal{L}_0$ de \ref{Pi} est le plus petit espace vectoriel tel que : 
 \begin{enumerate}
 	\item $\forall u, \tilde{u}\in U$, $F_u - F_{\tilde{u}}\in \mathcal{L}_0$
-	\item $g\in \mathcal{L}_0 \rightarrow [F_u, g]\in\mathcal{L}_0$\\
+	\item $g\in \mathcal{L}_0 \Rightarrow [F_u, g]\in\mathcal{L}_0$\\
 	Par l'identité de Jacobi, cela correspond également à : \\
 	$g\in \mathcal{L}_0$, $f\in \mathcal{L} \Rightarrow [f,g]\in\mathcal{L}_0$
 \end{enumerate}}
@@ -252,7 +252,7 @@ Localement, autour de chaque point $p$, il existe des coordonnées $z_a^1=(z_1^1
 
 \Coro{}{Pour $\dot{x}=f(x)+\sum_{i=1}^n u_ig_i(x)$, on a : \[\mathcal{L}=vect\{\mathcal{L}_0, f\}\] (en prenant $u^*=0$)}
 
-\Theo{}{Supposons dim $\mathcal{L}(X)=k-1$ \\
+\Theo{}{Supposons dim $\mathcal{L}_0(X)=k-1$ \\
 Localement, autour de chaque point $p$, il existe des coordonnées $z_a^1=(z_1^1,...,z_{k-1}^1)$ et $z_a^2=(z_1^2,...,z_{n-k+1}^2)$ tel que \[(FN_a) \begin{array}{c c c} \dot{z}_a^1 &=& F_a^1(z_a^1, z_a^2,u) \\ \dot{z}^2_a &=& F^2_a(z_a^2)\end{array}\]}
 
 \Theo{}{Supposons dim $\mathcal{L}(X)=k$, dim $\mathcal{L}_0(x)=k-1$, $\forall x\in X$\\
