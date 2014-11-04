@@ -1,0 +1,140 @@
+\documentclass[handout]{beamer}
+
+\usepackage[frenchb]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+ 
+\usetheme{Berkeley}
+\usecolortheme{crane}
+\useinnertheme{rounded}
+
+\title[Class. Running Fronts]{Pr\'esentation d'un article : \\ Classification of existence and non-existence of running fronts in case of fast diffusion\\\small{Messoud Efendiev \& Johannes M\"uller}}
+\author{Alexandre \bsc{Vieira}}
+\institute{INSA de Rouen}
+\date{\today}
+
+
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Sommaire}
+		\tableofcontents[currentsection, hideothersubsections]
+	\end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sommaire}
+	\tableofcontents
+\end{frame}
+
+\section{Resultats}
+\begin{frame}
+	\frametitle{Équation étudiée}
+	\begin{equation} \label{eqnG} u_t=(D(u)u_x)_x + f(u)\end{equation}
+	\[D(u)=\frac{u^a}{(1-u)^b}\bar{D}(u)\in\mathcal{C}^2[0,1[\]
+	\[f(u)=u(1-u)^\alpha \bar{f}(u)\in\mathcal{C}^2[0,1[\]
+	\[a>1,\hspace{1em} b>0 \hspace{1em} \alpha\geq 0\]
+
+\bigskip
+	On cherche la solution $u(x,t)$ sous la forme \[u(x,t)=w(ct-x)\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Théorème}
+	\[u_t=(D(u)u_x)_x + f(u)\]
+
+	\begin{block}{Théorème :}
+	Si $\alpha-b\leq -1$, il n'y a aucun front.\\
+	Si $\alpha-b>-1$, il existe une vitesse minimale $c^*$ telle que :
+	\begin{itemize}
+		\item Pour $c<c^*$, il n'y a pas de solution de la forme $u(x,t)=w(ct-x)$ non négative
+		\item Pour $c=c^*$, un unique front d'onde solution existe, qui tend vers $0$ quand $x\to-\infty$
+		\item Pour $c>c^*$, il y a une infinité de fronts d'ondes solutions, ordonnés. La solution minimal tend elle aussi vers 0 quand $x\to -\infty$, les autres sont strictement positives.
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Preuve}
+\subsection{Transformation du système}
+
+\begin{frame}
+	\frametitle{Transformation du système}
+	Soit $u(x,t)=w(ct-x)$. En reprenant l'équation (\ref{eqnG}) et en y introduisant $w$, on obtient : \begin{equation} \label{eqn1} cw'=(D(w)w')'+f(w) \end{equation}
+	On définit à présent $v$ tel que : \[v=\frac{D(w)w'}{w}\]
+	En multipliant (\ref{eqn1}) par $\frac{D(w)}{w}$, on obtient : \[cv=v'D(w)+v\frac{w'D(w)}{w}+\frac{D(w)f(w)}{w}\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Transformation du système}
+D'où le système d'équation : \begin{equation} \label{eqn2} \left\{ \begin{array}{c c c}
+	D(w)w' &=& vw \\
+	D(w)v' &=& v(c-v)-\frac{D(w)f(w)}{w}
+\end{array} \right. \end{equation}
+
+En faisant le changement de variable suivant (rescaling time) : \[\frac{dt}{d\tau}=D(w(t(\tau)))\] \[\tilde{w}(\tau)=w(t(\tau))\] \[\tilde{v}(\tau)=v(t(\tau))\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Transformation du système}
+On obtient : 
+\begin{equation} \left\{ \begin{array}{c c c}
+	\tilde{w}' &=& \tilde{v}\tilde{w} \\
+	\tilde{v}' &=& \tilde{v}(c-\tilde{v})-g(\tilde{w})
+\end{array} \right. \end{equation}
+
+où \[g(\tilde{w})=\frac{D(\tilde{w})f(\tilde{w})}{\tilde{w}}\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problème dans la transformation}
+\[\frac{dt}{d\tau}=D(w)=\frac{w^a}{(1-w)^b}\bar{D}(w)\]
+La transformation devient singulière pour $w\to 0$ et $w\to 1$
+
+\bigskip
+Pour $t_0\in \mathbb{R}\cup\{-\infty\}$, on doit avoir : \[0\leq w(t)\leq 1\] et \[\lim_{t\to t_0^+} w(t)=0, \hspace{2em} \lim_{t\to +\infty}w(t)=1\]
+$\Rightarrow$ Problème !
+\end{frame}
+
+\subsection{Méthode du plan de phase}
+\subsubsection{$w=0$ dans le système transformé}
+
+\begin{frame}
+	\frametitle{Analyse du linéarisé}
+On prend $w=0$ $\Rightarrow$ Analyse peut être faite avec le temps rééchelonné, on utilise donc le système (\ref{eqn2}) : 
+\[\left\{ \begin{array}{c c c}
+	\tilde{w}' &=& \tilde{v}\tilde{w} \\
+	\tilde{v}' &=& \tilde{v}(c-\tilde{v})-g(\tilde{w})
+\end{array} \right.\]
+On a deux points d'équilibre : \[(0,0) \text{ et } (0,c)\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Analyse de (0,c)}
+Jacobien du système en $(0,c)$ : \[\begin{pmatrix} c & 0 \\ -g'(0) & -c \end{pmatrix} = \begin{pmatrix} c & 0 \\ 0 & -c \end{pmatrix}\]
+On peut vérifier que $g'(0)=0$.\\
+\[\lambda_1=c \text{ et } \lambda_2=-c\]
+
+Dans l'espace des phases : point selle. Axe $v$ invariant, stable. \\
+On a approximativement : $\tilde{w}'\approx \lambda_1 \tilde{w} = c\tilde{w}$, d'où : 
+\[w'\approx \frac{cw}{D(w)} \approx cw^{-(a-1)} \text{ pour } w \text{ petit}\]
+Comme $a-1>0$, la trajectoire atteint le point stationnaire en un temps négatif fini.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Analyse de (0,0)}
+Jacobien du système en $(0,0)$ : \[\begin{pmatrix} 0 & 0 \\ -g'(0) & c \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & c \end{pmatrix}\]
+\[\lambda_1=0 \text{ et } \lambda_2=c\]
+On a directement que l'axe $v$ sera instable.\\
+Deuxième direction : nécessite plus de discussion.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Variété centrale pour (0,0)}
+\end{frame}
+\end{document}
