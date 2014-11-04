@@ -1,0 +1,120 @@
+\documentclass{article}
+\input{../preambule}
+%\usepackage[8pt]{extsizes}
+
+\hypersetup{colorlinks=true, urlcolor=bleu, linkcolor=red}
+
+%Def = Definition
+%Theo = Théorème
+%Prop = Propriété
+%Coro = Corollaire
+%Lem = Lemme
+
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
+
+\begin{document}
+\part{Automatique non lin\'{e}aire}
+\begin{enumerate}
+\section{Outils mathématiques}
+	\item Définition $\mathcal{C}^{\infty}$, difféomorphisme, difféomorphisme local.
+	\item Théorème sur difféomorphisme local
+	\item Définition vecteur tangent, espace tangent, champ de vecteurs
+	\item Lemme : $(\phi_*f)(p)=?$
+	\item Proposition : diagramme qui commute
+	\item Proposition : Lien entre flot original et flot transformé ?
+	\item Définition de $V^{\infty}(X)$
+	\item Défintion du crochet de Lie, autre formulation
+\section{Controlabilité}
+	\item Proposition : à quelle condition revient-on au point de départ ?
+	\item 7 points équivalents sur la controlabilité (critère de Kalmann)
+	\item Définition d'accessible, fortement accessible.
+	\item Proposition sur le linéairisé et l'accessibilité locale \item Définition d'une l'algèbre de Lie de $\Pi$
+	\item Expression de $\mathcal{L}$ avec les contrôles
+	\item Propriété des crochets
+	\item Définition de sous-variété plongée de dimension $n$
+	\item Lemme sur vecteurs tangents et leur crochets
+	\item Théorème de Sussman-Jevdjevic (Dim de $\mathcal{L}(x_0)$)
+	\item Définition d'une distribution, de rang constant, $\mathcal{C}^{\infty}$, intégrale, involutive
+	\item Définition: Opérateur associé à un champ de vecteur
+	\item Théorème de Frobenius
+	\item Définition d'Orbite
+	\item Lemme : relation d'équivalence pour l'orbite, propriété en résultant
+	\item Définition de sous-variété immersée
+	\item Théorème sur orbite, sous-variété immersée, distribution, algèbre de Lie de $\Pi$
+	\item Définition: Idéal de Lie
+	\item Théorème sur l'accessibilité forte et l'idéal de Lie
+	\item Propriété : rapport entre $\mathcal{L}$ et $\mathcal{L}_0$
+	\item 3 formes normale d'accessibilité
+\section{Controlabilité complète}
+	\item Définition: Complètement controlable, reversible
+	\item Proprité si reversible entre orbite et $R$
+	\item Définition: Connexe
+	\item Théorème si reversible et connexe avec controlabilité complète
+	\item Définition: Stable à la Poisson
+	\item Théorème: Bonnard-Crouch sur systèmes affines
+\end{enumerate}
+
+\part{Calcul différentiel}
+\begin{enumerate}
+\section{Calcul variationnel}
+\subsection{Euler-Lagrange}
+	\item Théorème d'Euler-Lagrange
+	\item Définition d'une intégrale première
+	\item Propriété si $L(x,y')$ et si $L(y,y')$.
+	\item Définition: Topologie dans $\mathcal{C}([x_1 , x_2])$
+	\item Définition de minimum faible/fort
+	\item Définition de champ d'extremales
+	\item Théorème: Jacobi-Weierstrass
+\subsection{Hamiltonien}
+	\item Définition de l'Hamiltonien, système hamiltonien (SH)
+	\item Proposition : équivalence à $I$ intégrale première
+	\item H intégrale première ?
+	\item Définition du crochet de Poisson
+	\item Dans 2 cas : I intégrale première de (SH)
+	\item Si L invariant par rapport aux translations spatiales ? (avec L puis I)
+	\item $I$ invariant par rapport à une transformation
+	\item Théorème d'Emmy Noether
+\section{EDP d'ordre 1}
+	\item Définition : problème de Cauchy
+\end{enumerate}
+
+\part{Sobolev}
+\begin{enumerate}
+\section{Rappels}
+	\item Définition: Hölderienne
+	\item Théorème: Unicité et existence
+	\item Théorème: estimation de Schender
+\subsection{$L^p$}
+	\item Définition Dual, Bidual, reflexif
+	\item Théorème: représentation de Riesz-Fréchet
+	\item Inégalité de Holder
+	\item Corollaire : convergence entre $L^p$ et $L^{p'}$
+	\item $1 \leq p<q\leq +\infty$, inclusion, inégalité des normes
+	\item Théorème: inégalité d’interpolation
+	\item Lemme de Fatou, convergence dominée de Lebesgue
+	\item Convergence dans $L^p$ et dans $O$
+	\item Définition: Séparable, $L^p$ ?
+	\item Théorème: représentation de Green (un $p$ à remplacer par $p'$)
+	\item 3 propriétés de la convolution
+	\item Définition : suite régularisante, convergence avec convolution
+	\item Densité de $L^p$
+	\item Lemme: de Urysohn, corollaire
+	\item Théorème : prolongement d'une fonction $L^p$ en dehors de O
+\subsection{Distributions}
+	\item Convergence dans les fonctions tests, définition distribution
+	\item Distribution régulière, dérivée d'une distribution
+\section{Espaces de Sobolev}
+	\item Définition d'un espace de Sobolev, notation pour $p=2$
+	\item Équivalene à la norme dans un espace de Sobolev
+	\item Banach, Hilbert ?
+	\item Séparable, reflexif ?
+	\item Densité de $W^{1,p}(\mathbb{R}^N)$
+	\item Définition: ouvert à frontière lipschitzienne
+	\item Théorème: de prolongement
+	\item Définition : $\mathcal{D}(\overline{\Omega})$
+	\item Densité de $W^{1,p}(\Omega)$
+	\item Théorème: chain rule, Stampacchia
+\end{enumerate}
+\end{document}
