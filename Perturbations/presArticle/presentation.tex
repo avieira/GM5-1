@@ -136,5 +136,19 @@ Deuxième direction : nécessite plus de discussion.
 
 \begin{frame}
 	\frametitle{Variété centrale pour (0,0)}
+\begin{block}{Propriété}
+Le champ de vecteur étant $\mathcal{C}^2$ près de $(0,0)$, il existe une variété centrale tangente au vecteur propre $\begin{pmatrix} 0\\ 1 \end{pmatrix}$
+\end{block}
+
+Soit $\{v=h(w)\}$ une paramétrisation locale de cette variété. On a $h(0)=0$, $h'(0)=0$ et $v'=h'(w)w'$. En multipliant cette dernière égalité par $D(w)$ : 
+\[v(c-v)-g(w)=h'(w)vw\]
+\[h'(w)=\frac{c-h(w)}{w}-\frac{g(w)}{wh(w)}\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Variété centrale pour (0,0)}
+En écrivant $h(w)=c_1 w^\beta+o(w^{\beta+1})$, on obtient :
+\[c_1\beta w^{\beta-1}=\frac{c}{w}-c_1w^{\beta-1}-\frac{\bar{g}(0)}{c_1}w^{a-\beta-1}+o(w^{\beta+1})\]
+où $\bar{g}(0)=\bar{D}(0)\bar{f}(0)>0$.
 \end{frame}
 \end{document}
