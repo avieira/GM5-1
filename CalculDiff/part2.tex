@@ -1,0 +1,21 @@
+\part{Équations aux dérivées partielles d'ordre 1}
+\begin{equation} \label{EH}\tag{EH} \sum_{i=1}^n \frac{\partial h}{\partial x_i} f_i(x)=0 \end{equation}
+$(f_1,...,f_n)^T$, $f_i=f_i(x)$ : champ de vecteur donné. $h$ cherché : \[h : \begin{array}{c c c} \mathbb{R}^n &\to& \mathbb{R} \\ x &\mapsto& h(x) \end{array}\]
+
+\Def{Problème de Cauchy}{Soit $M$ une hypersurface dans $\mathbb{R}^n$, une sous-variété de $\mathbb{R}^n$ de dimension $n-1$ : \[M=\{x\in\mathbb{R}^n, \phi(x)=0\} \text{ où } \phi :\mathbb{R}^n\to \mathbb{R},\ rg\frac{\partial \phi}{\partial x}=1,\ \forall x\in M\]
+
+Fixons $M$ une hypersurface et $ B:M\to \mathbb{R}$. Le problème de Cauchy est : \\
+Trouver une solution de (\ref{EH}) tel que \[\restriction{h}{M}=b\]}
+
+On remarque que $h$ est une intégrale première de l'équation $\dot{x}=f(x)$ \\
+De même, en posant $y=\sigma(x)$, avec $\sigma : \mathbb{R}^n\to \mathbb{R}^n$ un difféomorphisme, on remarque que pour la fonction $\tilde{h}$ définit par : \[h(x)=\tilde{h}(y)\] on a $\tilde{h}$ une intégrale première de $\dot{y}=\tilde{f}(y)$ définit par : 
+\[\tilde{f}(y(t))=\frac{\partial \sigma}{\partial x} \left(\sigma^{-1}(y(t))\right)f\left(\sigma^{-1}(y(t))\right)\]
+
+\Lem{}{Si $f(x_0)\neq 0$, $\exists y=\sigma(x)$ un difféomorphisme local, tel que : \[\frac{\partial \sigma}{\partial x} \left(\sigma^{-1}(y)\right) f\left(\sigma^{-1}(y) \right)=\tilde{f}(y)=\frac{\partial}{\partial y_1}\]}
+
+\Lem{}{Étant donné $(M,f)$ tels que $f(x_0)\notin T_{x_0}M$, $\exists y=\sigma(x)$ un difféomorphisme local, tel que : \[M=\{y_1=0\} \text{ et } \frac{\partial \sigma}{\partial x} \left(\sigma^{-1}(y)\right) f\left(\sigma^{-1}(y) \right)=\tilde{f}(y)=\frac{\partial}{\partial y_1}\]}
+
+\Theo{}{\begin{enumerate}
+    \item Si $f(x_0)\neq 0$ alors (EH) possède des solutions dans un voisinage de $x_0$
+    \item Si $f(x_0)\notin T_{x_0}M$ alors dans un voisinage de $x_0$, le problème de Cauchy possède une solution unique.
+\end{enumerate}} 

@@ -1,5 +1,5 @@
-\section{Calcul variationnel}
-\subsection{Cas scalaire}
+\part{Calcul variationnel}
+\section{Cas scalaire}
 Ici : recherche d'optimum non plus dans un espace de réels, mais dans un espace de fonctions. On cherche $y^*$ tel que :
 	\[I(y^*)=\min_{y\in\mathcal{F}}I(y)\]
 
@@ -52,13 +52,13 @@ Alors $y^*$ est un minimum (resp. maximum) faible
 Alors $y^*$ est un minimum (resp. maximum) fort.
 \end{enumerate}}
 
-\subsection{Courbes paramétrées}
+\section{Courbes paramétrées}
 On prend à présent $y:[x_1,x_2]\to\mathbb{R}^n$, $P_1=(x_1,y_1)$, $P_2=(x_2,y_2)$, $y_i\in\mathbb{R}^n$, $i=1,2$\\
 \[L:[x_1,x_2]\times \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}\]
 On veut minimiser $I(y)=\int_{x_1}^{x_2} L(x,y(x),y'(x)) dx$
 \Theo{Euler-Lagrange}{Si $y\in\mathcal{C}^1[x_1,x_2]$ minimise $\int_{x_1}^{x_2} L(x,y,y')dx$ parmi toutes les fonctions telles que $y(x_1)=y_1$ et $y(x_2)=y_2$ où $L\in\mathcal{C}^2$, alors $y$ satisfait : \[\frac{\partial L}{\partial y_i} - \frac{d}{dx}\frac{\partial L}{\partial y_i'}=0,\ 1\leq i\leq n\]}
 
-\subsection{Hamiltonien}
+\section{Hamiltonien}
 On pose à présent : \begin{eqnarray*}
 	p_i&=&\frac{\partial L}{\partial y_i}\\
 	H&=&-L+\sum_{i=1}^n y_i'p_i
