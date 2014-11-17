@@ -219,4 +219,21 @@ En intégrant (\ref{eqn11}), on obtient :
 Et donc $c<\frac{2B}{y_0(w_1-w_0)}$. Or, on avait pris $c>c_2$ $\Rightarrow$ Contradiction. \\
 On ne peut donc pas trouver de point $w_2$, donc $y(w)>\frac{y_0}{2}$ pour tout $w\in[w_0,1[$.
 \end{frame}
+
+\begin{frame}
+	\frametitle{Cas où $\alpha-b\leq-1$}
+Pour avoir un front d'onde, on doit avoir $y(w)=wv(w)$ borné (car sinon, $v(w)$ non borné, car $w\in ]0,1[$).\\
+Prenons donc $y(w)$ borné, et donc continue. Pour $w_3\in]0,1[$, la constante \[D=\min_{w\in ]w_3,1[} w^{1+a} \frac{\bar{D}(w)\bar{f}(w)}{y(w)}\] est strictement positive.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cas où $\alpha-b\leq-1$}
+Ainsi, comme $\alpha-b\leq -1$ : 
+\begin{eqnarray*}
+	y(w)&=&\int_{w_3}^w y'(w)dw + y(w_3)\\
+		&=& c(w-w_3)-\int_{w_3}^w w^{1+a} \frac{\bar{D}(w)\bar{f}(w)}{y(w)} (1-w)^{\alpha-b} dw \\& &+ y(w_3)\\
+		&\leq& y(w_3)+c(w-w_3) -D \int_{w_3}^w (1-w)^{\alpha-b} dw \xrightarrow[w\to 1]{} -\infty
+\end{eqnarray*}
+$y(w)$ devient donc négatif et on exclut les fronts d'onde dans ce cas.
+\end{frame}
 \end{document}
