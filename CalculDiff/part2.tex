@@ -19,3 +19,10 @@ De même, en posant $y=\sigma(x)$, avec $\sigma : \mathbb{R}^n\to \mathbb{R}^n$ 
     \item Si $f(x_0)\neq 0$ alors (EH) possède des solutions dans un voisinage de $x_0$
     \item Si $f(x_0)\notin T_{x_0}M$ alors dans un voisinage de $x_0$, le problème de Cauchy possède une solution unique.
 \end{enumerate}} 
+
+On s'intéresse maintenant aux équations non homogènes : \begin{equation} \label{ENH}\tag{ENH} \sum_{i=1}^n \frac{\partial h}{\partial x_i} f_i(x)=\eta(x) \end{equation}
+\Theo{}{\begin{enumerate}
+	\item Si $f(p)\neq 0$, alors il existe localement, autour de $p$, des solutions.
+	\item Fixons $M$ une hypersurface et $b:M\to \mathbb{R}$. Si $f(p)\not\in T_p M$, alors autour de $p$, il existe une solution du problème de Cauchy (\ref{ENH})$\oplus$ $\restrictyion{h}{M}=b$\\
+En plus, \[h(\gamma_t(p))=b(p)+\int_0^t \eta(\gamma_{\tau}(p)) d\tau\]
+\end{enumerate}}
