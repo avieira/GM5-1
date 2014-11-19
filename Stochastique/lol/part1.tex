@@ -1,0 +1,60 @@
+\section{Introduction}
+\subsection{Présentation générale}
+
+\subsection{Hypothèses}
+\begin{enumerate}
+	\item Le prix de l'action suit un certain processus développé plus tard dans ce document
+	\item La vente de titres en position short avec l'utilisation complète des recettes est autorisé
+	\item Les transactions ne subissent aucun coût ou aucune taxe. Tous les titres sont divisibles
+	\item Il n'y a aucun dividende durant la vie du titre dérivé
+	\item Il n'y a aucune possibilité d'arbitrage
+	\item L'échange de titre est continu
+	\item Le taux de rendement sans risque, $r$, est constant et ce pour toute date de maturité
+\end{enumerate}
+
+\section{Détermination de l'équation}
+On considère donc un titre dérivé de prix $f$ basé sur un sous-jacent, dont la valeur de l'action est noté $S$. \\
+$f$ est donc une fonction de $S$ et de $t$. Par hypothèse, la valeur de l'action suit le processus suivant :
+	\begin{equation}\label{1} dS=\mu Sdt + \sigma S dz\end{equation}
+avec $\mu$ le drift, $\sigma$ la volatilité, et $dz$ un processus de Wiener. \\
+Par le lemme d'Itô, on démontre que le prix du titre dérivé suit l'équation suivante : 
+\begin{equation} \label{2} df=\left(\frac{\partial f}{\partial S} \mu S + \frac{\partial f}{\partial t} + \frac{1}{2}\frac{\partial^2 f}{\partial S^2} \sigma^2S^2\right)dt + \frac{\partial f}{\partial S} \sigma S dz\end{equation}
+
+La version discrétisée de ces deux équations est : 
+	\begin{equation}\label{3} \Delta S=\mu S \Delta t + \sigma S \Delta z\end{equation}
+\begin{equation} \label{4} \Delta f=\left(\frac{\partial f}{\partial S} \mu S + \frac{\partial f}{\partial t} + \frac{1}{2}\frac{\partial^2 f}{\partial S^2} \sigma^2S^2\right)\Delta t + \frac{\partial f}{\partial S} \sigma S \Delta z\end{equation}
+
+où on considère $\Delta t$ petit. Par le lemme d'Ito, on sait que les processus de Wiener présents dans (\ref{3}) et (\ref{4}) sont les mêmes. On en déduit donc qu'en choisissant une portefeuille adéquat, le processus de Wiener peut être éliminé. 
+
+\bigskip
+On prend $1$ titre dérivé en position short et $\frac{\partial f}{\partial S}$ actions en position long. La valeur du portefeuille, notée $\Pi$, vaut donc : 
+\[\Pi=-f+\frac{\partial f}{\partial S} S\]
+La variation $\Delta \Pi$ dans un temps (petit !) $\Delta t$ est donné par : 
+\[\Delta\Pi = -\Delta f+\frac{\partial f}{\partial S} \Delta S\]
+
+En reprenant les équations (\ref{3}) et (\ref{4}) et en les réintroduisant dans l'équation précédente, on obtient : 
+\begin{equation} \label{5} \Delta\Pi = \left( -\frac{\partial f}{\partial t} - \frac{1}{2} \frac{\partial^2 f}{\partial S^2}\sigma^2S^2 \right) \Delta t\end{equation}
+
+Le processus de Wiener n'étant plus présent, la variation du portefeuille est déterministe durant le laps de temps $\Delta t$. On peut démontrer que le portefeuille doit gagner à chaque moment le même taux de rendement que d'autres dérivés non risqués à court terme. S'il gagnait plus que ce rendement, on pourrait faire un profit sans risque en mettant une option short sur des titres dérivés et en utiliant la recette pour acheter le portefeuille. S'il gagnait moins, on pourrait se mettre en position short sur le portefeuille, tirer un bénéfixe et acheter des titres dérivés.\\
+De tout cela, on en déduit : \[\Delta\Pi = r\Pi\Delta t\]
+où $r$ est le taux de rendement sans risque. En réintroduisant cela dans l'équation (\ref{5}), on en déduit : 
+\[\left( -\frac{\partial f}{\partial t} - \frac{1}{2} \frac{\partial^2 f}{\partial S^2}\sigma^2S^2 \right) \Delta t = r\left( f-\frac{\partial f}{\partial S}S\right) \Delta t\]
+et donc :
+\begin{equation} \label{6} \frac{\partial f}{\partial t}+rS\frac{\partial f}{\partial S} + \frac{1}{2} \sigma^2S^2 \frac{\partial^2 f}{\partial S^2} = rf\end{equation}
+qu'on appelle l'équation différentielle de Black-Scholes. Les solutions obtenues, qui sont donc les valeurs des titres dérivées, dépendent évidemment des valeurs limites qu'on impose. A titre d'exemple, on doit avoir, dans le cas d'un call européen, pour $t=T$ : \[f=(S-X)^+\]
+Dans le cas d'un put européen, à $t=T$ : \[f=(X-S)^+\]
+Il est important de noter que l'équation (\ref{6}) est telle que le risque peut exister. Elle est sans risque seulement pour des périodes de temps infinitésimal. Comme $S$ et $t$ évoluent, $\frac{\partial f}{\partial S}$ évolue également, et donc la quantité d'action dans le portefeuille évolue constamment. Pour que le portefeuille reste déterministe, il faut changer continuellement la proportion de titres dérivés et d'actions dans le portefeuille.
+
+\section{Application sur un exemple}
+Un contrat forward sur une action sans dividende est un titre dérivé dépendant du prix de l'action. Il doit donc satisfaire l'équation (\ref{6}). Comme on l'a déjà vu, $f$ est donné par : 
+\[f=S-Ke^{-r(T-t)}\]
+où $K$ est le prix de vente fixé de l'actif. On a donc : 
+\[\frac{\partial f}{\partial t} = -rKe^{-r(T-t)}\ \frac{\partial f}{\partial S}=1\ \frac{\partial^2 f}{\partial S^2} = 0\]
+En replaçant tout cela dans l'équation (\ref{6}), on obtient bel et bien :
+\begin{eqnarray*}
+	\frac{\partial f}{\partial t}+rS\frac{\partial f}{\partial S} + \frac{1}{2} \sigma^2S^2 \frac{\partial^2 f}{\partial S^2}
+		&=& -rKe^{-r(T-t)}+rS\\
+		&=& rf
+\end{eqnarray*}
+
+L'équation (\ref{6}) est donc bien vérifiée !

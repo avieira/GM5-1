@@ -1,4 +1,5 @@
 \part{Équations aux dérivées partielles d'ordre 1}
+\section{Équations homogènes}
 \begin{equation} \label{EH}\tag{EH} \sum_{i=1}^n \frac{\partial h}{\partial x_i} f_i(x)=0 \end{equation}
 $(f_1,...,f_n)^T$, $f_i=f_i(x)$ : champ de vecteur donné. $h$ cherché : \[h : \begin{array}{c c c} \mathbb{R}^n &\to& \mathbb{R} \\ x &\mapsto& h(x) \end{array}\]
 
@@ -20,9 +21,23 @@ De même, en posant $y=\sigma(x)$, avec $\sigma : \mathbb{R}^n\to \mathbb{R}^n$ 
     \item Si $f(x_0)\notin T_{x_0}M$ alors dans un voisinage de $x_0$, le problème de Cauchy possède une solution unique.
 \end{enumerate}} 
 
+\section{Équations non homogènes}
 On s'intéresse maintenant aux équations non homogènes : \begin{equation} \label{ENH}\tag{ENH} \sum_{i=1}^n \frac{\partial h}{\partial x_i} f_i(x)=\eta(x) \end{equation}
 \Theo{}{\begin{enumerate}
 	\item Si $f(p)\neq 0$, alors il existe localement, autour de $p$, des solutions.
-	\item Fixons $M$ une hypersurface et $b:M\to \mathbb{R}$. Si $f(p)\not\in T_p M$, alors autour de $p$, il existe une solution du problème de Cauchy (\ref{ENH})$\oplus$ $\restrictyion{h}{M}=b$\\
+	\item Fixons $M$ une hypersurface et $b:M\to \mathbb{R}$. Si $f(p)\not\in T_p M$, alors autour de $p$, il existe une solution du problème de Cauchy (\ref{ENH})$\oplus$ $\restriction{h}{M}=b$\\
 En plus, \[h(\gamma_t(p))=b(p)+\int_0^t \eta(\gamma_{\tau}(p)) d\tau\]
 \end{enumerate}}
+
+\section{Équations quasi-linéaires}
+\begin{equation} \tag{EQL} \label{EQL} \nabla h . f(x,h)=\eta(x,h) \end{equation}
+
+On va chercher la solution sous une forme implicite, ie \begin{equation} \tag{Impl} \label{Impl} \psi(x,h)=0\end{equation}
+Si on veut $h(x_0)=h_0$ :
+\Theo{des fonctions implicites}{Si $\frac{\partial \psi}{\partial h}(x_0,h_0)\neq 0$, alors (\ref{Impl}) possède une solution unique $h(x)$ satisfaisant cette dernière, ie $\psi(x,h(x))=0$.}
+
+\[\frac{\partial}{\partial x_i}=\frac{\partial \psi}{\partial x_i} + \frac{\partial \psi}{\partial x_i} \frac{\partial h}{\partial x_i} = 0\]
+\[\frac{\partial h}{\partial x_i} h(x,h(x))= -\frac{\frac{\partial \psi}{\partial x_i}}{\frac{\partial \psi}{\partial h}}\]
+On réintroduit ça dans (\ref{EQL}) et on obtient :
+\begin{equation} \tag{EHIm} \label{EHIm} \sum_{i=1}^n \frac{\partial \psi}{\partial x_i} f_i + \frac{\partial \psi}{\partial h} \eta = 0 \end{equation}
+On obtient donc une équation homogène dans l'espace $(x,h)$ de dimension $n+1$ !

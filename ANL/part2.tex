@@ -1,0 +1,94 @@
+\section{Linéarisation}
+\subsection{Linéarisation dans l'espace d'état}
+On s'intéresse aux systèmes affines : \begin{equation} \tag{$\Sigma$} \label{systAff} \Sigma : \dot{x}=f(x)+\sum_{i=1}^m u_ig_i(x),\ x\in X\end{equation}
+On prend $\phi : X\to \tilde{X}$ un difféomorphisme et on transforme \ref{systAff}.
+\[\dot{\tilde{x}}(t)=\tilde{f}(\tilde{x})+\sum_{i=1}^m u_i \tilde{g}_i(\tilde{x})\]
+avec \begin{equation} \label{diffSEqu} \left\{\begin{array}{c c c} 
+\tilde{f}(\tilde{x})&=&\frac{\partial \phi}{\partial x}(\phi^{-1}(\tilde{x}))f(\phi^{-1}(\tilde{x}))\\ \\
+\tilde{g}_i(\tilde{x})&=&\frac{\partial \phi}{\partial x}(\phi^{-1}(\tilde{x}))g_i(\phi^{-1}(\tilde{x}))\\
+\end{array}\right.\end{equation}
+
+\Def{S-équivalent}{$\Sigma$ et 
+\begin{equation} \label{systAffTr} \tag{$\tilde{\Sigma}$} \tilde{\Sigma}:\dot{\tilde{x}}(t)=\tilde{f}(\tilde{x})+\sum_{i=1}^m u_i \tilde{g}_i(\tilde{x})\end{equation}
+ sont dits équivalents dans l'espace d'état (state space equivalent, ou S-equivalent) si (\ref{diffSEqu}).}
+
+\Def{localement S-équivalent}{\ref{systAff} et \ref{systAffTr} sont localement, en $x_0$ et $\tilde{x}_0$, S-équivalent, si $\exists V_{x_0}$ et $V_{\tilde{x}_0}$ et $\phi : V_{x_0}\to V_{\tilde{x}_0}$ un difféomorphisme tel que $\phi$ transforme $\restriction{\Sigma}{V_{x_0}}$ en $\restriction{\tilde{\Sigma}}{V_{\tilde{x}_0}}$}
+
+\Def{S-linéarisable}{\ref{systAff} est S-linéarisable si $\exists : X\to\mathbb{R}^n$ un difféormorphisme tel que $\Sigma$ et \[\Lambda : \dot{\tilde{x}}=A\tilde{x} + \sum_{i=1}^m a_i b_i\]
+$A\in \mathcal{M}_{n\times n}(\mathbb{R})$, $b_i\in\mathbb{R}^n$, sont S-équivalent. }
+
+\Def{}{\[ad_f^0g=g,\ ad_fg=[f,g],\ ad_f^ng=[f,ad_f^{n-1}g]\]}
+
+
+\Theo{}{Supposons $f(x_0)=0$, ie $x_0$ un point d'équilibre.\\
+\ref{systAff} est localement autour de $x_0$ et $0_{\mathbb{R}^n}$ S-linéarisable si et seulement si :
+\begin{description}
+	\item[(SL1) :] dim vect$\{ad_f^qg_i(x_0),\ 1\leq i\leq m,\ 0\leq q\leq n-1\}=n$
+	\item[(SL2) :] $[ad_f^qg_i, ad_f^rg_j]=0$, $\forall 1\leq i,j\leq m$, $\forall 0\leq q\leq n-1$, $\forall 0\leq r\leq n$
+\end{description}}
+
+\Theo{}{\ref{systAff} est S-linéarisable si et seulement si :
+\begin{description}
+	\item[(SL1) :] dim vect$\{ad_f^qg_i(x),\ 1\leq i\leq m,\ 0\leq q\leq n-1\}=n$
+	\item[(SL2) :] $[ad_f^qg_i, ad_f^rg_j]=0$, $\forall 1\leq i,j\leq m$, $\forall 0\leq q\leq n-1$, $\forall 0\leq r\leq n$
+	\item[(SL3) :] les champs de vecteurs $f, g_1,...,g_m$ sont complets, ie les flots $\gamma^f_t(p)$, $\gamma^{g_i}_t(p)$ existent $\forall p\in\mathbb{R}^n$, $\forall t\in\mathbb{R}$ $\Leftrightarrow$ $ad_f^qg_i$ complets, $0\leq q\leq n-1$, $0\leq i\leq m$
+\end{description}}
+
+\subsection{Linéarisation par bouclage}
+\Def{F-équivalence}{\[\Sigma : \dot{x}=f(x)+g(x)u \text{ et } \tilde{\Sigma} : \dot{\tilde{x}}=\tilde{f}(\tilde{x})+\tilde{g}(\tilde{x})\tilde{u}\] sont dits équivalents par bouclage (F-equivalent) si $\exists \psi:X\to\tilde{X}$ un difféomorphisme et $\alpha=(\alpha_1,...,\alpha_m)^T$ et $\beta=(\beta_{ij})_{1\leq i,j\leq m}$ tel que :$\alpha_i, \beta_{ij}\in\mathcal{C}^{\infty}(X)$, $\beta(x)$ inversible, et : \begin{eqnarray*}
+\phi_*(f+g\alpha)&=&\tilde{f}\\
+\phi_*(g\beta)&=&\tilde{g}
+\end{eqnarray*}}
+
+\Def{}{On note : \[\mathcal{D}^j=span\{ad_f^qg_i,\ 1\leq i\leq m,\ 1\leq q\leq j-1\}\]}
+
+\Theo{Jakuleczyk-Respondek}{Supposons $f(x_0)=0$, ie $x_0$ un point d'équilibre.\\
+\ref{systAff} est localement autour de $x_0$ F-équivalent à \[\Lambda : \dot{\tilde{x}}=A\tilde{x}+\sum_{i=1}^m \tilde{u_i} b_i\]
+contrôlable, si et seulement si : 
+\begin{description}
+	\item[(FL1) :] rg $\mathcal{D}^n(x_0)=n$ $\Leftrightarrow$ (SL1)
+	\item[(FL2) :] rg $\mathcal{D}^j(x)=cste$, $\forall j=1,...,n$
+	\item[(FL3) :] $\mathcal{D}^j$ involutive, $\forall j=1,...,n$
+\end{description}}
+
+\textbf{Remarque :} Pour $m=1$, on a équivalence avec :
+\begin{description}
+	\item[(FL1') :] $g$, $ad_fg$,...,$ad_f^{n-1}g$ indépendants en $x_0$
+	\item[(FL2') :] $\mathcal{D}^{n-1}$ involutive.
+\end{description}
+
+\Def{Forme de Brunovsky}{On appelle forme de Brunovsky le système linéarisant par bouclage le système $\Sigma$ : 
+\begin{eqnarray*} 
+	\tilde{x}_1&=&h\\
+	&\vdots&\\
+	\tilde{x}_n&=&L_f^{n-1}h
+\end{eqnarray*} 
+où $h$ est la paramétrisation de la variété involutive de dimension $n-1$. Ce système vérifie : 
+\begin{eqnarray*}
+	\dot{\tilde{x}}_1&=&\tilde{x}_2\\
+	&\vdots&\\
+	\dot{\tilde{x}}_{n-1}&=&\tilde{x}_n\\
+	\dot{\tilde{x}}_n&=&\tilde{u}
+\end{eqnarray*} }
+
+\subsection{Contrôlabilité}
+On veut une trajectoire sur $[0,T]$ telle que $\tilde{x}_0$ soit relié par celle-ci à $\tilde{x}_T$.\\
+Choisissons $\phi(t)$ tel que : \[\begin{array}{c c c c c c c}
+\phi(0)&=&\tilde{x}_{0_1} & & \phi(T)&=&\tilde{x}_{T_0}\\
+   &\vdots& &\text{ et }&  &\vdots&\\
+\phi^{(n-1)}(0)&=&\tilde{x}_{0_n} & & \phi^{(n-1)}(T)&=&\tilde{x}_{T_n}
+\end{array}\]
+Alors $\tilde{u}(t)=\phi^{(n)}(t)$ résoud le problème.
+
+\section{Observabilité}
+\begin{equation}\label{probComp} \tag{$\Pi$}
+\left\{ \begin{array}{c c c}
+	\dot{x}&=&F(x,u)\\
+	y&=&h(x)
+\end{array} \right.\end{equation}
+$y\in Y\subset\mathbb{R}^p$, $hX\to Y$, dim $Y=p<$dim $X=n$\\
+$\forall 1\leq i\leq p, h_i\in \mathcal{C}^{\infty}(X)$.
+
+\Def{}{$x_0\in X$ et $\tilde{x}_0\in X$ sont dits indistingables si $\forall u(t)\in \mathcal{U}$, \[y(t,x_0,u)\equiv y(t,\tilde{x}_0,u)\]}
+
+\Def{}{\ref{probComp} est observable si : \[x_0 \text{ et } \tilde{x}_0 \text{ indistingables }\Rightarrow x_0=\tilde{x}_0\]}
