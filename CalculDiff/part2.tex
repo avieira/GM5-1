@@ -36,8 +36,42 @@ On va chercher la solution sous une forme implicite, ie \begin{equation} \tag{Im
 Si on veut $h(x_0)=h_0$ :
 \Theo{des fonctions implicites}{Si $\frac{\partial \psi}{\partial h}(x_0,h_0)\neq 0$, alors (\ref{Impl}) possède une solution unique $h(x)$ satisfaisant cette dernière, ie $\psi(x,h(x))=0$.}
 
-\[\frac{\partial}{\partial x_i}=\frac{\partial \psi}{\partial x_i} + \frac{\partial \psi}{\partial x_i} \frac{\partial h}{\partial x_i} = 0\]
-\[\frac{\partial h}{\partial x_i} h(x,h(x))= -\frac{\frac{\partial \psi}{\partial x_i}}{\frac{\partial \psi}{\partial h}}\]
+\[\frac{\partial \psi}{\partial x_i}=\frac{\partial \psi}{\partial x_i} + \frac{\partial \psi}{\partial x_i} \frac{\partial h}{\partial x_i} = 0\]
+\[\frac{\partial h}{\partial x_i} = -\frac{\frac{\partial \psi}{\partial x_i}}{\frac{\partial \psi}{\partial h}}\]
 On réintroduit ça dans (\ref{EQL}) et on obtient :
 \begin{equation} \tag{EHIm} \label{EHIm} \sum_{i=1}^n \frac{\partial \psi}{\partial x_i} f_i + \frac{\partial \psi}{\partial h} \eta = 0 \end{equation}
 On obtient donc une équation homogène dans l'espace $(x,h)$ de dimension $n+1$ !
+
+\section{Systèmes d'EDP d'ordre 1}
+\begin{equation} \label{systEDP} \tag{S} \sum_{i=1}^n \frac{\partial h}{\partial x_i}f_i^j(x)=\eta^j(x),\ 1\leq j\leq k \end{equation}
+On réécrit cela : \[L_{f^j}h=\eta^j,\ 1\leq j\leq k\]
+
+On construit la distribution $\mathcal{D}=span\{f^1,...,f^k\}$.
+\begin{itemize}
+	\item Soit $\mathcal{D}$ est involutive (et dans ce cas là, tout va bien !)
+	\item Soit $\mathcal{D}$ ne l'est pas.
+\end{itemize}
+
+Dans le deuxième cas, $\exists f^r, f^q$; $[f^r,f^q]\not\in \mathcal{D}$. Dans ce cas là, on pose $f^{k+1}=[f^r,f^q]$ et : 
+\[\eta^{k+1}=L_{[f^r,f^q]}h=L_{f^r}\eta^q-L_{f^q}\eta^r\]
+On rajoute $L_{f^{k+1}}h=\eta^{k+1}$ dans (\ref{systEDP}) et on construit une nouvelle distribution $\mathcal{D}$. On recommence, $\mathcal{D}$ involutive ou non.\\
+
+\bigskip
+On note $\overline{\mathcal{D}}$ l'adhérence involutive de $\mathcal{D}$, ie la plus petite distribution involutive contenant $\mathcal{D}$.\\
+Schématiquement, en notant $[A,B]=\{[a,b],a\in A, b\in B\}$
+\[\mathcal{D}^0=\mathcal{D}\]
+\[\mathcal{D}^{j+1}=\mathcal{D}^j+[\mathcal{D}^j, \mathcal{D}^j] \]
+\[\overline{\mathcal{D}}=\bigcup_{j=0}^\infty \mathcal{D}^j\]
+On note symboliquement $\infty$, mais on sait que cela sera fini ($n$ champs dans la distribution pour qu'elle soit involutive).
+
+\bigskip
+On peut toujours supposer $\mathcal{D}$ involutive. 
+\[\forall f^i, f^j,\ [f^j, f^i]=\sum_{q=1}^k \alpha_q^{ji} f^q,\]
+
+\Theo{Fröbenius}{Considérons (\ref{systEDP}) où $\mathcal{D}=span\{f_1,...,f_k\}$ involutive.
+\begin{enumerate}
+	\item (\ref{systEDP}) possède des solutions si et seulement si les conditions d'intégrabilité sont satisfaites : 
+\begin{equation} \tag{CI} L_{f^j}\eta^i - L_{f^i}\eta^j = \sum_{q=1}^k \alpha_q^{ji}\eta^q\ 1\leq j<i\leq k \end{equation}
+Le nombre de conditions d'intégrabilité vaut $\binom{k}{2}$
+	\item Soit $M$ une sous-variété de $\mathbb{R}^n$ de dimension $n-k$. Le problème de Cauchy (\ref{systEDP})$\oplus$ ($\restriction{h}{M}=b$) possède une solution unique localement autour de $p\in\mathbb{R}^n$ si \[\mathcal{D}(p)\oplus T_pM=\mathbb{R}^n\]
+\end{enumerate}}

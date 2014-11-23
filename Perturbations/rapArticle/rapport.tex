@@ -1,0 +1,194 @@
+\documentclass{article}
+
+\input{../../../preambule}
+
+\newtheorem{theorem}{Théorème}[subsection]
+
+\title{Pr\'esentation d'un article : \\ Classification of existence and non-existence of running fronts in case of fast diffusion\\\small{Messoud Efendiev \& Johannes M\"uller}}
+\author{Alexandre \bsc{Vieira}}
+\date{\today}
+
+\hypersetup{colorlinks=true, urlcolor=bleu, linkcolor=red}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section*{Introduction}
+Les fronts d'onde dans les équations de réactions-diffusion sont souvent utiles en biologie. La dispersion d'une population envahissant un écosystème peut être bien décrit par ces fronts d'onde.\\
+Récemment, il a été observé que certaines espèces utilisent un mécanisme pour limiter la densité de leur population : si cette dernière approche un certain seuil, les individus commencent rapidement à bouger et à se disperser. Ce mécanisme est principalement gouverné par le terme de diffusion et non par le terme de réaction : si la densité approche ce seuil, le terme de diffusion devient illimité. \\
+Dans cet article, l'étude s'est porté sur l'existence ou non de fronts d'onde suivant la correlation existant entre le terme de diffusion et le terme de réaction. Il est montré dans cet article que l'ordre de la singularité du terme de diffusion et l'ordre du zéro dans le terme de réaction doit être compensé dans un certain sens pour assurer l'existence de ces fronts.
+
+\section{Resultats}
+On considère l'équation suivante :
+	\begin{equation} \label{eqnG} u_t=(D(u)u_x)_x + f(u)\end{equation}
+où
+	\[D(u)=\frac{u^a}{(1-u)^b}\bar{D}(u)\in\mathcal{C}^2[0,1[\]
+	\[f(u)=u(1-u)^\alpha \bar{f}(u)\in\mathcal{C}^2[0,1[\]
+	\[a>1,\hspace{1em} b>0 \hspace{1em} \alpha\geq 0\]
+et $\bar{D}$ et $\bar{f}$ sont bornés et strictement positifs.
+
+\bigskip
+	On cherche la solution $u(x,t)$ sous la forme \[u(x,t)=w(ct-x)\]
+
+\begin{theorem}
+Si $\alpha-b\leq -1$, il n'y a aucun front.\\
+	Si $\alpha-b>-1$, il existe une vitesse minimale $c^*$ telle que :
+	\begin{itemize}
+		\item Pour $c<c^*$, il n'y a pas de solution de la forme $u(x,t)=w(ct-x)$ non négative
+		\item Pour $c=c^*$, un unique front d'onde solution existe, qui tend vers $0$ quand $x\to-\infty$
+		\item Pour $c>c^*$, il y a une infinité de fronts d'ondes solutions, ordonnés. La solution minimale tend elle aussi vers 0 quand $x\to -\infty$, les autres sont strictement positives.
+	\end{itemize}
+\end{theorem}
+
+\section{Preuve}
+\subsection{Transformation du système}
+
+	Soit $u(x,t)=w(ct-x)$. En reprenant l'équation (\ref{eqnG}) et en y introduisant $w$, on obtient : \begin{equation} \label{eqn1} cw'=(D(w)w')'+f(w) \end{equation}
+	On définit à présent $v$ tel que : \[v=\frac{D(w)w'}{w}\]
+	En multipliant (\ref{eqn1}) par $\frac{D(w)}{w}$, on obtient : \[cv=v'D(w)+v\frac{w'D(w)}{w}+\frac{D(w)f(w)}{w}\]
+
+D'où le système d'équation : \begin{equation} \label{eqn2} \left\{ \begin{array}{c c c}
+	D(w)w' &=& vw \\
+	D(w)v' &=& v(c-v)-\frac{D(w)f(w)}{w}
+\end{array} \right. \end{equation}
+
+En faisant le changement de variable suivant (rescaling time) : \[\frac{dt}{d\tau}=D(w(t(\tau)))\] \[\tilde{w}(\tau)=w(t(\tau))\] \[\tilde{v}(\tau)=v(t(\tau))\]
+
+On obtient : 
+\begin{equation} \label{eqn3} \left\{ \begin{array}{c c c}
+	\tilde{w}' &=& \tilde{v}\tilde{w} \\
+	\tilde{v}' &=& \tilde{v}(c-\tilde{v})-g(\tilde{w})
+\end{array} \right. \end{equation}
+
+où \[g(\tilde{w})=\frac{D(\tilde{w})f(\tilde{w})}{\tilde{w}}\]
+
+\[\frac{dt}{d\tau}=D(w)=\frac{w^a}{(1-w)^b}\bar{D}(w)\]
+Cette transformation est-elle toujours valable ? En regardant l'expression de $D(w)$, on remarque que la transformation devient singulière pour $w\to 0$ et $w\to 1$.
+
+\bigskip
+Or, pour $t_0\in \mathbb{R}\cup\{-\infty\}$, on doit avoir : \[0\leq w(t)\leq 1\] et \[\lim_{t\to t_0^+} w(t)=0, \hspace{2em} \lim_{t\to +\infty}w(t)=1\]
+La transformation n'est donc pas toujours assurée. On va donc analyser ces deux cas singuliers.
+
+\subsection{Méthode du plan de phase}
+\subsubsection{$w=0$ dans le système transformé}
+
+On prend $w=0$ pour commencer. L'analyse peut être faite avec le temps rééchelonné, on utilise donc le système (\ref{eqn3}).\\ 
+On a deux points d'équilibre : \[(0,0) \text{ et } (0,c)\]
+
+Le jacobien du système en $(0,c)$ vaut : \[\begin{pmatrix} c & 0 \\ -g'(0) & -c \end{pmatrix} = \begin{pmatrix} c & 0 \\ 0 & -c \end{pmatrix}\]
+On peut vérifier que $g'(0)=0$. En effet :
+\begin{eqnarray*}
+g'(w)&=&\frac{w(D'(w)f(w)+D(w)f'(w))-D(w)f(w)}{w^2}\\
+	&=&D'(w)(1-w)^\alpha\bar{f}(w)+\underbrace{\frac{w^{a-1}}{(1-w)^b}\bar{D}(w)f'(w)-w^{a-1}(1-w)^{\alpha-b}\bar{D}(w)\bar{f}(w)}_{=0 \text{ si } w=0 \text{ car } \alpha>1}
+\end{eqnarray*}
+\[D'(w)=\frac{w^a}{(1-w)^b}\bar{D}'(w)+D(w)\frac{aw^{a-1}(1-w)^b+bw^a(1-w)^{b-1}}{(1-w)^{2b}}\]
+\[D'(0)=0\]
+
+On calcule les valeurs propres du jacobien.
+\[\lambda_1=c \text{ et } \lambda_2=-c\]
+
+Dans l'espace des phases, on a un point selle. L'axe $v$ est invariant et stable. \\
+On a approximativement : $\tilde{w}'\approx \lambda_1 \tilde{w} = c\tilde{w}$, d'où : 
+\[w'\approx \frac{cw}{D(w)} \approx cw^{-(a-1)} \text{ pour } w \text{ petit}\]
+Comme $a-1>0$, la trajectoire atteint le point stationnaire en un temps négatif fini.
+
+\bigskip
+On étudie maintenant le jacobien du système en $(0,0)$ : \[\begin{pmatrix} 0 & 0 \\ -g'(0) & c \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & c \end{pmatrix}\]
+\[\lambda_1=0 \text{ et } \lambda_2=c\]
+On a directement que l'axe $v$ sera instable. Cependant, la deuxième direction nécessite plus de discussion. On utilise pour cela le théorème suivant, tiré de [\ref{bib1}] :
+
+\begin{theorem}
+Le champ de vecteur étant $\mathcal{C}^2$ près de $(0,0)$, il existe une variété centrale tangente au vecteur propre $\begin{pmatrix} 0\\ 1 \end{pmatrix}$
+\end{theorem}
+
+Soit $\{v=h(w)\}$ une paramétrisation locale de cette variété. On a $h(0)=0$, $h'(0)=0$ et $v'=h'(w)w'$. En multipliant cette dernière égalité par $D(w)$ : 
+\[v(c-v)-g(w)=h'(w)vw\]
+\[h'(w)=\frac{c-h(w)}{w}-\frac{g(w)}{wh(w)}\]
+
+En écrivant $h(w)=c_1 w^\beta+o(w^{\beta+1})$ en prenant $w$ petit, on obtient :
+\[c_1\beta w^{\beta-1}=\frac{c}{w}-c_1w^{\beta-1}-\frac{\bar{g}(0)}{c_1}w^{a-\beta-1}+o(w^{\beta+1})\]
+où $\bar{g}(0)=\bar{D}(0)\bar{f}(0)>0$.\\
+On cherche l'ordre le plus bas pour le DL de $h$ : il est évident que $\beta>1$. Si $\beta=0$, $h$ ne satisfairait pas les conditions à l'origine.\\
+Apparement, l'article affirme que $\beta=a$ et $c_1=\frac{\bar{g}(0)}{c}$. La variété centrale est donc paramétrisée par : 
+\[h(w)=\underbrace{\frac{\bar{g}(0)}{c}w^a}_{>0}+o(w^{a+1})\]
+
+En reprenant le système d'équation avec le temps normal (\ref{eqn2}), on obtient sur la variété centrale : \[w'=\frac{wh(w)}{D(w)}>0\]
+Le point (0,0) est donc instable.
+
+\paragraph{Conclusion :} L'article affirme que les solutions qui tendent vers $(0,c)$ correspondent aux fronts qui sont éventuellement identiquement nuls, et que les solutions qui tendent vers $(0,0)$ correspondent aux fronts strictement positifs sur $\mathbb{R}$.
+
+\subsubsection{$w=1$ dans le système de départ}
+
+	On prend maintenant $w=1$, ie $t\to+\infty$. On considère la trajectoire $(w(t), v(t))$ commençant à $t_0$ à $(w_0, v_0)$, avec $w_0,v_0>0$.\\
+On utilise directement le système (\ref{eqn2}), qui s'écrit : 
+\[\left\{ \begin{array}{c c l}
+w'&=&\frac{vw^{1-a}(1-w)^b}{\bar{D}(w)}\\
+v'&=&\frac{v(c-v)(1-w)^b}{w^a\bar{D}(w)}-(1-w)^\alpha \bar{f}(w)
+\end{array}\right.\] 
+$w=1$ est un point stationnaire, donc toute trajectoire commencant avec $w<1$ restera dans le demi-plan $w\leq 1$. On cherche les solutions qui resteront de plus dans le demi plan $\{w>0, v>0\}$.
+
+Dans ce demi-plan : $w'>0$. On considère l'équation suivante : 
+\[\frac{dv}{dw} = \frac{D(w)v'}{D(w)w'}=\frac{c}{w}-\frac{v}{w}-\frac{w^{1+a}\bar{D}(w)\bar{f}(w)}{vw^2}(1-w)^{\alpha-b}\]
+L'article affirme alors que si $v$ est positif ou nul, on aura un front d'onde. Si $v$ est négatif, il n'y aura pas de front. 
+
+\bigskip
+On définit $y(w)=wv(w)$. $v$ est positif si et seulement si $y$ est positif. Dérivons cette expression : 
+\begin{equation} \label{eqn11} y'=c-\frac{w^{1+a}\bar{D}(w)\bar{f}(w)}{y}(1-w)^{\alpha-b}\end{equation}
+Prenons $y(0)=y_0>0$. Si on montre que $y(w)$ est positif pour tout $w\in]0,1[$, on aura des fronts d'onde. Sinon, on en aura aucun.
+
+\paragraph{1er cas : $\alpha-b>-1$}
+On sait déjà qu'il existe des solutions pour $w>0$ petit. On peut donc considérer qu'il existe $w_1$ tel que $w_0<w_1<1$ et pour $w\in[w_0,w_1]$, la constante 
+\[A=\max_{w\in[w_0,w_1]}w^{1+a}\bar{D}(w)\bar{f}(w)(1-w)^{\alpha-b}\]
+est finie. On a alors : \[y'\geq c-\frac{A}{y}\]
+L'article nous dit qu'alors, on a $y(w)\geq \frac{y_0}{2}$ pour $w\in[w_0,w_1]$ et $c\geq c_1=\frac{A}{y_0}$
+
+\bigskip
+On prend mainteant $\alpha-b>-1$ et on pose \[B=\int_{w_0}^1 w^{1+a}\bar{D}(w)\bar{f}(w)(1-w)^{\alpha-b}dw<+\infty\]
+et \[c_2=\max \left\{\frac{A}{y_0}, \frac{2B}{y_0(w_1-w_0)}\right\}\]
+Prenons enfin $c>c_2$.\\
+Des remarques précédentes, on sait que pour $w\in[w_0,w_1]$, on a $y(w)>\frac{y_0}{2}$. Soit $w_2\in[w_0,1[$ le premier point tel que $y(w_2)=\frac{y_0}{2}$. 
+
+En intégrant (\ref{eqn11}), on obtient : 
+\begin{eqnarray*}
+	0>-\frac{y_0}{2}&=&\int_{w_0}^{w_2} y'(w)dw\\
+			&\geq& c(w_2-w_0) - \int_{w_0}^{w_2} \frac{w^{1+a}\bar{D}(w)\bar{f}(w)}{y_0/2}(1-w)^{\alpha-b} dw\\
+			&\geq& c(w_1-w_0) - \frac{2}{y_0} B\ (w_2\rightarrow w_1 ?)
+\end{eqnarray*}
+
+Et donc $c<\frac{2B}{y_0(w_1-w_0)}$. Or, on avait pris $c>c_2$ $\Rightarrow$ Contradiction. \\
+On ne peut donc pas trouver de point $w_2$, donc $y(w)>\frac{y_0}{2}>0$ pour tout $w\in[w_0,1[$, ce qu'on voulait démontrer.
+
+\bigskip
+Une dernière étape consiste à montrer que toutes les trajectoires joignant $(0,0)$ ou $(0,c)$ avec la ligne $w=1$ correspondent à des fronts de l'equation aux dérivées partielles (\ref{eqnG}).\\
+Si $w(ct-x>0$ pour tout $x\in \mathbb{R}$, $t>0$, alors la solution est lisse et donc une solution classique de (\ref{eqnG}). Il reste à voir les cas où $w$ s'annule en cetains points, ie quand la trajectoire passe par $(0,c)$ dans l'espace des phases. La solution est également lissei. Mais à un point - où la solution devient identiquement nulle - la solution est continue mais la dérivée admet un saut fini. De plus, le terme de diffusion $D(w)$ devient nul en ce point. Il est simple de voir dans ce cas que la solution est une solution faible dans ce cas :\\
+$\forall \phi\in H_0^1(\mathbb{R})$ :
+\begin{eqnarray*}
+	\int_{\mathbb{R}} \phi(x)\partial_t w(x-ct)dx &=&\int_{\mathbb{R}} \phi(x) \left[ \partial_x \left( D(w(x-ct))\partial_x w(x-ct)\right) +f(w(x-ct))\right]dx\\
+						&=& \int_{\mathbb{R}} \phi(x) f(w(x-ct)) dx - \int_{\mathbb{R}} \partial_x \phi(x) D(w(x-ct))\partial_x w(x-ct)dx \\
+						& & + \underbrace{\left[ \phi(x)D(w(x-ct))\partial_x w(x-ct)\right]_{-\infty}^{+\infty}}_{=0}
+\end{eqnarray*}
+Puisque pou des paramètres donnés, $v(w)$ devrait donc croitre "doucement" suivant $c$ (si $v(w)\geq 0$), on obtient la deuxième partie du théorème.
+
+\paragraph{2ème cas : $\alpha-b\leq 1$}
+Pour avoir un front d'onde, on doit avoir $y(w)=wv(w)$ borné (car sinon, $v(w)$ non borné, car $w\in ]0,1[$).\\
+Prenons donc $y(w)$ borné, et donc continue. Pour $w_3\in]0,1[$, la constante \[D=\min_{w\in ]w_3,1[} w^{1+a} \frac{\bar{D}(w)\bar{f}(w)}{y(w)}\] est strictement positive.
+
+Ainsi, comme $\alpha-b\leq -1$ : 
+\begin{eqnarray*}
+	y(w)&=&\int_{w_3}^w y'(w)dw + y(w_3)\\
+		&=& c(w-w_3)-\int_{w_3}^w w^{1+a} \frac{\bar{D}(w)\bar{f}(w)}{y(w)} (1-w)^{\alpha-b} dw \\& &+ y(w_3)\\
+		&\leq& y(w_3)+c(w-w_3) -D \int_{w_3}^w (1-w)^{\alpha-b} dw \xrightarrow[w\to 1]{} -\infty
+\end{eqnarray*}
+$y(w)$ devient donc négatif et on exclut les fronts d'onde dans ce cas.
+
+
+\appendix
+\section{Bibliographie}
+\begin{enumerate}
+	\item \label{bib1} Kuznetsov, Y.A. \textit{Elements of applied bifurcation theory}, Springer, 1995
+\end{enumerate}
+\end{document}

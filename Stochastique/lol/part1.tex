@@ -1,10 +1,14 @@
 \section{Introduction}
 \subsection{Présentation générale}
+Les équations de Black-Scholes donnent une relation que doit vérifier le prix $f$ d'un titre dérivé dépendant d'un actif qui n'admet aucun dividende.\\
+En résumé, la recherche de ces équations repose toujours sur le même schéma : on considère un portefeuille sans risque contenant un titre dérivé et l'action sur lequel il repose, et la valeur du portefeuille est posé comme étant son évolution avec un taux de rendement constant. 
+Dans ce schéma, le portefeuille est sans risque pour un laps de temps très court. Néanmoins, on peut démontrer que le résultat durant ce court laps de temps doit être sans risque pour que les opportunités d'arbitrage soient évitées.\\
+La raison pour laquelle un portefeuille sans risque peut être défini est que le prix de l'actif et de son dérivé sont tous les deux affectés par la même source d'incertitude. Cela signifie que pour toute courte période de temps, les deux sont parfaitement correlés. Quand le portefeuille approprié sera défini, le gain (ou la perte) dû à l'actif sera compensé par la perte (ou le gain) du dérivé, de telle sorte que la valeur globale du portefeuille à la fin de cette courte période de temps est connu avec certitude.
 
 \subsection{Hypothèses}
 \begin{enumerate}
 	\item Le prix de l'action suit un certain processus développé plus tard dans ce document
-	\item La vente de titres en position short avec l'utilisation complète des recettes est autorisé
+	\item La vente de titres en position short avec l'utilisation complète des recettes est autorisée
 	\item Les transactions ne subissent aucun coût ou aucune taxe. Tous les titres sont divisibles
 	\item Il n'y a aucun dividende durant la vie du titre dérivé
 	\item Il n'y a aucune possibilité d'arbitrage
@@ -35,13 +39,13 @@ La variation $\Delta \Pi$ dans un temps (petit !) $\Delta t$ est donné par :
 En reprenant les équations (\ref{3}) et (\ref{4}) et en les réintroduisant dans l'équation précédente, on obtient : 
 \begin{equation} \label{5} \Delta\Pi = \left( -\frac{\partial f}{\partial t} - \frac{1}{2} \frac{\partial^2 f}{\partial S^2}\sigma^2S^2 \right) \Delta t\end{equation}
 
-Le processus de Wiener n'étant plus présent, la variation du portefeuille est déterministe durant le laps de temps $\Delta t$. On peut démontrer que le portefeuille doit gagner à chaque moment le même taux de rendement que d'autres dérivés non risqués à court terme. S'il gagnait plus que ce rendement, on pourrait faire un profit sans risque en mettant une option short sur des titres dérivés et en utiliant la recette pour acheter le portefeuille. S'il gagnait moins, on pourrait se mettre en position short sur le portefeuille, tirer un bénéfixe et acheter des titres dérivés.\\
+Le processus de Wiener n'étant plus présent, la variation du portefeuille est déterministe durant le laps de temps $\Delta t$. On peut démontrer que le portefeuille doit gagner à chaque moment le même taux de rendement que d'autres dérivés non risqués à court terme. S'il gagnait plus que ce rendement, on pourrait faire un profit sans risque en mettant une option short sur des titres dérivés et en utiliant la recette pour acheter le portefeuille. S'il gagnait moins, on pourrait se mettre en position short sur le portefeuille, tirer un bénéfice et acheter des titres dérivés.\\
 De tout cela, on en déduit : \[\Delta\Pi = r\Pi\Delta t\]
 où $r$ est le taux de rendement sans risque. En réintroduisant cela dans l'équation (\ref{5}), on en déduit : 
 \[\left( -\frac{\partial f}{\partial t} - \frac{1}{2} \frac{\partial^2 f}{\partial S^2}\sigma^2S^2 \right) \Delta t = r\left( f-\frac{\partial f}{\partial S}S\right) \Delta t\]
 et donc :
 \begin{equation} \label{6} \frac{\partial f}{\partial t}+rS\frac{\partial f}{\partial S} + \frac{1}{2} \sigma^2S^2 \frac{\partial^2 f}{\partial S^2} = rf\end{equation}
-qu'on appelle l'équation différentielle de Black-Scholes. Les solutions obtenues, qui sont donc les valeurs des titres dérivées, dépendent évidemment des valeurs limites qu'on impose. A titre d'exemple, on doit avoir, dans le cas d'un call européen, pour $t=T$ : \[f=(S-X)^+\]
+qu'on appelle l'équation aux dérivées partielles de Black-Scholes. Les solutions obtenues, qui sont donc les valeurs des titres dérivées, dépendent évidemment des valeurs limites qu'on impose. A titre d'exemple, on doit avoir, dans le cas d'un call européen, pour $t=T$ : \[f=(S-X)^+\]
 Dans le cas d'un put européen, à $t=T$ : \[f=(X-S)^+\]
 Il est important de noter que l'équation (\ref{6}) est telle que le risque peut exister. Elle est sans risque seulement pour des périodes de temps infinitésimal. Comme $S$ et $t$ évoluent, $\frac{\partial f}{\partial S}$ évolue également, et donc la quantité d'action dans le portefeuille évolue constamment. Pour que le portefeuille reste déterministe, il faut changer continuellement la proportion de titres dérivés et d'actions dans le portefeuille.
 
