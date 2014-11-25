@@ -14,7 +14,7 @@ avec \begin{equation} \label{diffSEqu} \left\{\begin{array}{c c c}
 
 \Def{localement S-équivalent}{\ref{systAff} et \ref{systAffTr} sont localement, en $x_0$ et $\tilde{x}_0$, S-équivalent, si $\exists V_{x_0}$ et $V_{\tilde{x}_0}$ et $\phi : V_{x_0}\to V_{\tilde{x}_0}$ un difféomorphisme tel que $\phi$ transforme $\restriction{\Sigma}{V_{x_0}}$ en $\restriction{\tilde{\Sigma}}{V_{\tilde{x}_0}}$}
 
-\Def{S-linéarisable}{\ref{systAff} est S-linéarisable si $\exists : X\to\mathbb{R}^n$ un difféormorphisme tel que $\Sigma$ et \[\Lambda : \dot{\tilde{x}}=A\tilde{x} + \sum_{i=1}^m a_i b_i\]
+\Def{S-linéarisable}{\ref{systAff} est S-linéarisable si $\exists \phi: X\to\mathbb{R}^n$ un difféormorphisme tel que $\Sigma$ et \[\Lambda : \dot{\tilde{x}}=A\tilde{x} + \sum_{i=1}^m a_i b_i\]
 $A\in \mathcal{M}_{n\times n}(\mathbb{R})$, $b_i\in\mathbb{R}^n$, sont S-équivalent. }
 
 \Def{}{\[ad_f^0g=g,\ ad_fg=[f,g],\ ad_f^ng=[f,ad_f^{n-1}g]\]}
@@ -147,6 +147,6 @@ où
 
 \Def{}{Pour chaque $1\leq i\leq m$, soit $\rho_i$ le plus petit nombre tel que \[\frac{d^{\rho_i}y_i}{dt^{\rho_i}}\] dépend exclusivement de $u$, ie \[\exists j; L_{g_j}L_f^{\rho_i-1} y_i\neq 0\]}
 
-\Theo{}{Supposons rg$D(x)=cst$, où \[D_{ij}=L_{g_j}L_f^{\phi_i-1}h_i\] appelée matice de découplage.\\
+\Theo{}{Supposons rg$D(x)=cst$, où \[D_{ij}=L_{g_j}L_f^{\rho_i-1}h_i\] appelée matice de découplage.\\
 Le système \ref{systAff} est découplable en $x_0$ si et seulement si : \[rgD(x_0)=m\]
 De plus, on pose $z_{ij}=L_f^{j-1}h_i, 1\leq i\leq m,\ 1\leq j\leq \rho_i$}
