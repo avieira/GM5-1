@@ -89,6 +89,64 @@ Alors $\tilde{u}(t)=\phi^{(n)}(t)$ résoud le problème.
 $y\in Y\subset\mathbb{R}^p$, $hX\to Y$, dim $Y=p<$dim $X=n$\\
 $\forall 1\leq i\leq p, h_i\in \mathcal{C}^{\infty}(X)$.
 
-\Def{}{$x_0\in X$ et $\tilde{x}_0\in X$ sont dits indistingables si $\forall u(t)\in \mathcal{U}$, \[y(t,x_0,u)\equiv y(t,\tilde{x}_0,u)\]}
+\Def{Indistingables}{$x_0\in X$ et $\tilde{x}_0\in X$ sont dits indistingables si $\forall u(t)\in \mathcal{U}$, \[y(t,x_0,u)\equiv y(t,\tilde{x}_0,u)\]}
 
-\Def{}{\ref{probComp} est observable si : \[x_0 \text{ et } \tilde{x}_0 \text{ indistingables }\Rightarrow x_0=\tilde{x}_0\]}
+\Def{Observable}{\ref{probComp} est observable si : \[x_0 \text{ et } \tilde{x}_0 \text{ indistingables }\Rightarrow x_0=\tilde{x}_0\]}
+
+\Def{Localement observable}{\ref{probComp} est localement observable autour de $p\in X$ si $\exists V_p\subset X$; $\restriction{\Pi}{V_p}$ est observable.}
+
+\Def{Espace d'observation}{On définit $\mathcal{O}$, l'espace d'observation, comme étant le plus petit espace vectoriel sur $\mathbb{R}$ tel que :
+\begin{enumerate}
+	\item $h_i\in\mathcal{O}$, $1\leq i\leq p$
+	\item Si $\phi\in\mathcal{O}$, alors $L_{F_u}\phi\in\mathcal{O}$, $\forall u\in \mathcal{U}$
+\end{enumerate}
+On a \[\mathcal{O}=vect\{L_{F_{u_1}}...L_{F_{u_k}}h_i, 1\leq i\leq p, u_j\in \mathcal{U}, 1\leq j\leq k, k\geq 0\}\]}
+
+\Def{Codistribution}{On appelle codistibution : \[\mathcal{H}=span\{d\phi, \phi\in\mathcal{O}\}\]
+(Notons que $d\phi\in\mathcal{M}_{1\times n}$).\\
+En notant $T_p^*X=(T_pX)^*$ l'espace dual à l'espace tangent, appelé espace cotangent : \[\mathcal{H}:p\in X \mapsto \mathcal{H}(p)\subset T_p^*X\]}
+
+\Theo{Hermann-Kremer}{Soit $p\in X$\\
+Si dim $\mathcal{H}(p)=n$, alors \ref{probComp} est localement observable en $p$.}
+
+\Theo{}{Supposons que dim$\mathcal{H}(p)=cste=k$ $\forall p\in X$.
+\begin{enumerate}
+	\item \ref{probComp} est localement observable si et seulement si $k=n$
+	\item La distribution 
+\begin{eqnarray*}
+	\mathcal{D}&=&span\{f\in V^{\infty}(X); \langle d\phi, f\rangle=0, \forall \phi\in \mathcal{O}\}\\
+		&=&span\{f\in V^{\infty}(X); \langle \mathcal{H}, f\rangle=0\}\\
+\end{eqnarray*}
+	\item Autour de chaque $p\in X$, $\exists z^1=(z_1^1,...,z_k^1)$ et $z^2=(z_{k+1}^2,...,z_n^2)$ tel que 
+		\[\mathcal{D}=span\{\frac{\partial}{\partial z^2_{k+1}},...,\frac{\partial}{\partial z^2_n}\}\]
+	De plus, en coordonnées $(z^1,z^2)$ :
+		\[\begin{array}{c c c}
+			\dot{z}^1&=&f^1(z^1,u)\\
+			\dot{z}^2&=&f^2(z^1,z^2,u)\\
+			y&=&h^1(z^1)
+		\end{array}\]
+	\item Dans $V_p$ (où les coordonnées $(z^1,z^2)$ sont définies), $z_0$ et $\tilde{z}_0$ sont indistingables si $z_0^1=\tilde{z}_0^1$
+\end{enumerate}}
+
+\bigskip
+On considère un système affine avec la même sortie (mais tout se généralise avec les systèmes non affines).\\
+On prend juste le même nombre de sortie que de contrôle. $(y_i, 1\leq i\leq m)$
+\Def{Découplable}{\ref{systAff} est découplable entrée-sortie (I-O-decouplable) si $\exists z=\phi(x)$, $u=\alpha(x)+\beta(x) v$ tel que :
+	\[\dot{z}=\tilde{f}(z)+\sum_{i=1}^m v_i\tilde{g}_i(z)\]
+$Z=Z_0\times...\times Z_m$, avec $z=(z^0,z^1,...,z^m)$
+\begin{eqnarray*}
+	\dot{z}^0&=&\tilde{f}^0(z)+\sum_{i=1}^m v^i \tilde{g}_i^0(z)\\
+	\dot{z}^1&=&\tilde{f}^1(z^1)+\tilde{g}_1(z^1)v^1\\
+		&\vdots&\\
+	\dot{z}^m&=&\tilde{f}^m(z^m)+\tilde{g}_m(z^m)v^m
+\end{eqnarray*}
+où
+	\[\tilde{f}=\phi_*(f+g\alpha)=\phi_*\left( g+\sum_{i=1}^m g_i\alpha_i\right)\]
+	\[\tilde{g}=\phi_*(g\beta)\ \tilde{g}_i=\phi_*\left(\sum_{i=1}^m g_j\beta_{ji}\right)\]
+}
+
+\Def{}{Pour chaque $1\leq i\leq m$, soit $\rho_i$ le plus petit nombre tel que \[\frac{d^{\rho_i}y_i}{dt^{\rho_i}}\] dépend exclusivement de $u$, ie \[\exists j; L_{g_j}L_f^{\rho_i-1} y_i\neq 0\]}
+
+\Theo{}{Supposons rg$D(x)=cst$, où \[D_{ij}=L_{g_j}L_f^{\phi_i-1}h_i\] appelée matice de découplage.\\
+Le système \ref{systAff} est découplable en $x_0$ si et seulement si : \[rgD(x_0)=m\]
+De plus, on pose $z_{ij}=L_f^{j-1}h_i, 1\leq i\leq m,\ 1\leq j\leq \rho_i$}
