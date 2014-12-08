@@ -184,3 +184,134 @@ De plus, \[\|u\|_{W^{1,p}(O)}=\|\tilde{u}\|_{W^{1,p}(O_1)}=\|\tilde{u}\|_{W^{1,p
 Si $u\in W^{1,p}(\Omega)$, $u$ à support compact inclu dans $\Omega$, alors $u\in W^{1,p}_0(\Omega)$.}
 
 \textbf{Remarque :} On peut remarquer que l'hypothèse $\partial\Omega$ lipschitzienne n'est pas nécessaire.
+
+\Theo{}{\begin{enumerate}
+	\item $\Omega=]a,b[\subset\mathbb{R}$ \[H^1_0(\Omega)=\{u\in H^1(\Omega); u(a)=u(b)=0\}\]
+	\item $N\geq 2$, $\Omega$ ouvert de $\mathbb{R}^N$, borné, $\partial\Omega$ lipschitzienne
+		\[H^1_0(\Omega)=\{u\in H^1(\Omega); \gamma(u)=0 \text{ sur } \partial\Omega\}\]
+\end{enumerate}}
+
+\textbf{Remarque :} Si $u\in \mathcal{C}(\bar{\Omega})$ $\Rightarrow$ $\restriction{u}{\partial \Omega}=0$\\
+Si $u\in H^1(\Omega)$, $\partial\Omega$ lipschitzienne $\Rightarrow$ $\gamma(u)=0$\\
+Si $\partial \Omega$ non lipschitzienne, on ne peut rien dire de spécial.
+
+\Prop{Inégalité de Poincaré}{$\Omega\subset\mathbb{R}^N$ borné.\\
+$\exists c_{\Omega}$ de l'ordre du diamètre de $\Omega$ tel que \[\|u\|_{L^2(\Omega)}\leq c_{\Omega} \|\nabla u\|_{L^2(\Omega)}\]}
+
+\Coro{}{Sous les hypothèses précédentes, si on pose \[\forall u\in H^1_0(\Omega),\ \|u\|_{H^1_0(\Omega)}=\|\nabla u\|_{L^2(\Omega)}\]
+on définit une norme équivalente (pour $\Omega$ fixé) à la norme sur $H^1$ :
+\[\|\bullet\|_{H^1_0(\Omega)} \leq \|\bullet\|_{H^1(\Omega)}\leq (1+c_\Omega)\|\bullet\|_{H^1_0(\Omega)}\]}
+
+\subsubsection{Dual}
+On pose $H^{-1}(\Omega)=(H^1_0(\Omega))'$ muni de la norme : \[\|F\|_{H^{-1}(\Omega)}=\sup_{u\neq 0}\frac{|\langle F,u\rangle|}{\|u\|_{H^1_0(\Omega)}}\]
+
+\Theo{}{Soit $F\in H^{-1}(\Omega)$.\\
+Alors \[\exists (f_n)_{n=0}^N\subset L^2(\Omega); F=f_0+\sum_{i=1}^N \derPar{f_i}{x_i}\ (*)\]
+De plus : \[\|F\|_{H^1(\Omega)}=\inf \sum_{i=1}^N \|f_i\|_{L^2(\Omega)}\]
+où l'inf est pris sur toutes les fonctions $(f_n)_n$ vérifiant $(*)$.\\
+Réciproquement si $f_0,...,f_N$ sont dans $L^2(\Omega)$, alors \[F=f_0+\sum_{i=1}^N \derPar{f_i}{x_i}\] définit un élément F dans $H^{-1}(\Omega)$, et 
+\[\|F\|_{H^1(\Omega)}\leq\sum_{i=1}^N \|f_i\|_{L^2(\Omega)}\]}
+
+En particulier, pour $f_i=0$ $\forall 1\leq i\leq N$, on en déduit que $L^2(\Omega)\subset H^{-1}(\Omega)$ et \[\|f_0\|_{H^{-1}(\Omega)}\leq \|f_0\|_{L^2(\Omega)}\]
+
+\subsubsection{Caractérisation de $H^1(\Omega)$ par Fourier (dans $\mathbb{R}$)}
+\Def{}{$u\in L^1(\mathbb{R})$. La transformation de Fourier $\hat{u}$ de $u$ et l'antitransformée $\check{u}$ sont définies par :
+\[\hat{u}(\xi)=\frac{1}{(2\pi)^{\frac{N}{2}}}\int_{\mathbb{R}^N} e^{-i\langle \xi,x\rangle} u(x) dx \text{ définie p.p. dans } \mathbb{R}^N\]
+\[\check{u}(\xi)=\frac{1}{(2\pi)^{\frac{N}{2}}}\int_{\mathbb{R}^N} e^{i\langle \xi,x\rangle} u(x) dx\text{ définie p.p. dans } \mathbb{R}^N\]
+}
+
+\Theo{de Plancherel}{$u\in L^1(\mathbb{R}^N)\cap L^2(\mathbb{R}^N)$.\\
+Alors $\hat{u}$ et $\check{u}$ sont dans $L^2(\mathbb{R}^N)$ et \[\|u\|_{L^2(\mathbb{R}^N)}=\|\hat{u}\|_{L^2(\mathbb{R}^N)}=\|\check{u}\|_{L^2(\mathbb{R}^N)}\]}
+
+\Prop{}{Soit $u\in L^2(\mathbb{R}^N)$.\\
+Si $\{u_n\}\subset L^1(\mathbb{R}^N)\cap L^2(\mathbb{R}^N)$ est telle que $u_n\xrightarrow{L^2(\mathbb{R}^N)} u$, alors $\{\hat{u}_n\}$ et $\{\check{u}_n\}$ convergent dans $L^2(\mathbb{R}^N)$ vers $\hat{u}$ et $\check{u}$. De plus, $\hat{u}$ et $\check{u}$ sont indépendants de la suite choisie.\\
+On définit ainsi la transformée de Fourier pour $u\in L^2(\mathbb{R}^N$.}
+
+\Prop{dans $L^2$}{\begin{enumerate}
+	\item Plancherel reste vrai dans $L^2(\mathbb{R}^N)$
+	\item $u, v\in L^2(\mathbb{R}^N)$, \[\int_{\mathbb{R}^N} uv dx = \int_{\mathbb{R}^N} \hat{u} \overline{\hat{v}} d\xi\]
+	\item $\forall u\in L^2(\mathbb{R}^N)$, $u=\hat{\check{u}}=\check{\hat{u}}$
+	\item Si $u:\mathbb{R}^N\to \mathbb{R}$, $\widehat{\nabla u}(\xi)=\xi\hat{u}(\xi)$ pour presque tout $\xi\in\mathbb{R}^N$
+\end{enumerate}}
+
+\Theo{}{$u:\mathbb{R}^N\to \mathbb{R}$
+\[u\in H^1(\mathbb{R}^N)\Leftrightarrow (1+|\xi|)\hat{u}(\xi)\in L^2(\mathbb{R}^N)\]
+De plus : 
+	\[\|u\|_{H^1(\mathbb{R}^N)}\leq \|(1+|\xi|)\hat{u}\|_{L^2(\mathbb{R}^N)}\leq \sqrt{2}\|u\|_{H^1(\mathbb{R}^N)}\]}
+
+\subsection{Inclusions continues de Sobolev}
+\Def{Inclusion continue}{$X,Y$ de Banach\\
+On dit que l'inclusion $X\subset_c Y$ est continue si $X\subset Y$ et $i_X:x\in X\mapsto x\in Y$ est continue (ie $\|x\|_X\leq C\|x\|_Y$)}
+
+\textbf{Remarque :} On a vu que $W^{1,p}(\mathbb{R})\subset\mathcal{C}_b^0(\mathbb{R})$ est continue.
+
+\Lem{}{$N\geq 2$, $f_i\geq 0$, $f_i\in L^{N-1}(\mathbb{R}^{N-1})$, $i=1,...,N$\\
+$\forall x=(x_1,...,x_n)$, on pose $\hat{x}_i=(x_1,...,x_{i-1},x_{i+1},...,x_N)\in\mathbb{R}^{N-1}$. Alors :
+\[\int_{\mathbb{R}^N} \prod_{i=1}^N f_i(\hat{x}_i) dx \leq \prod_{i=1}^N \|f_i\|_{L^{N-1}(\mathbb{R}^{N-1})}\]}
+
+\Theo{Inclusions de Sobolev dans $\mathbb{R}^N$}{$N\geq 2$\begin{enumerate}
+	\item $1\leq p<N$ : On pose $\frac{1}{p^*}=\frac{1}{p}-\frac{1}{N}$. Alors : \[W^{1,p}(\mathbb{R}^N)\subset L^{p^*}(\mathbb{R}^N)\]
+et $\exists c=c(p,N)$ tel que \[\forall u\in W^{1,p}(\mathbb{R}^N), \|u\|_{L^{p^*}(\mathbb{R}^N)}\leq c\|\nabla u\|_{L^p(\mathbb{R}^N)} \]
+Corollaire : \[W^{1,p}(\mathbb{R}^N)\subset_c L^q(\mathbb{R}^N)\ \forall q\in[p,p^*]\]
+	\item $p=N$ : \[W^{1,N}(\mathbb{R}^N)\subset_c L^q(\mathbb{R}^N)\ \forall q\in[N,+\infty[\]
+	\item $p>N$ : \begin{itemize}
+		\item Si $1<N<p<+\infty$, alors $\exists c=c(p,N)$ tel que \[\forall u\in W^{1,p}(\mathbb{R}^N), |u(x)-u(y)|\leq C|x-y|^{1-\frac{N}{p}}\|\nabla u\|_{L^p(\mathbb{R}^N)} \text{ p.p}\]
+		\item Si $1<N<p\leq +\infty$, alors $W^{1,p}(\mathbb{R}^N)\subset_c L^{\infty}(\mathbb{R}^N)$
+	\end{itemize}
+\end{enumerate}}
+
+\textbf{Remarques :}\begin{enumerate}
+	\item On voit que $u$ est continue presque partout. Il existe donc un représentant de $u$ continue.
+	\item $W^{1,p}(\mathbb{R}^N)\subset \mathcal{C}_b^0(\mathbb{R}^N)$ dans le sens que tout élément de $W^{1,p}$ admet un représentant dans $\mathcal{C}^0_b$.
+	\item L'inclusion dans $\mathcal{C}^0$ (montré pour $p<+\infty$) est aussi vraie pour $p=+\infty$ en raisonnant par troncature.
+\end{enumerate}
+
+\Theo{Inclusions de Sobolev dans $\Omega$}{$N\geq 2$, $\Omega$ ouvert borné dans $\mathbb{R}^N$, $\partial\Omega$ lipschitzienne, ou $\Omega=\mathbb{R}^{N-1}\times\mathbb{R}^+_*$.
+\begin{enumerate}
+	\item $1\leq p<N$ : On pose $\frac{1}{p^*}=\frac{1}{p}-\frac{1}{N}$. \[W^{1,p}(\Omega)\subset_c L^q(\Omega)\ \forall q\in[p,p^*]\]
+	\item $p=N$ : \[W^{1,N}(\mathbb{R}^N)\subset_c L^q(\Omega)\ \forall q\in[N,+\infty[\]
+	\item $p>N$ : \[W^{1,p}(\Omega)\subset_c L^{\infty}(\Omega) \text{ et } W^{1,p}(\Omega)\subset_c \mathcal{C}^0(\overline{\Omega})\]
+\end{enumerate}}
+
+\Theo{}{$\Omega\subset\mathbb{R}^N$, intervalle si $N=1$, ouvert borné à frontière lipschitzienne sinon.\\
+Alors $u\in W^{1,p}(\Omega)\Rightarrow$ $u$ lipschitizienne.}
+
+\Theo{Inclusions de Sobolev dans $O$}{$N\geq 2$, $O\subset\mathbb{R}^N$ quelconque.
+\begin{enumerate}
+	\item $1\leq p<N$ : On pose $\frac{1}{p^*}=\frac{1}{p}-\frac{1}{N}$. \[W^{1,p}(O)\subset_c L^q(O)\ \forall q\in[p,p^*]\]
+	\item $p=N$ : \[W^{1,N}(\mathbb{R}^N)\subset_c L^q(O)\ \forall q\in[N,+\infty[\]
+	\item $p>N$ : \[W^{1,p}(O)\subset_c L^{\infty}(O) \text{ et } W^{1,p}(O)\subset_c \mathcal{C}^0(\overline{O})\]
+\end{enumerate}}
+
+\subsubsection{Inclusions compactes de Sobolev}
+\Def{Application compacte}{$X,Y$ de Banach, $h:X\to Y$ est compact si l'image d'un borné est relativement compacte.}
+\Def{Inclusion compacte}{$X,Y$ de Banach. On dit que l'inclusion $X\overline{\subset}Y$ est compacte si $X\subset Y$ et $i_x:x\in X\mapsto x\in Y$ compacte.}
+
+\textbf{Remarque :} Si $h$ linéaire, $h$ compact $\Rightarrow$ $h$ continue.
+
+\Theo{Ascoli-Arzela}{Soit $\{f_n\}$ bornée dans $\mathcal{C}^0_b(\mathbb{R}^N)$ équicontinue, ie 
+\[\forall \varepsilon>0, \exists \delta>0 \text{ (indépendant de n)}; \|x-y\|<\delta \Rightarrow \forall n\in\mathbb{N}, |f_n(x)-f_n(y)|<\varepsilon\]
+Alors $\{f_n\}$ admet une sous-suite qui converge uniformément sur chaque compact $K\subset\mathbb{R}^N$}
+
+\textbf{Remarque :} Si $\{f_n\}\subset\mathcal{C}^1_b$, alors d'après le théorème des accroissements finis, $\{f_n\}$ est équicontinue. En particulier, l'inclusion \[\forall K,\ \mathcal{C}^1_b(\mathbb{R}^N)\overline{\subset}\mathcal{C}^0(K) \]
+
+\Theo{}{Si $N=1$, $1<p<+\infty$, $I$ intervalle borné de $\mathbb{R}$, alors $W^{1,p}(I)\overline{\subset}\mathcal{C}^0(I)$}
+
+\Theo{}{Si $N\geq 2$, $\Omega$ ouvert borné de $\mathbb{R}^N$, $\partial \Omega$ lipschitzienne. Si $N<p\leq +\infty$, \[W^{1,p}(\Omega)\overline{\subset} \mathcal{C}^0(\overline{\Omega})\]}
+
+\Theo{de Rellich-Komdrochov}{$N\geq 2$, $\Omega$ borné de $\mathbb{R}^N$, $\partial\Omega$ lipschitzienne. Si $1\leq p<N$, en posant $\frac{1}{p*}=\frac{1}{p}-\frac{1}{N}$, 
+	\[\forall q\in [1,p^*[,\ W^p(\Omega)\overline{\subset}L^q(\Omega)\]}
+
+\textbf{Remarque :} Pour $p=p^*$, on avait l'inclusion, mais elle n'est pas compacte. $p^*$ s'appelle l'exposant critique des inclusions de Sobolev.
+
+\Theo{}{Si $N\geq 2$, $p=N$, $\Omega$ borné, $\partial\Omega$ lipschitzienne. \[\forall q\in [1,+\infty[,\ W^{1,N}(\Omega)\overline{\subset}L^q(\Omega)\]}
+
+\textbf{Remarque :} \begin{enumerate}
+	\item En général, faux si $\Omega$ non borné
+	\item De même si $\partial\Omega$ non lipschitzienne
+	\item Pour $H^1_0$, $\Omega$ borné sans frontière lipschitzienne suffit.\\
+On peut trouver $\Omega_1\supset\Omega$, $\partial\Omega_1$ lipschitzienne et on regarde $\{Pu_n\}$ sur $\Omega_1$
+	\item On a aussi \[L^2(\Omega)\overline{\subset}H^{-1}(\Omega)\]
+\[H^{\frac{1}{2}}(\partial\Omega)\overline{\subset}L^2(\partial\Omega)\]
+\[L^2(\partial\Omega)\overline{\subset}H^{-\frac{1}{2}}(\partial\Omega)\]
+\end{enumerate}

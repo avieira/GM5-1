@@ -18,7 +18,7 @@
 \newpage
 
 \section*{Introduction}
-Les fronts d'onde dans les équations de réactions-diffusion sont souvent utiles en biologie. La dispersion d'une population envahissant un écosystème peut être bien décrit par ces fronts d'onde.\\
+Les fronts d'onde dans les équations de réaction-diffusion sont souvent utiles en biologie. La dispersion d'une population envahissant un écosystème peut être bien décrit par ces fronts d'onde.\\
 Récemment, il a été observé que certaines espèces utilisent un mécanisme pour limiter la densité de leur population : si cette dernière approche un certain seuil, les individus commencent rapidement à bouger et à se disperser. Ce mécanisme est principalement gouverné par le terme de diffusion et non par le terme de réaction : si la densité approche ce seuil, le terme de diffusion devient illimité. \\
 Dans cet article, l'étude s'est porté sur l'existence ou non de fronts d'onde suivant la correlation existant entre le terme de diffusion et le terme de réaction. Il est montré dans cet article que l'ordre de la singularité du terme de diffusion et l'ordre du zéro dans le terme de réaction doit être compensé dans un certain sens pour assurer l'existence de ces fronts.
 
@@ -164,14 +164,14 @@ On ne peut donc pas trouver de point $w_2$, donc $y(w)>\frac{y_0}{2}>0$ pour tou
 
 \bigskip
 Une dernière étape consiste à montrer que toutes les trajectoires joignant $(0,0)$ ou $(0,c)$ avec la ligne $w=1$ correspondent à des fronts de l'equation aux dérivées partielles (\ref{eqnG}).\\
-Si $w(ct-x>0$ pour tout $x\in \mathbb{R}$, $t>0$, alors la solution est lisse et donc une solution classique de (\ref{eqnG}). Il reste à voir les cas où $w$ s'annule en cetains points, ie quand la trajectoire passe par $(0,c)$ dans l'espace des phases. La solution est également lissei. Mais à un point - où la solution devient identiquement nulle - la solution est continue mais la dérivée admet un saut fini. De plus, le terme de diffusion $D(w)$ devient nul en ce point. Il est simple de voir dans ce cas que la solution est une solution faible dans ce cas :\\
+Si $w(ct-x)>0$ pour tout $x\in \mathbb{R}$, $t>0$, alors la solution est lisse et donc une solution classique de (\ref{eqnG}). Il reste à voir les cas où $w$ s'annule en cetains points, ie quand la trajectoire passe par $(0,c)$ dans l'espace des phases. La solution est également lisse. Mais à un point - où la solution devient identiquement nulle - la solution est continue mais la dérivée admet un saut fini. De plus, le terme de diffusion $D(w)$ devient nul en ce point. Il est simple de voir que la solution est une solution faible dans ce cas :\\
 $\forall \phi\in H_0^1(\mathbb{R})$ :
 \begin{eqnarray*}
 	\int_{\mathbb{R}} \phi(x)\partial_t w(x-ct)dx &=&\int_{\mathbb{R}} \phi(x) \left[ \partial_x \left( D(w(x-ct))\partial_x w(x-ct)\right) +f(w(x-ct))\right]dx\\
 						&=& \int_{\mathbb{R}} \phi(x) f(w(x-ct)) dx - \int_{\mathbb{R}} \partial_x \phi(x) D(w(x-ct))\partial_x w(x-ct)dx \\
-						& & + \underbrace{\left[ \phi(x)D(w(x-ct))\partial_x w(x-ct)\right]_{-\infty}^{+\infty}}_{=0}
+						& & + \underbrace{\left[ \phi(x)D(w(x-ct))\partial_x w(x-ct)\right]_{-\infty}^{+\infty}}_{=0 \text{ dû à } \phi \in H_0^1}
 \end{eqnarray*}
-Puisque pou des paramètres donnés, $v(w)$ devrait donc croitre "doucement" suivant $c$ (si $v(w)\geq 0$), on obtient la deuxième partie du théorème.
+Puisque pour des paramètres donnés, $v(w)$ devrait donc croitre "doucement" suivant $c$ (si $v(w)\geq 0$), on obtient la deuxième partie du théorème.
 
 \paragraph{2ème cas : $\alpha-b\leq 1$}
 Pour avoir un front d'onde, on doit avoir $y(w)=wv(w)$ borné (car sinon, $v(w)$ non borné, car $w\in ]0,1[$).\\
