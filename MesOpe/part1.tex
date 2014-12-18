@@ -1,5 +1,7 @@
 \part{Opérateurs}
 \section{Définitions et résultats préliminaires}
+\Theo{du graphe fermé}{Soient $E$ et $F$ deux espaces de Banach. Soit $T$ un opérateur linéaire de $E$ dans $F$. On suppose que le graphe de $T$ est fermé dans $E\times F$. Alors $T$ est continue.}
+
 \Lem{de Baire}{Soit $X$ un espace métrique complet. Soit $(X_n)_{n\geq 1}$ une suite de fermés. On suppose que \[\forall n\geq 1,\ \widering{X_n}=\emptyset\]
 Alors \[\widering{\bigcup_{i=1}^{\infty} X_i}=\emptyset\]}
 
@@ -27,15 +29,25 @@ Si $M\subset X$ est un sev, on pose \[M^{\perp}=f\in X'; \langle f,x\rangle =0 \
 Si $N\subset X'$ est un sev, on pose \[N^{\perp}=x\in X; \langle f,x\rangle =0 \forall f\in N\}\]
 $M^{\perp}$ (resp. $N^{\perp}$) est l'orthogonal de $M$ (resp. $N$), qui est un sev fermé de $X'$ (resp. $X$).}
 
-\Propo{}{Soit $M\subset X$ un sev. On a alors \[\left( M^{\perp}\right)^{\perp}=\overline{M}\]
-Soit $N\subset X'$ un sev. On a alors \[\left( N^{\perp}\right)^{\perp}\supset \overline{N}\]}
+\Propo{}{Soit $M\subset X$ un sev. On a alors \begin{equation}\label{orthoTwice1}\left( M^{\perp}\right)^{\perp}=\overline{M}\end{equation}
+Soit $N\subset X'$ un sev. On a alors \begin{equation}\label{orthoTwice2}\left( N^{\perp}\right)^{\perp}\supset \overline{N}\end{equation}}
 
-\Propo{\label{Prop1}}{Soient $G$ et $L$ deux sous-espaces fermés de X. On a : 
-	\[G\cap L=\left(G^{\perp}+L^{\perp}\right)^{\perp}\]
-	\[G^\perp\cap L^\perp=\left(G+L\right)^{\perp}\]
+\Propo{}{Soient $G$ et $L$ deux sous-espaces fermés de X. On a : 
+	\begin{eqnarray} \label{Prop1}
+		G\cap L=\left(G^{\perp}+L^{\perp}\right)^{\perp}\\
+		G^\perp\cap L^\perp=\left(G+L\right)^{\perp}
+	\end{eqnarray}
 }
 
-\section{Opérateurs non bornés}
+\Theo{}{Soient $G$ et $L$ deux sous-espaces fermés de $X$. Les propriétés suivantes sont équivalentes :
+\begin{eqnarray}\label{Theo1.1}
+G+L \text{ est fermé dans X}\\
+G^\perp+L^\perp \text{ est fermé dans X}\\
+G+L=\left(G^\perp+L^\perp\right)^\perp\\
+\label{Theo1.2} G^\perp+L^\perp=(G\cap L)^\perp
+\end{eqnarray}}
+
+\section{Opérateurs non-bornés}
 \subsection{Définitions et propositions}
 
 \Def{Opérateur}{Soient $E$ et $F$ deux espaces de banach. On appelle opérateur linéaire non borné de $E$ dans $F$ toute application linéaire \[A:D(A)\subset E\to F\] définie sur un sous-espace vectoriel $D(A)\subset E$ à valeur dans $F$. $D(A)$ est le domaine de $A$.\\
@@ -86,10 +98,74 @@ Par conséquent, $v\in D(A^*)$ par définition du domaine et $A^*v=f$.
 
 \begin{dem}
 On peut très facilement vérifier les égalités suivantes :
-\begin{equation}\label{eq1} N(A)\times\{0\}=G(A)\cap (E\times\{0\})\end{equation}
-\begin{equation}\label{eq2} E\times R(A)=G(A)+(E\times\{0\})\end{equation}
-\begin{equation}\label{eq3} \{0\}\times N(A^*)=G(A)^\perp\cap(E\times\{0\})^\perp\end{equation}
-\begin{equation}\label{eq4} R(A^*)\times F'=G(A)^\perp+(E\times\{0\})^\perp\end{equation}
+\begin{equation}\label{timesEgal1}N(A)\times\{0\}=G(A)\cap (E\times\{0\})\end{equation}
+\begin{equation}\label{timesEgal2} E\times R(A)=G(A)+(E\times\{0\})\end{equation}
+\begin{equation}\label{timesEgal3} \{0\}\times N(A^*)=G(A)^\perp\cap(E\times\{0\})^\perp\end{equation}
+\begin{equation}\label{timesEgal4} R(A^*)\times F'=G(A)^\perp+(E\times\{0\})^\perp\end{equation}
 
-En utilisant \ref{Prop1}
+En utilisant (\ref{Prop1}), on a donc directement :
+\begin{eqnarray*} R(A^*)^\perp\times\{0\}&=&(R(A^*)\times F')^\perp\\
+					&=&\left(G(A)^\perp+(E\times\{0\})^\perp\right)^\perp\\
+					&=&G(A)\cap(E\times\{0\}\\
+					&=&N(A)\times \{0\}
+\end{eqnarray*}
+D'où le premier résultat.\\
+Pour le deuxième, on fait de même : 
+\begin{eqnarray*}
+	\{0\}\times R(A)^\perp&=&\left(G(A)+(E\times\{0\})\right)^\perp\\
+				&=&G(A)^\perp\cap(E\times\{0\})^\perp\\
+				&=&\{0\}\times N(A^*)
+\end{eqnarray*}
+
+Pour les deux derniers résultats, on utilise les deux premiers avec (\ref{orthoTwice1}) et (\ref{orthoTwice2}).
 \end{dem}
+
+\subsection{Opérateurs bornés}
+\subsubsection{Opérateurs à image fermée}
+\Theo{}{Soit $A:D(A)\subset E\to F$ un opérateur non-borné, fermé, avec le support de $A$ dense dans E. Les propriétés suivantes sont équivalentes :
+\begin{enumerate}
+	\item $R(A)$ est fermé
+	\item $R(A^*)$ est fermé
+	\item $R(A)=N(A^*)^\perp$
+	\item $R(A^*)=N(A)^\perp$
+\end{enumerate}}
+
+\begin{dem}
+$(1)\Leftrightarrow G(A)+(E\times\{0\})$ fermé dans $X$ (\ref{timesEgal2})\\
+$(2)\Leftrightarrow G(A)^\perp+(E\times\{0\})^\perp$ fermé dans $X'$ (\ref{timesEgal4})\\
+$(3)\Leftrightarrow G(A)+(E\times\{0\})=\left(G(A)^\perp\cap(E\times\{0\})^\perp\right)^\perp$ (\ref{timesEgal2}) et (\ref{timesEgal3})\\
+$(4)\Leftrightarrow \left(G(A)\cap(E\times\{0\}\right)^\perp=G(A)^\perp+(E\times\{0\})^\perp$ (\ref{timesEgal1}) et (\ref{timesEgal4})\\
+
+La conclusion nous vient directement du théorème (\ref{Theo1.1})-(\ref{Theo1.2}).
+\end{dem}
+
+\subsubsection{Opérateurs bornés}
+\Theo{}{Soit $A:D(A)\subset E\to F$ un opérateur non-borné, fermé, avec son domaine dense dans $E$. Les propriétés suivantes sont équivalentes :
+\begin{enumerate}
+	\item $D(A)=E$
+	\item $A$ est borné
+	\item $D(A^*)=F'$
+	\item $A^*$ est borné
+\end{enumerate}
+Dans ces conditions, on a : \[\|A\|_{\mathcal{L}(E,F)}=\|A^*\|_{\mathcal{L}(F',E')}\]}
+
+
+\begin{dem}
+$(1)\Rightarrow (2)$ : il suffit d'applquer le théorème du graphe fermé.\\
+$(2)\Rightarrow (3)$ : par définition de $D(A^*)$ donnée après la définition de $A^*$\\
+$(3)\Rightarrow (4)$ : On applique la proposition précédente sur une caractérisation de $A^*$ fermée et à l'aide du théorème du graphe fermé.\\
+$(4)\Rightarrow (1)$ : Plus délicat. Notons d'abord que$D(A^*)$ est fermé. En effet, soit $(v_n)\subset D(A^*)$ avec $v_n\to v$ dans $F'$. On a : 
+\[\|A^*(v_n-v_m)\|\leq c\|v_n-v_m\|\]
+Par conséquent, $(A^*v_n)$ converge vers une limite $f$. Comme $A^*$ est fermé, $v\in D(A^*)$ et $A^*v=f$. Dans l'espace $X=E\times F$, on considère les sous-espaces $G=G(A)$ et $L=\{0\}\times F$ de sorte que \[G+L=D(A)\times F \text{ et } G^\perp+L^\perp=E'\times D(A^*)\]
+Par conséquent, $G^\perp+L^\perp$ est fermé dans $X'$. Le théorème (\ref{Theo1.1})-(\ref{Theo1.2}) permet de conclure que $G+L$ est fermé, donc que $D(A)$ est fermé. Comme $\overline{D(A)}=E$, on en déduite que $D(A)=E$.
+
+\bigskip
+Prouvons maintenant que $\|A\|_{\mathcal{L}(E,F)}=\|A^*\|_{\mathcal{L}(F',E')}$. On a : 
+	\[\langle v, Au\rangle=\langle A^*v, u\rangle\ \forall u\in E,\ \forall v\in F'\]
+Donc \[|\langle v, Au\rangle| \leq \|A^*\|\|v\|\|u\|\] et 
+	\[\|Au\|=\sup_{\|v\|\leq 1}|\langle v, Au\rangle| \leq \|A^*\|\|u\|\]
+Par suite, $\|A\|\leq \|A^*\|$. Inversement, on a : 
+\[\|A^* v\|=\sup_{\|u\|\leq 1}|\langle A^*v, u\rangle|=\sup_{\|u\|\leq 1}|\langle v, Au\rangle|\leq \|A\|\|v\|\]
+Par conséquent, $\|A^*\|\leq \|A\|$.
+\end{dem}
+
