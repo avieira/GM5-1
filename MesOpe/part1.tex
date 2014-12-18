@@ -1,0 +1,95 @@
+\part{Opérateurs}
+\section{Définitions et résultats préliminaires}
+\Lem{de Baire}{Soit $X$ un espace métrique complet. Soit $(X_n)_{n\geq 1}$ une suite de fermés. On suppose que \[\forall n\geq 1,\ \widering{X_n}=\emptyset\]
+Alors \[\widering{\bigcup_{i=1}^{\infty} X_i}=\emptyset\]}
+
+\begin{dem}
+	On pose $O_n=X_n^C$ le complémentaire de $X_n$, de sorte que $O_n$ est un ouvert dense. Il s'agit de montrer que $G=\cap_{i=1}^\infty O_i$ est dense dans $X$.\\
+	Soit $\omega$ un ouvert non vide de $X$. On va prouver que $\omega\cap G\neq\emptyset$. \\
+	On choisit $x_0\in\omega$ et $r_0>0$ arbitraires tels que \[\overline{B(x_0,r_0)}\subset\omega\]
+	On choisit ensuite $x_1\in B(x_0,r_0)\cap O_1$ et $r_1>0$ tels que : 
+	\[\left\{\begin{array}{c}
+		\overline{B(x_1,r_1)}\subset B(x_0,r_0)\cap O_1\\
+		0<r_1<\frac{r_0}{2}
+	\end{array}\right.\]
+	Ceci est possible car $O_1$ est ouvert et dense. Ainsi de sute, on construit par récurrence deux suites $(x_n)$ et $(r_n)$ telles que :	
+	\[\left\{\begin{array}{c}
+		\overline{B(x_{n+1},r_{n+1})}\subset B(x_n,r_n)\cap O_{n+1}\\
+		0<r_{n+1}<\frac{r_n}{2}
+	\end{array}\right.\]
+	Il en résulte que la suite $(x_n)$ est de Cauchy. Soit $x_n\to l$. Comme $x_{n+p}\in B(x_n,r_n)$ pour tous $n, p\geq 0$, on obtient à la limite (quand $p\to +\infty$) :
+	\[l\in \overline{B(x_n,r_n)}\ \forall n\geq 0\]
+	En particulier, $l\in \omega\cap G$.
+\end{dem}
+
+\Def{Orthogonal d'un ev}{Soit X un espace de Banach.\\
+Si $M\subset X$ est un sev, on pose \[M^{\perp}=f\in X'; \langle f,x\rangle =0 \forall x\in M\}\]
+Si $N\subset X'$ est un sev, on pose \[N^{\perp}=x\in X; \langle f,x\rangle =0 \forall f\in N\}\]
+$M^{\perp}$ (resp. $N^{\perp}$) est l'orthogonal de $M$ (resp. $N$), qui est un sev fermé de $X'$ (resp. $X$).}
+
+\Propo{}{Soit $M\subset X$ un sev. On a alors \[\left( M^{\perp}\right)^{\perp}=\overline{M}\]
+Soit $N\subset X'$ un sev. On a alors \[\left( N^{\perp}\right)^{\perp}\supset \overline{N}\]}
+
+\Propo{\label{Prop1}}{Soient $G$ et $L$ deux sous-espaces fermés de X. On a : 
+	\[G\cap L=\left(G^{\perp}+L^{\perp}\right)^{\perp}\]
+	\[G^\perp\cap L^\perp=\left(G+L\right)^{\perp}\]
+}
+
+\section{Opérateurs non bornés}
+\subsection{Définitions et propositions}
+
+\Def{Opérateur}{Soient $E$ et $F$ deux espaces de banach. On appelle opérateur linéaire non borné de $E$ dans $F$ toute application linéaire \[A:D(A)\subset E\to F\] définie sur un sous-espace vectoriel $D(A)\subset E$ à valeur dans $F$. $D(A)$ est le domaine de $A$.\\
+On dit que $A$ est borné s'il existe une constante $c\geq 0$ telle que \[\|Au\|\leq c\|u\|\ \forall u\in D(A)\]
+(Oui, avec cette définition, un opérateur non borné peut être... Borné)}
+
+\Def{Graphe, Image et Noyau}{On appelle Graphe de $A$ l'ensemble \[G(A)=\bigcup_{u\in D(A)} [u,Au]\subset E\times F\]
+On appelle Image de $A$ l'ensemble \[R(A)=\bigcup_{u\in D(A)} Au\subset F\]
+On appelle Noyau de $A$ l'ensemble \[N(A)=\{u\in D(A);\ Au=0\}\subset E\]}
+
+\Def{fermé}{On dit qu'un opérateur $A$ est fermé si $G(A)$ est fermé dans $E\times F$.}
+
+\Rem{}{\begin{enumerate}
+	\item Pour prouver qu'un opérateur $A$ est femré, on procède en général de la manière suivante : on prend une suite $(u_n)$ dans $D(A)$ telle que $u_n\to u$ dans $E$ et $Au_n\to f$ dans $F$. Il s'agit ensuite de vérifier que 
+		\begin{enumerate}
+			\item $u\in D(A)$
+			\item $f=Au$
+		\end{enumerate}
+	\item Si $A$ est fermé, alors $N(A)$ est fermé.
+\end{enumerate}}
+
+\Def{Adjoint}{Soit $A:D(A)\subset E\to F$ un opérateur linéaire à domaine dense.\\ 
+L'opérateur $A^*:D(A^*)\subset F'\to E'$, appelé adjoint de $A$, est l'unique opérateur vérifiant : \[\langle v, Au\rangle_{F'F}=\langle A^*v,u\rangle_{E'E}\hspace{2em} \forall u\in D(A),\ v\in D(A^*)\]}
+
+L'existence et l'unicité de cet opérateur vient principalement du théorème de Hahn-Banach dans sa forme analytique. On pose : \[D(A^*)=\{v\in F';\ \exists c\geq 0 ; |\langle v,Au\rangle|\leq c\|u\|\ \forall u\in D(A)\}\]
+Il est clair que $D(A^*)$ est un sous-espace vectoriel de $F'$. On va maintenant définir $A^*v$ pour $v\in D(A^*)$. On considère l'application $g:D(A)\to\mathbb{R}$ définie pour $v\in D(A^*)$ par \[g(u)=\langle v,Au\rangle_{F'F}\]
+On a \[|g(u)|\leq c\|u\| \forall u\in E\]
+On peut alors appliquer le théorème de Hahn-Banach : on sait que $g$ peut être prolongée en une application linéaire $f:E\to \mathbb{R}$ telle que \[|f(u)|\leq c\|u\|\ \forall u\in E\]
+Par suite, $f\in E'$. On remarquera que le prolongement de $g$ est unique puisque $f$ est continue sur $E$ et que $D(A)$ est dense. On pose enfin : \[A^*v=f\]
+
+\Propo{}{Soit $A:D(A)\subset E\to F$ un opérateur non borné à domaine dense. Alors $A^*$ est fermé.}
+
+\begin{dem}
+Soit $(v_n)\subset D(A^*)$ telle que $v_n\to v$ dans $F'$ et $A^*v_n\to f$ dans $E'$. Il s'agit de prouver que $v\in D(A^*)$ et $A^*v=f$. Or : 
+	\[\langle v_n, Au\rangle=\langle A^*v_n,u\rangle\ \forall u\in D(A)\]
+D'où à la limite, il vient :
+	\[\langle v, Au\rangle = \langle A^*v, u\rangle\]
+Par conséquent, $v\in D(A^*)$ par définition du domaine et $A^*v=f$.
+\end{dem}
+
+\Coro{}{Soit $A:D(A)\subset E\to F$ un opérateur non borné, fermé, avec $\overline{D(A)}=E$ (dense). Alors on a : 
+\begin{enumerate}
+	\item $N(A)=R(A^*)^\perp$
+	\item $N(A^*)=R(A)^\perp$
+	\item $N(A)^\perp \supset \overline{R(A^*)}$
+	\item $N(A^*)^\perp = \overline{R(A)}$
+\end{enumerate}}
+
+\begin{dem}
+On peut très facilement vérifier les égalités suivantes :
+\begin{equation}\label{eq1} N(A)\times\{0\}=G(A)\cap (E\times\{0\})\end{equation}
+\begin{equation}\label{eq2} E\times R(A)=G(A)+(E\times\{0\})\end{equation}
+\begin{equation}\label{eq3} \{0\}\times N(A^*)=G(A)^\perp\cap(E\times\{0\})^\perp\end{equation}
+\begin{equation}\label{eq4} R(A^*)\times F'=G(A)^\perp+(E\times\{0\})^\perp\end{equation}
+
+En utilisant \ref{Prop1}
+\end{dem}
