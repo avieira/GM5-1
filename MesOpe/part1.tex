@@ -169,3 +169,32 @@ Par suite, $\|A\|\leq \|A^*\|$. Inversement, on a :
 Par conséquent, $\|A^*\|\leq \|A\|$.
 \end{dem}
 
+\section{Topologie faible}
+Soit $E$ un espace de Banach, $E'$ son dual. Pour $f\in E'$, on définit $\phi_f:E\to\mathbb{R}$ tel que $\phi_f(x)=\langle f,x\rangle$. On définit ainsi une famille $(\phi_f)_{f\in E'}$ d'applications de $E$ dans $\mathbb{R}$. 
+\Def{Topologie faible}{La topologie faible $\sigma(E,E')$ sur $E$ est la topologie la moins fine sur $E$ rendant continues toutes les applications $(\phi_f)_{f\in E'}$ continues, ie la topologie sur $E$ avec un nombre minimal d'ouvert rendant les $\phi_f$ continues.\\
+On note par $\rightharpoonup$ la convergence pour la topologie faible.}
+
+\Propo{}{Soit $(x_n)_n$ une suite de $E$. On a :
+\begin{enumerate}
+	\item $x_n\rightharpoonup x$ $\Leftrightarrow$ $\forall f\in E',\ \langle f,x_n\rangle \to \langle f,x\rangle$
+	\item Si $x_n\to x$, alors $x_n\rightharpoonup x$
+	\item Si $x_n\rightharpoonup x$ alors $\|x_n\|$ est bornée et $\|x\|\leq \liminf \|x_n\|$
+	\item Si $x_n\rightharpoonup x$ et si $f_n\to f$ dans $E'$, alors $\langle f_n, x_n\rangle\to \langle f,x\rangle$.
+\end{enumerate}}
+
+\begin{dem}
+\begin{enumerate}
+\item Admis
+\item Résulte de (1), puisque $|\langle f, x_n\rangle - \langle f,x\rangle|\leq \|f\|\|x_n-x\|$
+\item On utilise pour cela le corollaire du théorème de Banach-Steinhaus suivant : \\
+	\textbf{Corollaire :} Soit $G$ un espace de Banach et soit $B$ un sous-ensemble de $G$. On suppose que pour tout $f\in G'$, l'ensemble $f(B)=\bigcup_{x\in B}\langle f,x\rangle$ est borné. Alors $B$ est borné.
+Il suffit donc de vérifier que pour chaque $f\in E'$, l'ensemble $(\langle f, x_n\rangle)_n$ est borné. Or, pour chaque $f\in E'$, la suite $\langle f,x_n\rangle$ converge vers $\langle f,x\rangle$ (en particulier, elle est bornée). Soit $f\in E'$, on a : \[|\langle f,x_n\rangle\leq \|f\|\|x_n\|\]
+et à la limite : \[|\langle f,x\rangle\leq \|f\|\liminf \|x_n\|\]
+Par conséquent : \[\|x\|=\sup_{\|f\|\leq 1} |\langle f,x\rangle|\leq \liminf \|x_n\|\]
+\item On a :
+	\[|\langle f_n,x_n\rangle-\langle f,x\rangle|\leq |\langle f_n-f,x_n\rangle|+|\langle f,x_n-x\rangle|\leq\|f_n-f\|\|x\|+|\langle f,x_n-x\rangle|\]
+On conclut grâce à (1) et (3).
+\end{enumerate}
+\end{dem}
+
+\Propo{}{Lorsque $E$ est de dimension finie, la topologie faible $\sigma(E,E')$ et la topologie usuelle conïncident. En particulier, une suite $(x_n)$ converge faiblement si et seulement si elle converge fortement.}
