@@ -1,0 +1,130 @@
+\section{Opérateurs compacts}
+\subsection{Définitions}
+Soient $E$ et $F$ deux espaces de Banach.\\
+On désigne par $B_E$ la boule unité centrée à l'origine, ie \[B_E=\{x\in E;\ \|x\|\leq 1\}\]
+et par $\mathscr{L}(E,F)$ l'espace des opérateurs linéaires continues de $E$ dans $F$ muni de la norme \[\forall f\in \mathscr{L}(E,F),\ \|f\|_{\mathscr{L}(E,F)}=\sup_{\|x\|\neq 0} \frac{\|f(x)\|_F}{\|x\|_E}\]
+
+\Def{Opérateur compact}{On dit qu'un opérateur $T\in \mathscr{L}(E,F)$ est compact si l'image de la boule unité par $T$ est relativement compact pour la topologie forte, ie :
+\[\overline{T\left(\{x\in E;\ \|x\|\leq 1\}\right)}\subset F \text{ compact}\]\\
+On désigne par $\mathscr{H}(E,F)$ l'ensemble des opérateurs compacts de $E$ dans $F$, et $\mathscr{H}(E)=\mathscr{H}(E,E)$.}
+
+\Theo{}{$\mathscr{H}(E,F)$ est un sous-espace vectoriel fermé de $\mathscr{L}(E,F)$ (pour la norme $\|\bullet\|_{\mathscr{L}(E,F)}$).}
+
+\begin{dem}
+Il est clair que la somme de deux opérateurs compacts est un opérateur compact.\\
+Supposons que $(T_n)\subset\mathscr{H}(E,F)$, $T\in\mathscr{L}(E,F)$, et $\|T_n-T\|_{\mathscr{L}(E,F)}\to 0$. Montrons que $T\in\mathscr{H}(E,F)$. Comme $F$ est complet, il suffit de vérifier que pour tout $\varepsilon >0$, $T(B_E)$ peut être recouvert par un nombre fini de boules $B(f_i,\varepsilon)$ dans $F$. \\
+Pour $n$ assez grand, on a $\|T_n-T\|_{\mathscr{L}(E,F)}<\frac{\varepsilon}{2}$. Comme $T_n(B_E)$ est relativement compact, on a pour $I$ fini \[T_n(B_E)\subset \bigcup_{i\in I} B\left( f_i,\frac{\varepsilon}{2}\right)\]
+Donc par force, \[T(B_E)\subset \bigcup_{i\in I} B(f_i, \varepsilon)\]
+\end{dem}
+
+\Def{Rang fini}{On dit qu'un opérateur $T\in\mathscr{L}(E,F)$ est de rang fini si $R(T)<\infty$}
+Il est clair qu'un opérateur continu de rang fini est compact (car les compacts dans un espace de dimension finie sont les sous-espaces fermés bornés).
+
+\Coro{}{Soit $(T_n)$ une suite d'opérateurs de rangs finis de $E$ dans $F$ et soit $T\in\mathscr{L}(E,F)$ tels que $\|T_n-T\|_{\mathscr{L}(E,F)}\to 0$. Alors $T\in\mathscr{H}(E,F)$.}
+
+\Propo{}{Soient $E$, $F$ et $G$ trois espaces de Banach. Si $T\in\mathscr{L}(E,F)$ et $S\in\mathscr{H}(F,G)$ (ou $T\in\mathscr{H}(E,F)$ et $S\in\mathscr{L}(F,G)$), alors $S\circ T\in\mathscr{H}(E,G)$. }
+
+\Theo{Schauder}{Si $T\in\mathscr{H}(E,F)$, alors $T^*\in\mathscr{H}(F',E')$, et réciproquement.}
+
+\begin{dem}
+On aura pour cela besoin du théorème d'Ascoli :\\
+\textbf{Théorème :} Soit $K$ un espace métrique compact et soit $\mathcal{H}$ un sous-ensemble borné de $\mathcal{C}(K)$, l'ensemble des fonctions continues sur $K$.\\
+On suppose que $\mathcal{H}$ est uniformément équicontinu, ie : \[\forall \varepsilon>0, \exists\delta>0;\ d(x_1,x_2)<\delta\Rightarrow |f(x_1)-f(x_2)|<\varepsilon\ \forall f\in\mathcal{H}\]
+Alors $\mathcal{H}$ est relativement compact dans $\mathcal{C}(K)$.
+
+\bigskip
+Montrons que $T^*(B_{F'})$ est relativement compact dans $E'$. Soit $(v_n)$ une suite de $B_{F'}$. Montrons que l'on peut extraire une sous-suite telle que $T^*(v_{n_k})$ converge. Soit $K=\overline{T(B_E)}$ (métrique compact) et soit $\mathcal{H}\subset\mathcal{C}(K)$ défini par : 
+\[\mathcal{H}=\{\phi_n:x\in K\to\langle v_n, x\rangle;\ n=1,2,...\}\]
+Par le théorème d'Ascoli, on peut extraire une sous-suite notée $\phi_{n_k}$ qui converge dans $\mathcal{C}(K)$ vers une fonction $\phi\in\mathcal{C}(K)$. En particulier : 
+	\[\sup_{u\in B_E}|\langle v_{n_k},Tu\rangle - \phi(Tu)|\xrightarrow[k\to+\infty]{} 0\]
+Donc
+	\[\sup_{u\in B_E}|\langle v_{n_k},Tu\rangle - \langle v_{n_l},Tu\rangle|\xrightarrow[k,l\to+\infty]{} 0\]
+ie
+	\[\|T^* v_{n_k}-T^* v_{n_l}\|_{E'}\xrightarrow[k,l\to +\infty]{} 0\]
+Par conséquent, $T^*v_{n_k}$ converge dans $E'$.
+
+\bigskip
+\textit{Réciproquement}, supposons que $T^*\in\mathscr{H}(F',E')$. D'après ce qui précède, $T^{**}\in\mathscr{H}(E'',F'')$ et en particulier, $T^{**}(B_E)$ est relativement compact dans $F''$. Or, $T(B_E)=T^{**}(B_E)$ et $F$ fermé dans $F''$. Par conséquent, $T(B_E)$ est relativement compact dans $F$.
+\end{dem}
+
+\subsection{Théorie de Riesz-Fredholm}
+\Lem{de Riesz}{Soit $E$ un e.v.n. et soit $M\subset E$ un sous-espace fermé tel que $M\neq E$. Alors 
+\[\forall \varepsilon>0\ \exists u\in E;\ \|u\|=1 \text{ et } d(u,M)\ge 1-\varepsilon\]}
+
+\begin{dem}
+Soit $v\in E\backslash M$. Comme $M$ est fermé, alors $d=d(v,M)>0$. On choisit $m_0\in M$ tel que \[d\leq \|v-m_0\|\leq \frac{d}{1-\varepsilon}\]
+Alors \[u=\frac{v-m_0}{\|v-m_0\|}\]
+répond à la question. En effet, si $m\in M$, on a : \[\|u-m\|=\left\|\frac{v-m_0}{\|v-m_0\|} -m\right\|\geq 1-\varepsilon\]
+puisque \[m_0+\|v-m_0\|m\in M\]
+\end{dem}
+
+\Theo{Riesz}{Soit $E$ un e.v.n. tel que $B_E$ soit compact. Alors $E$ est de dimension finie.}
+
+\begin{dem}
+Raisonnons par l'absurde. Si $E$ est de dimension infinie, il existe une suite $(E_n)$ de sous-espaces de dimension finie tels que $E_{n-1}\subsetneq E_n$. Grâce au lemme ptécédent, on peut construire une suite $(u_n)$ avec $u_n\in E_n$, $\|u_n\|=1$ et $d(u_n,E_{n-1})\geq \frac{1}{2}$. En particulier, $\|u_n-u_m\|\geq\frac{1}{2}$ pour $m<n$. Donc la suite $(u_n)$ n'admet aucune sous-suite convergente - ce qui est contraire à l'hypothèse $B_E$ compact.
+\end{dem}
+
+\Theo{Alternative de Fredholm}{Soit $T\in\mathscr{H}(E)$. Alors : \begin{enumerate}
+	\item $N(I-T)$ est de dimension finie
+	\item $R(I-T)$ est fermé, et plus précisément \[R(I-T)=N(I-T^*)^\perp\]
+	\item $N(I-T)=\{0\}\Leftrightarrow R(I-T)=E$
+	\item dim $N(I-T)=$dim $N(I-T^*)$
+\end{enumerate}}
+
+\begin{dem}
+\begin{enumerate}
+	\item Soit $E_1=N(I-T)$. Alors $B_{E_1}\subset T(B_E)$ et donc $B_{E_1}$ est compact. D'après le théorème de Riesz précédent, $E_1$ est de dimension finie.
+	\item Soit $f_n=u_n-Tu_n\to f$. Il faut montrer que $f\in R(I-T)$. Posons $d_n=d(u_n,N(I-T))$. Comme $N(I-T)$ est de dimension finie, il existe $(v_n)\subset N(I-T)$ tel que $d_n=\|u_n-v_n\|$. On a : \begin{equation} \label{fn} f_n=(u_n-v_n)-T(u_n-v_n) \end{equation}
+Montrons que $\|u_n-v_n\|$ reste borné. Raisonnons par l'absurde et supposons qu'il existe une sous-suite telle que $\|u_{n_k}-v_{n_k}\|\to\infty$. En posant \[w_n=\frac{u_n-v_n}{\|u_n-v_n\|}\] on aurait grâce à (\ref{fn}) $w_{n_k}-T(w_{n_k})\to 0$. En extrayant une sous-sous-suite (encore notée $(w_{n_k})$ pour simplifier) on peut supposer que $Tw_{n_k}\to z$. Donc $w_{n_k}\to z$ et $z\in N(I-T)$. D'autre part :
+	\[d(w_n,N(I-T))=\frac{d(u_n,N(I-T))}{\|u_n-v_n\|}=1\]
+puisque $v_n\in N(I-T)$. À la limite on obtient $d(z,N(I-T))=1$ - ce qui est absurde, vu que $z\in N(I-T)$.\\
+Par conséquent, $\|u_n-v_n\|$ reste borné et comme $T$ est compact, on peut extraire une sous-suite telle que $T(u_{n_k}-v_{n_k})\to l$.\\
+On déduit de (\ref{fn}) que $u_{n_k}-v_{n_k}\to f+l$; posant $g=f+l$, on a $g-Tg=f$, ie $f\in R(I-T)$. On a donc montré que l'opérateur $I-T$ est à image fermée. On peut alors appliquer un théorème précédent sur la fermeture de l'ensemble image, et en conclure : 
+	\[R(I-T)=N(I-T^*)^\perp \text{ et } R(I-T^*)=N(I-T)^\perp\]
+
+	\item Prouvons d'abord l'implication $\Rightarrow$.\\
+Raisonnons par l'absurde et supposons que \[E_1=R(I-T)\neq E\]
+$E_1$ est un espace de Banach et $T(E_1)\subset E_1$. Donc $\restriction{T}{E_1}\in\mathscr{H}(E_1)$ et $E_2=(I-T)(E_1)$ est un sous-espace fermé de $E_1$. De plus, $E_2\neq E_1$ (puisque (I-T) injectif). En posant $E_n=(I-T)^n(E)$, on obtient ainsi une suite strictement décroissant de sous-espaces fermés. D'après le lemme de Riesz, il existe une suite $(u_n)$ telle que $u_n\in E_n$, $\|u_n\|=1$ et $d(u_n,E_{n+1})\geq \frac{1}{2}$. On a : \[Tu_n-Tu_m=-(u_n-Tu_n)+(u_m-Tu_m)+(u_n-u_m)\]
+Notons que si $n>m$, $E_{n+1}\subset E_n\subset E_{m+1}\subset E_m$ et par conséquent : \[-(u_n-Tu_n)+(u_m-Tu_m)+u_n\in E_{m+1}\]
+Donc $\|Tu_n-Tu_m\|\geq\frac{1}{2}$ - ce qui est absurde puisque $T$ est compact. Donc $R(I-T)=E$.
+
+\bigskip
+\textit{Inversement}, supposons que $R(I-T)=E$. Alors par corollaire précédent, $N(I-T^*)=R(I-T)^\perp=\{0\}$. Puisque $T^*\in\mathscr{H}(E')$, on peut appliquer ce qui précède à $T^*$ et conclure que $R(I-T^*)=E'$. Or, par le même corollaire, $N(I-T)=R(I-T^*)^\perp=\{0\}$.
+
+	\item Soit $d=$dim $N(I-T)$ et $d^*=$dim $N(I-T^*)$. On va d'abord montrer que $d^*\leq d$. Raisons par l'absurde et supposons que $d<d^*$. Comme $N(I-T)$ est de dimension finie, il admet un supplémentaire topologique dans $E$; il exuste donc un projecteur continue $P$ de $E$ sur $N(I-T)$.\\
+D'autre part, $R(I-T)=N(I-T)^\perp$ est de codomension finie $d^*$ et par conséquent, $R(I-T)$ admet dans $E$ un supplémentaire topologique, noté $F$ de dimension $d^*$. Comme $d<d^*$, il existe une application linéaire $\Lambda:N(I-T)\to F$ qui est injective et non surjective. POsons $S=T+(\Lambda\circ P)$; alors $R\in\mathscr{H}(E)$ puisque $\Lambda\circ P$ est de rang fini.\\
+Montrons que $N(I-S)=\{0\}$. En effet, si \[0=u-Su=(u-Tu)-(\Lambda\circ Pu)\]
+alors \[u-Tu=0 \text{ et } \Lambda\circ Pu=0\]
+ie $u\in N(I-T)$ et $\Lambda u=0$, donc $u=0$\\
+En appliquant (3) à l'opérateur $S$, on voit que $R(I-S)=E$. Ceci est absurde puisqu'uk existe $f\in F$, $f\not\in R(\Lambda)$; l'équation $u-Su=f$ n'admet pas de solution.\\
+Par conséquent, on a prouvé que $d^*\leq d$. En appliquant ce résultat à $T^*$, on voit que \[\text{dim }N(I-T^{**})\leq \text{ dim }N(I-T^*)\leq \text{ dim }N(I-T)\]
+Or, $N(I-T^{**})\supset N(I-T)$ - ce qui permet de conclure que $d=d^*$.
+\end{enumerate}
+\end{dem}
+
+\Rem{}{\begin{enumerate}
+	\item L'Alternative de Fredholm concerne la résulution de l'équation $u-Tu=f$. Elle exprime que : \begin{itemize}
+		\item \textbf{Ou bien} pour tout $f\in E$, l'équation $u-Tu=f$ admet une solution unique
+		\item \textbf{Ou bien} l'équation homogène $u-Tu=0$ admet $n$ solutions linéairement indépendantes et dans ce cas, l'équation non homogène $u-Tu=f$ est résoluble si et seulement si $f$ vérifie $n$ conditions d'orthogonalité (i.e. $f\in N(I-T^*)^\perp$).
+\end{itemize}
+	\item La propriété (3) est familière en dimension finie. Si dim $E<\infty$, un opérateur linéaire de $E$ dans lui-même est injectif si et seulement s'il est surjectif.
+\end{enumerate}}
+
+\subsection{Spectre d'un opérateur - Décomposition spéctrale}
+\subsubsection{Spectre d'un opérateur compact}
+\Def{Ensemble résolvant, spectre, espace propre}{Soit $T\in\mathscr{L}(E)$\\
+L'ensemble résolvant est \[\rho(T)=\{\lambda\in\mathbb{R}; (T-\lambda I) \text{ est bijectif de } E \text{ dans } E\}\]
+Le spectre $\sigma(T)$ est le complémentaire de l'ensemble résolvant \[\sigma(T)=\mathbb{R}\backslash \rho(T)\]
+On dit que $\lambda$ est valeur propre - et on note $\lambda\in VP(T)$ - si \[N(T-\lambda I)\neq \{0\}\]
+$N(T-\lambda I)$ est l'espace propre associé à $\lambda$.}
+
+\textbf{Remarque :} Il est clair que $VP(T)\subset \sigma(T)$. En général, l'inclusion est stricte (sauf bien sûr en dimension finie). Il peut exister $\lambda$ tel que 
+\[N(T-\lambda I)=\{0\} \text{ et } R(T-\lambda I)\neq E\]
+(un tel $\lambda$ appartient au spectre mais n'est pas valeur propre).\\
+Par exemple, prenons dans $E=l^2$, $Tu=(0,u_1,u_2,...)$ où $u=(u_1,u_2,...)$ (T est appelé le shift à droite). Alors $0\in\sigma(T)$ et $0\not\in VP(T)$.
+
+\Propo{}{Le spectre $\sigma(T)$ est un ensemble compact et \[\sigma(T)\subset [-\|T\|, +\|T\|]\]}
+
+\begin{dem}
+
+\end{dem}
