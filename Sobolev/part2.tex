@@ -100,14 +100,14 @@ Si $u\in W^{1,p}(\Omega); \nabla u=0$ dans $\Omega$, alors $u$ est constante.}
 
 \section{Amélioration de la régularité}
 Est-ce que la condition $\nabla u\in (L^p(\Omega))^n$ "améliore" vraiment la régularité ou juste la sommabilité de $u$ ?\\
-Le théorème suivant repond pour $N=1$ où on gagne beaucoup. Pour $N\geq 2$, la réponse est donnée par les théorèmes d'inclusion de Sobolec où on "gagne moins".
+Le théorème suivant repond pour $N=1$ où on gagne beaucoup. Pour $N\geq 2$, la réponse est donnée par les théorèmes d'inclusion de Sobolev où on "gagne moins".
 
 \Theo{}{$1\leq p<+\infty$. On a : \[W^{1,p}(\mathbb{R})\subset \mathcal{C}^0_b(\mathbb{R})\left(=\mathcal{C}^0(\mathbb{R})\cap L^{\infty}(\mathbb{R})\right)\]
 et \[\forall u\in W^{1,p}(\mathbb{R}),\ \|u\|_{L^{\infty}(\mathbb{R})}\leq c(p)\|u\|_{W^{1,p}(\mathbb{R})}\]
 De plus, si $p>1$, \[\forall x,y\in\mathbb{R},\ |u(x)-u(y)|\leq |x-y|^{\frac{p-1}{p}} \|u\|_{L^p(\mathbb{R})}\] ie $u$ est hölderienne d'exposant $\frac{p-1}{p}=\frac{1}{p'}$}
 
 \textbf{Remarques :} \begin{enumerate}
-	\item $\forall I\in\mathbb{R}$, $W^{1,p}(I)\subset \mathcal{C}^0(\bar{I})\cap L^{\infty}(I)$. En particulier, si $u\in W^{1,p}(]a,b[)$, on a $u(a)$ et $u(b)$ bien définis. Cela donne un sens aux conditions de Dirichlet.
+	\item $\forall I\subset\mathbb{R}$, $W^{1,p}(I)\subset \mathcal{C}^0(\bar{I})\cap L^{\infty}(I)$. En particulier, si $u\in W^{1,p}(]a,b[)$, on a $u(a)$ et $u(b)$ bien définis. Cela donne un sens aux conditions de Dirichlet.
 	\item $W^{1,p}(\mathbb{R})\subset \mathcal{C}^0_b(\mathbb{R})$ même pour $p=+\infty$
 	\item Pour $N\geq 2$, l'inclusion montrée n'est pas vraie en général $\forall p$
 \end{enumerate}
@@ -131,7 +131,7 @@ où \[\int_{\Gamma_i}u(x)\gamma_i(x) ds=\int_Q u(y',\psi_i(y'))\gamma_i(y',\psi_
 \textbf{Remarque :} On peut montrer que la définition est indépendant des coordonnées locales et des $\gamma_i$
 
 \Def{}{$\Omega$ borné de $\mathbb{R}^N$, $\partial\Omega$ lipschitzienne, $N\geq 2$.\\
-On définit $L^p(\partial\Omega$, $1\leq<+\infty$ par : \[L^p(\partial\Omega)=\{u:\partial\Omega\to\mathbb{R} \text{ mesurables égales p.p tel que } \int_{\partial\Omega} |u|^p ds<+\infty\}\]
+On définit $L^p(\partial\Omega)$, $1\leq p<+\infty$ par : \[L^p(\partial\Omega)=\{u:\partial\Omega\to\mathbb{R} \text{ mesurables égales p.p tel que } \int_{\partial\Omega} |u|^p ds<+\infty\}\]
 et \[L^{\infty}(\partial\Omega)=\{f:\partial\Omega\to\mathbb{R}; \exists c>0; |f|\leq c \text{ p.p sur } \partial\Omega\}\]
 On munit ces espaces des normes : \[p<+\infty\ :\ \|u\|_{L^p(\partial\Omega)}=\left( \int_{\partial\Omega} |u|^p ds\right)^{\frac{1}{p}}\]
 \[p=+\infty\ :\ \|u\|_{L^\infty(\partial\Omega)}=\inf \{c; |f|<c \text{ p.p. sur } \partial\Omega\}\]}
@@ -207,7 +207,7 @@ On pose $H^{-1}(\Omega)=(H^1_0(\Omega))'$ muni de la norme : \[\|F\|_{H^{-1}(\Om
 
 \Theo{}{Soit $F\in H^{-1}(\Omega)$.\\
 Alors \[\exists (f_n)_{n=0}^N\subset L^2(\Omega); F=f_0+\sum_{i=1}^N \derPar{f_i}{x_i}\ (*)\]
-De plus : \[\|F\|_{H^1(\Omega)}=\inf \sum_{i=1}^N \|f_i\|_{L^2(\Omega)}\]
+De plus : \[\|F\|_{H^{-1}(\Omega)}=\inf \sum_{i=1}^N \|f_i\|_{L^2(\Omega)}\]
 où l'inf est pris sur toutes les fonctions $(f_n)_n$ vérifiant $(*)$.\\
 Réciproquement si $f_0,...,f_N$ sont dans $L^2(\Omega)$, alors \[F=f_0+\sum_{i=1}^N \derPar{f_i}{x_i}\] définit un élément F dans $H^{-1}(\Omega)$, et 
 \[\|F\|_{H^1(\Omega)}\leq\sum_{i=1}^N \|f_i\|_{L^2(\Omega)}\]}
@@ -225,7 +225,7 @@ Alors $\hat{u}$ et $\check{u}$ sont dans $L^2(\mathbb{R}^N)$ et \[\|u\|_{L^2(\ma
 
 \Prop{}{Soit $u\in L^2(\mathbb{R}^N)$.\\
 Si $\{u_n\}\subset L^1(\mathbb{R}^N)\cap L^2(\mathbb{R}^N)$ est telle que $u_n\xrightarrow{L^2(\mathbb{R}^N)} u$, alors $\{\hat{u}_n\}$ et $\{\check{u}_n\}$ convergent dans $L^2(\mathbb{R}^N)$ vers $\hat{u}$ et $\check{u}$. De plus, $\hat{u}$ et $\check{u}$ sont indépendants de la suite choisie.\\
-On définit ainsi la transformée de Fourier pour $u\in L^2(\mathbb{R}^N$.}
+On définit ainsi la transformée de Fourier pour $u\in L^2(\mathbb{R}^N)$.}
 
 \Prop{dans $L^2$}{\begin{enumerate}
 	\item Plancherel reste vrai dans $L^2(\mathbb{R}^N)$

@@ -126,5 +126,249 @@ Par exemple, prenons dans $E=l^2$, $Tu=(0,u_1,u_2,...)$ où $u=(u_1,u_2,...)$ (T
 \Propo{}{Le spectre $\sigma(T)$ est un ensemble compact et \[\sigma(T)\subset [-\|T\|, +\|T\|]\]}
 
 \begin{dem}
-
+Soit $\lambda\in\mathbb{R}$ avec $|\lambda|>\|T\|$. Montrons que $T-\lambda I$ est bijectif - ce qui prouvera $\sigma(T)\subset [-\|T\|, +\|T\|]$.\\
+Étant donné $f\in E$, l'équation $Tu-\lambda u=f$ admet une solution unique car elle s'écrit $u=\frac{1}{\lambda}(Tu-f)$ et on peut lui appliquer le théorème du point fixe de Banach (en effet, il est simple de vérifier que l'application $u\mapsto\frac{1}{\lambda}(Tu-f)$ définit une contraction : il suffit de majorer par $\frac{\|T\|}{\lambda}$).\\
+Montrons maintenant que $\rho(T)$ est ouvert - ainsi $\sigma(T)$ sera par complémentaire fermé, et donc compact. Soit $\lambda_0\in\rho(T)$. Étant donnés $\lambda\in\mathbb{R}$ (voisin de $\lambda_0$) et $f\in E$, on cherche à résoudre :
+	\begin{equation} \label{VI7.5} Tu-\lambda u=f \end{equation}
+Or, on peut réécrire (\ref{VI7.5}) $Tu-\lambda_0 u=f+(\lambda-\lambda_0)u$, ie : 
+	\begin{equation} \label{VI7.6} u=(T-\lambda_0 I)^{-1}[f+(\lambda-\lambda_0)u] \end{equation}
+En appliquant à nouveau le théorème du point fixe de Banach, on voit que (\ref{VI7.6}) possède une solution unique si \[|\lambda-\lambda_0|\ \|(T-\lambda_0 I)^{-1}\|<1\]
+On définit donc une boule ouverte autour de $\lambda_0$ incluse dans $\rho(T)$. Donc $\rho(T)$ est un ouvert.
 \end{dem}
+
+\Theo{}{Soit $T\in\mathscr{H}(E)$ avec dim $E=+\infty$. Alors on a :
+\begin{enumerate}
+	\item $0\in\sigma(T)$
+	\item $\sigma(T)\backslash\{0\}=VP(T)\backslash\{0\}$
+	\item l'une des situations suivantes : 
+	\begin{itemize}
+		\item ou bien $\sigma(T)=0$
+		\item ou bien $\sigma(T)\backslash\{0\}$ est fini
+		\item ou bien $\sigma(T)\backslash\{0\}$ est une suite qui tend vers $0$
+	\end{itemize}
+\end{enumerate}}
+
+\begin{dem}
+\begin{enumerate}
+	\item Supposons que $0\not\in\sigma(T)$. Alors $T$ est bijectif et $I=T\circ T^{-1}$ est compact. Donc $B_E$ est compact et par force, dim $E<\infty$ par le théorème de Riesz précédent.
+
+	\item Soit $\lambda\in\sigma(T)$, $\lambda\neq 0$. Montrons que $\lambda\in VP(T)$. Raisonnons par l'absurde et supposons que $N(T-\lambda I)=\{0\}$. Alors d'après l'alternative de Fredholm, on sait que $R(T-\lambda I)=E$, et donc $\lambda\in\rho(T)$ - ce qui est absurde.
+
+	\item On va avoir besoin du lemme suivant :
+\Lem{}{Soit $(\lambda_n)_{n\geq 1}\subset\sigma(T)\backslash\{0\}$ une suite de réels tous distincts telle que \[\lambda_n\to\lambda\]
+Alors $\lambda=0$.}
+
+On sait que $\lambda_n\in VP(T)$; soit $e_n\neq 0$ tel que $(T-\lambda_n)e_n=0$. Soit $E_n=vect\{e_1,...,e_n\}$. Montrons que $\forall n\ E_n\subsetneq E_{n+1}$.\\
+Il suffit de vérifier que, pour tout $n$, les vecteurs $e_1,...,e_n$ sont linéairement indépendants. Raisonnons par récurrence sur $n$. Admettons le résultat à l'ordre $n$ et supposons que $e_{n+1}=\sum_{i=1}^n \alpha_i e_i$. Alors :
+	\[Te_{n+1}=\sum_{i=1}^n \alpha_i\lambda_ie_i=\sum_{i=1}^n \alpha_i\lambda_{n+1}e_i\]
+Par suite, $\alpha_i(\lambda_i-\lambda_{n+1})=0$ pour tout $i=1,2,...,n$, et donc $\alpha_i=0$ pour tout $i=1,...,n$ - ce qui est absurde. Donc $E_n\subsetneq E_{n+1}$ pour tout $n$.\\
+D'autre part, il est clair que $(T-\lambda_n)E_n\subset E_{n-1}$. En appliquant le lemme de Riesez, on construit une suite $(u_n)_{n\geq 1}$ telle que $u_n\in E_n$, $\|u_n\|=1$ et $d(u_n,E_{n-1})\geq \frac{1}{2}$ pour $n\geq 2$. Soient $2\leq m<n$ de sorte que \[E_{m-1}\subset E_m\subset E_{n-1}\subset E_n\]
+On a :
+\[\left\| \frac{Tu_n}{\lambda_n}-\frac{Tu_m}{\lambda_m}\right\|=\left\| \frac{Tu_n-\lambda_nu_n}{\lambda_n}-\frac{Tu_m-\lambda_mu_m}{\lambda_m}+u_n-u_m\right\|\geq d(u_n,E_{n-1})\geq \frac{1}{2}\]
+Si $\lambda_n\to\lambda$, on aboutit à une contradiction, puisque $(Tu_n)$ admet une sous-suite convergente.
+
+\bigskip
+\textit{Retour à la démonstration du théorème :} Pour tout entier $n\geq 1$, l'ensemble \[\sigma(T)\cap\{\lambda\in\mathbb{R}, |\lambda|\geq\frac{1}{n}\}\]
+est vide ou fini (s'il contenait une infinité de points distincts, on aurait un point d'accumulation - puisque $\sigma(T)$ est compact - et on aboutirai à une contradiction avec le lemme démontré précédemment). Lorsque $\sigma(T)\backslash\{0\}$ contient une infinité de points distincts, on peut donc les ranger en une suite qui tend vers $0$.
+\end{enumerate}
+\end{dem}
+
+\subsubsection{Décomposition spectrale des opérateurs autoadjoints}
+n suppose dans la suite que $E=H$ est un espace de Hilbert et que $T\in\mathscr{L}(H)$. En identifiant $H$ et $H'$ (grâce au théorème de représentation de Riesz), on peut considérer que $T^*\in\mathscr{L}(H)$.
+
+\Def{Autoadjoint}{On dit qu'un opérateur $T\in\mathscr{L}(H)$ est autoadjoint su $T^*=T$, ie \[(Tu,v)=(u,Tv)\ \forall u,v\in H\]}
+
+\Propo{}{Soit $T\in\mathscr{L}(H)$ un opérateur autoadjoint. On pose :
+	\[m=\inf_{u\in H,\ |u|=1}(Tu,u) \text{ et } M=\sup_{u\in H,\ |u|=1}(Tu,u)\]
+Alors $\sigma(T)\subset[m,M]$, avec $m\in\sigma(T)$ et $M\in\sigma(T)$.}
+
+\begin{dem}
+Soit $\lambda>M$; montrons que $\lambda\in\rho(T)$. On a : \[(Tu,u)\leq M|u|^2\ \forall u\in H\]
+et par conséquent \[(\lambda u-Tu,u)\geq (\lambda-M)|u|^2=\alpha|u|^2\ \forall u\in H \text{ avec } \alpha>0\]
+Appliquant le théorème de Lax-Milgram, on voit que $\lambda I-T$ est bijectif.\\
+Montrons que $M\in\sigma(T)$. La forme $a(u,v)=(Mu-Tu,v)$ est bilinéaire, symétrique et \[a(v,v)\geq 0\ \forall v\in H\]
+Appliquant l'inégalité de Cauchy-Schwarz à la forme $a(u,v)$, il vient : \[|(Mu-Tu,v)|\leq (Mu-Tu,u)^{\frac{1}{2}}(Mv-Tv,v)^\frac{1}{2}\ \forall u,v\in H\] (Il faut m'expliquer où est CS là...?)\\
+D'où il résulte en particulier \begin{equation}\label{VI.9.7} |Mu-Tu|\leq C(Mu-Tu,u)^\frac{1}{2}\ \forall u\in H \end{equation}
+Soit $(u_n)$ une suite telle que $|u_n|=1$ et $(Tu_n,u_n)\to M$. Grâce à (\ref{VI.9.7}), on voit que $|Mu_n-Tu_n|\to 0$ et donc $M\in\sigma(T)$ (car si $M\in\rho(T)$, alors $u_n=(MI-T)^{-1}(Mu_n-Tu_n)\to 0$)\\
+Les propriétés de $m$ s'obtiennent en remplaçant $T$ par $-T$
+\end{dem}
+
+\Coro{}{Soit $T\in\mathscr{L}(H)$ un opérateur autoadjoint tel que $\sigma(T)=\{0\}$. Alors $T=0$.}
+\begin{dem}
+	D'après la proposition précédente, on sait que \[(Tu,u)=0\ \forall u\in H\]
+Il en résulte que :
+	\[2(Tu,v)=(T(u+v),u+v)-(Tu,u)-(Tv,v)=0 \forall u,v\in H\]
+Donc $T=0$
+\end{dem}
+
+\Theo{Diagonalisation}{On suppose que $H$ est séparable. Soit $T$ un opérateur autoadjoint compact.\\
+Alors $H$ admet une base hilbertienne formée de vecteurs propres de $T$.}
+
+\begin{dem}
+Soit $(\lambda_n)_{n\geq 1}$ la suite des valeurs propres distincte de $T$, excepté $0$; on note $\lambda_0=0$.\\
+On pose $E_0=N(T)$ et $E_n=N(T-\lambda_n I)$; rappelons que \[0\leq dim E_0\leq \infty \text{ et que } 0<dim E_n<\infty\]
+Montrons d'abord que $H$ est comme hilbertienne des $(E_n)_{n\geq 0}$ :
+\begin{enumerate}
+	\item Les $(E_n)_{n\geq 0}$ sont deux à deux orthogonaux. En effet, si $u\in E_{m}$ et $v\in E_n$ avec $m\neq n$ alors 
+	\[Tu=\lambda_mu \text{ et } Tv=\lambda_n v\]
+et \[(Tu,v)=\lambda_m(u,v)=(u,Tv)=\lambda_n(u,v)\]
+Donc $(u,v)=0$
+
+	\item Soit $F$ l'espace vectoriel engendré par les $(E_n)_{n\geq 0}$. Vérifions que $F$ est dense dans $H$.\\
+Il est claire que $T(F)\subset F$. Il s'en suit que $T(F^\perp)\subset F^\perp$; en effet, si $u\in F^\perp$ et $v\in F$, alors $(Tu,v)=(u,Tv)=0$. L'opérateur $T_0=\restriction{T}{F}$ est autoadjoint compact. D'autre part, $\sigma(T_0)=\{0\}$; en effet, si
+	\[\lambda\in\sigma(T_0)\backslash\{0\}\text{, alors } \lambda\in VP(T_0)\]
+et donc il existe $u\in F^\perp$, $u\neq 0$ tel que $T_0u=\lambda u$. Par conséquent, $\lambda$ est l'une des valeurs propres $\lambda_n$ de $T$ et $u\in F^\perp\cap E_n$. Donc $u=0$, ce qui est absurde.\\
+Il résulte du corollaire précédent que $T_0=0$; par suite
+	\[F^\perp\subset N(T)\subset F \text{ et } F^\perp=\{0\}\]
+Donc $F$ est dense dans $H$.\\
+Enfin, on choisit dans chaque $E_n$ une base hilbertienne. La réunion de ces bases est une base hilbertienne de $H$ formée de vecteurs propres de $T$.
+\end{enumerate}
+\end{dem}
+
+\section{Théorème de Hille-Yosida}
+\subsection{Opérateurs maximaux monotones}
+Dans toute la suite, $H$ désigne un espace de Hilbert.
+
+\Def{Maximal et monotone}{Soit $A:D(A)\subset H\to H$ un opérateur linéaire non-borné. On dit que $A$ est monotone (ou accrétif ou dissipatif) si \[(Av,v)\geq 0\ \forall v\in D(A)\]
+$A$ est maximal monotone si de plus, $R(I+A)=H$, ie 
+	\[\forall f\in H, \exists u\in D(A); u+Au=f\]}
+
+\Propo{}{Soit $A$ un opérateur maximal monotone. Alors : \begin{enumerate}
+	\item $D(A)$ est dense dans $H$
+	\item $A$ est fermé
+	\item Pour tout $\lambda>0$, $(I+\lambda A)$ est bijectif de $D(A)$ sur $H$, et $(I+\lambda A)^{-1}$ est un opérateur borné de norme $\|(I+\lambda A)^{-1}\|_{\mathscr{L}(H)}\leq 1$
+\end{enumerate}}
+
+\begin{dem} \begin{enumerate}
+	\item Soit $f\in H$ tel que $(f,v)=0$ pour tout $v\in D(A)$. Vérifions que $f=0$. En effet, il existe $v_0\in D(A)$ tel que $v_0+Av_0=f$. On a :
+	\[0=(f,v_0)=|v_0|^2+(Av_0,v_0)\geq |v_0|^2\]
+Donc $v_0=0$ et par suite $f=0$.
+
+	\item Notons d'abord que pour tout $f\in H$ il existe $u\in D(A)$ unique tel que $u+Au=f$. En effet, si $\tilde{U}$ désigne une autre solution, alors on a $(u-\tilde{u})+A(u-\tilde{u})=0$. Prenant le produit scalaire avec $(u-\tilde{u})$ et appliquant la monotonie de $A$, on voit que $u-\tilde{u}=0$.\\
+D'autre part, on a $|u|^2+(Au,u)=(f,u)$ et par suite, $|u|\leq |f|$. L'opérateur $f\mapsto u$ noté $(I+A)^{-1}$ est donc un opérateur linéaire borné de $H$ dans $H$ et $\|(I+A)^{-1}\|_{\mathscr{L}(H)}\leq 1$.\\
+Montrons que $A$ est fermé. Soit $(u_n)\subset D(A)$ une suite telle que $u_n\to u$ et $Au_n\to f$. Il faut vérifier que $u\in D(A)$ et que $Au=f$. On a $u_n+Au_n\to u+f$ et donc
+	\[u_n=(I+A)^{-1}(u_n+Au_n)\to(I+A)^{-1}(u+f)\]
+Par conséquent, $u=(I+1)^{-1}(u+f)$, ie $u\in D(A)$ et $u+Au=f$.
+
+	\item Supposons que pour un certain $\lambda_0>0$, on ait $R(I+\lambda_0 A)=H$. On va montrer que pour tout $\lambda>\frac{\lambda_0}{2}$, on a $R(I+\lambda A)=H$. \\
+Commençons par notrer que pour tout $f\in H$ il existe $u\in D(A)$ unique tel que $u+\lambda_0 Au=f$ ; l'opérateur $f\mapsto u$ est noté $(I+\lambda_0A)^{-1}$ et l'on a $\|(I+\lambda_0A)^{-1}\|_{\mathscr{L}(H)}\leq 1$. On cherche à résoudre l'équation
+\[u+\lambda Au=f \text{ avec } \lambda >0\]
+On réécrit l'équation sous la forme
+	\[u+\lambda_0Au=\frac{\lambda_0}{\lambda}f+\left(1-\frac{\lambda_0}{\lambda}\right)u\]
+Ou encore :
+\begin{equation} \label{VII1.2} u=(I+\lambda_0 A)^{-1}\left[\frac{\lambda_0}{\lambda}f+\left( 1-\frac{\lambda_0}{\lambda}\right)u \right] \end{equation}
+
+On voit alors que si $\left| 1-\frac{\lambda_0}{\lambda}\right|<1$, ie $\lambda>\frac{\lambda_0}{2}$, alors (\ref{VII1.2}) admet une solution grâce au théorème du point fixe de Banach.\\
+Si $A$ est maximal monotone, alors $I+A$ est surjectif. D'après ce qui précède, $I+\lambda A$ est surjectif pour $\lambda>\frac{1}{2}$ donc aussi pour $\lambda>\frac{1}{4}$, etc. Par récurrence on voit que $I+\lambda A$ est surjectif pour tout $\lambda>0$.
+\end{enumerate}\end{dem}
+
+\Def{Résolvante et résgularisée}{Soit $A$ un opérateur maximal monotone. On pose, pour tout $\lambda>0$, 
+	\[J_\lambda=(I+\lambda A)^{-1} \text{ et } A_\lambda=\frac{1}{\lambda}(I-J_\lambda)\]
+$J_\lambda$ est la résolvante de $A$ et $A_\lambda$ est la régularisée Yosida de $A$.}
+
+On retiendra que $\|J_\lambda\|_{\mathscr{L}(H)}\leq 1$.
+
+\Propo{}{Soit $A$ un opérateur maximal monotone. On a :\begin{enumerate}
+	\item $A_\lambda v=A(J_\lambda v)$ $\forall v\in H$ et $\forall \lambda>0$
+	\item $A_\lambda v=A(J_\lambda v)$ $\forall v\in D(A)$ et $\forall \lambda>0$
+	\item $|A_\lambda v|\leq |Av|$ $\forall v\in D(A)$ et $\forall \lambda>0$
+	\item $\lim_{\lambda\to 0} J_\lambda v=v$ $\forall v\in H $
+	\item $\lim_{\lambda\to 0} J_\lambda v=v$ $\forall v\in D(A) $
+	\item $(A_\lambda v,v)\geq 0$ $\forall v\in H$, $\forall \lambda>0$
+	\item $|A_\lambda v|\leq \frac{1}{\lambda}|v|$ $\forall v\in H$, $\forall \lambda>0$
+\end{enumerate}}
+
+\begin{dem}\begin{enumerate}
+	\item Équivaut à $v=(J_\lambda v)+\lambda A(J_\lambda v)$, qui résulte de la définition de $J_\lambda$
+	\item On a : \[Av=\frac{1}{\lambda} [(I+\lambda A)v-v]=\frac{1}{\lambda}(I+\lambda A)(v-J_\lambda v)\]
+et donc \[J_\lambda Av=\frac{1}{\lambda}(v-J_\lambda v)\]
+	\item Résulte de 2)
+	\item Supposons d'abord que $v\in D(A)$. Alors \[|v-J_\lambda v|=\lambda|A_\lambda v|\leq \lambda|Av|\]
+Donc $\lim_{\lambda\to 0} J_\lambda v=v$.
+
+\bigskip
+Passons au cas général. Soit $v\in H$ et soit $\varepsilon>0$. Comme $\overline{D(A)}=H$, il existe $v_1\in D(A)$ tel que $|v-v_1|\leq\varepsilon$. On a : 
+\begin{eqnarray*}
+|J_\lambda v-v|&\leq& |J_\lambda v-J_\lambda v_1|+|J_\lambda v_1-v_1|+|v_1-v|\\
+		&\leq& 2|v-v_1|+|J_\lambda v_1-v_1|\\
+		&\leq& 2\varepsilon + |J_\lambda v_1-v_1|
+\end{eqnarray*}
+
+Par conséquent \[\limsup_{\lambda\to 0} |J_\lambda v-v|\leq 2\varepsilon\ \forall\varepsilon>0\]
+et donc \[\lim_{\lambda\to 0} |J_\lambda v-v|=0\]
+
+	\item Appliquer 2. et 4.
+	\item On a \begin{eqnarray*}
+(A_\lambda v,v)&=&(A_\lambda v,v-J_\lambda v)+(A_\lambda v,J_\lambda v)\\
+		&=&\lambda|A_\lambda v|^2+(A_\lambda(J_\lambda v),J_\lambda v)
+\end{eqnarray*}
+Donc \[(A_\lambda v,v)\geq \lambda|A_\lambda v|^2\geq 0\]
+
+	\item Viens de la dernière inégalité et de Cauchy-Schwarz.
+\end{enumerate}\end{dem}
+
+\subsection{Problème d'évolution}
+\subsubsection{Existence et unicité}
+On s'intéresse au problème général suivant :
+\begin{equation} \label{PbEv} \tag{PbEv} \left\{ \begin{array}{c c c c}
+	\frac{du}{dt}+Au &=& 0 &\text{ sur } [0,+\infty[\\
+	u(0)&=&u_0
+\end{array}\right. \end{equation}
+
+On rappelle le résultat classique suivant :
+\Theo{Cauchy-Lipschitz-Picard}{Soit $E$ un espace de Banach et soit $F:E\to E$ une application telle que \[\|Fu-Fv\|\leq L\|u-v\|\ \forall u,v\in E\ (L\geq 0)\]
+Alors pour tout $u_0\in E$, il existe $u\in \mathscr{C}^1([0,\infty[;E)$ unique telle que
+\begin{equation} \label{CLP} \tag{CLP} \left\{ \begin{array}{c c c c}
+	\frac{du}{dt}&=& Fu &\text{ sur } [0,+\infty[\\
+	u(0)&=&u_0
+\end{array}\right. \end{equation}}
+
+%\Lem{1}{Soit $w\in\mathscr{C}^1([0,+\infty[);H)$ une fonction vérifiant : \begin{equation} \label{lem1} \frac{dw}{dt} + A_\lambda w=0 \text{ sur } [0,+\infty[ \end{equation}
+%Alors les fonctions $t\mapsto |w(t)|$ et $t\mapsto \left|\frac{dw}{dt}(t)\right|=|A_\lambda w(t)|$ sont décroissantes sur $[0,+\infty[$.}
+%
+%\begin{dem}
+%	On a \[\left(\frac{dw}{dt},w\right) + (A_\lambda w,w)=0\]
+%Or, comme on l'a vu dans une propriété précédente (prop. 6), $(A_\lambda w, w)\geq 0$ et par suite $\frac{1}{2} \frac{d}{dt}|w|^2\leq 0$.\\
+%D'autre part, comme $A_\lambda$ est un opérateur linéaire borné, on déduit de (\ref{lem1}) que $w\in\mathscr{C}^\infty$ et que \[\frac{d}{dt}\left(\frac{dw}{dt}\right)+A_\lambda\left(\frac{dw}{dt}\right)=0\]
+%On applique alors ce qui précède à $\frac{dw}{dt}$.
+%\end{dem}
+
+\Theo{Hille-Yosida}{Soit $A$ un opérateur maximal monotone dans un espace de Hilbert $H$. Alors pour tout $u_0\in D(A)$, il existe une fonction \[u\in\mathscr{C}^1([0,+\infty[;H)\cap\mathscr{C}([0,+\infty[;D(A))\]
+unique vérifiant (\ref{PbEv}). De plus, on a \[|u(t)\leq |u_0| \text{ et } \left| \frac{du}{dt}(t)\right|=|Au(t)|\leq |Au_0|\ \forall t\geq 0\]}
+
+\Rem{}{\begin{enumerate}
+	\item Soit $t\geq 0$; on considère l'application linéaire $S_A(t):u_0\mapsto u(t)$ de $D(A)$ dans $D(A)$ où $u(t)$ est la solution de (\ref{PbEv}). Étant donné que $|S_A(t)u_0|\leq|u_0|$, on peut prolonger $S_A(t)$ par continuité et densité en un opérateur linéaire continue de $H$ dans lui-même, qu'on désigne toujours par $S_A(t)$. On vérifie facilement que $S_A(t)$ possède les propriétés suivantes :
+\begin{enumerate}
+	\item Pour chaque $t\geq 0$, $S_A(t):H\to H$ est un opéarateur linéaire continue et $S_A(t)_{\mathscr{L}(H)}\leq 1$
+	\item $S_A(t_1+t_2)=S_A(t_1)\circ S_A(t_2)$ $\forall t_1,t_2\geq 0$ et $S_A(0)=Id$
+	\item $\lim_{t\to 0^+} |S_A(t)u_0-u_0|=0$ $\forall u_0\in H$
+\end{enumerate}
+Une famille $\{S(T)\}_{t\geq 0}$ d'opérateurs de $\mathscr{L}(H)$ définie pour chaque valeur du paramètre $t\geq 0$ et vérifiant ces trois points est par définition un semi-groupe continu de contractions.\\
+On montre qu'inversement, étant donné un semi-groupe continu de contractions $S(t)$, il existe un opérateur $A$ maximal monotone unique tel que $S(T)=S_A(t)$ pour tout $t\geq 0$.\\
+On étabilit ainsi une correspondance bijective entre les opérateurs maximaux monotones et les semi-groupes continus de contraction.
+
+	\item Soit $A$ un opérateur maximal monotone et soit $\lambda\in\mathbb{R}$. La résolution de l'équation \[\left\{\begin{array}{c c c c} \frac{du}{dt}+Au+\lambda u&=&0 &\text{ sur } [0,+\infty[ \\ u(0)=u_0 \end{array}\right.\]
+se ramène très simplement à la résolution de (\ref{PbEv}) grâce à l'artifice classique suivant. On pose \[v(t)=e^{\lambda t} u(t)\]
+Alors $v$ vérifie 
+\begin{equation} \left\{ \begin{array}{c c c c}
+	\frac{dv}{dt}+Av&=&0 &\text{ sur } [0,+\infty[\\
+	v(0)&=&u_0
+\end{array}\right. \end{equation}
+\end{enumerate}}
+
+\subsubsection{Régularité}
+\Def{}{On définition par récurrence l'espace \[D(A^k)=\{v\in D(A^{k-1});\ Av\in D(A^{k-1})\},\ k \text{ entier }\geq 2\]
+On vérifie aisément que $D(A^k)$ est un espace de Hilbert pour le produit scalaire
+	\[(u,v)_{D(A^k)}=\sum_{j=0}^k (A^ju,A^jv)\]
+}
+
+\Theo{}{On suppose que $u_0\in D(A^k)$ avec $k\geq 2$. Alors la solution $u$ du problème (\ref{PbEv}) vérifie de plus : \[u\in\mathscr{C}^{k-j}([0,+\infty[;D(A^j))\ \text{ pour } j=0,1,...,k\]}
+
+\subsubsection{Dans les espaces de Banach}
+Soit $E$ un espace de Banach.
+\Def{m-accrétif}{Soit $A:D(A)\subset E\to E$ un opérateur linéaire non-borné. On dit que $A$ est m-accrétif si $\overline{D(A)}=E$ et si pour tout $\lambda>0$, $I+\lambda A$ est bijectif de $D(A)$ sur $E$, avec $\|(I+\lambda A)^{-1}\|_{\mathscr{L}(E)}\leq 1$}
+
+\Theo{Hille-Yosida dans les espaces de Banach}{Soit $A$ un opérateur m-accrétif dans $E$. Alors pour tout $u_0\in D(A)$, il existe une fonction \[u\in\mathscr{C}^1([0,+\infty[;H)\cap\mathscr{C}([0,+\infty[;D(A))\]
+unique vérifiant (\ref{PbEv}). De plus, on a \[|u(t)\leq |u_0| \text{ et } \left| \frac{du}{dt}(t)\right|=|Au(t)|\leq |Au_0|\ \forall t\geq 0\]}
+
+\Theo{}{On suppose que $A$ est m-accrétif. Alors pour tout $u_0\in D(A)$, la solution $u$ de (\ref{PbEv}) est donnée par la formule exponentielle \[u(t)=\lim_{n\to+\infty} \left[\left(I+\frac{t}{n} A\right)^{-1}\right]^n u_0\]}
