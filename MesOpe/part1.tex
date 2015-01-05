@@ -25,8 +25,8 @@ Alors \[\widering{\bigcup_{i=1}^{\infty} X_i}=\emptyset\]}
 \end{dem}
 
 \Def{Orthogonal d'un ev}{Soit X un espace de Banach.\\
-Si $M\subset X$ est un sev, on pose \[M^{\perp}=f\in X'; \langle f,x\rangle =0 \forall x\in M\}\]
-Si $N\subset X'$ est un sev, on pose \[N^{\perp}=x\in X; \langle f,x\rangle =0 \forall f\in N\}\]
+Si $M\subset X$ est un sev, on pose \[M^{\perp}=\{f\in X'; \langle f,x\rangle =0\ \forall x\in M\}\]
+Si $N\subset X'$ est un sev, on pose \[N^{\perp}=\{x\in X; \langle f,x\rangle =0\ \forall f\in N\}\]
 $M^{\perp}$ (resp. $N^{\perp}$) est l'orthogonal de $M$ (resp. $N$), qui est un sev fermé de $X'$ (resp. $X$).}
 
 \Propo{}{Soit $M\subset X$ un sev. On a alors \begin{equation}\label{orthoTwice1}\left( M^{\perp}\right)^{\perp}=\overline{M}\end{equation}
@@ -61,7 +61,7 @@ On appelle Noyau de $A$ l'ensemble \[N(A)=\{u\in D(A);\ Au=0\}\subset E\]}
 \Def{fermé}{On dit qu'un opérateur $A$ est fermé si $G(A)$ est fermé dans $E\times F$.}
 
 \Rem{}{\begin{enumerate}
-	\item Pour prouver qu'un opérateur $A$ est femré, on procède en général de la manière suivante : on prend une suite $(u_n)$ dans $D(A)$ telle que $u_n\to u$ dans $E$ et $Au_n\to f$ dans $F$. Il s'agit ensuite de vérifier que 
+	\item Pour prouver qu'un opérateur $A$ est fermé, on procède en général de la manière suivante : on prend une suite $(u_n)$ dans $D(A)$ telle que $u_n\to u$ dans $E$ et $Au_n\to f$ dans $F$. Il s'agit ensuite de vérifier que 
 		\begin{enumerate}
 			\item $u\in D(A)$
 			\item $f=Au$
@@ -187,7 +187,7 @@ On note par $\rightharpoonup$ la convergence pour la topologie faible.}
 \item Admis
 \item Résulte de (1), puisque $|\langle f, x_n\rangle - \langle f,x\rangle|\leq \|f\|\|x_n-x\|$
 \item On utilise pour cela le corollaire du théorème de Banach-Steinhaus suivant : \\
-	\textbf{Corollaire :} Soit $G$ un espace de Banach et soit $B$ un sous-ensemble de $G$. On suppose que pour tout $f\in G'$, l'ensemble $f(B)=\bigcup_{x\in B}\langle f,x\rangle$ est borné. Alors $B$ est borné.
+	\textbf{Corollaire :} Soit $G$ un espace de Banach et soit $B$ un sous-ensemble de $G$. On suppose que pour tout $f\in G'$, l'ensemble $f(B)=\bigcup_{x\in B}\langle f,x\rangle$ est borné. Alors $B$ est borné.\\
 Il suffit donc de vérifier que pour chaque $f\in E'$, l'ensemble $(\langle f, x_n\rangle)_n$ est borné. Or, pour chaque $f\in E'$, la suite $\langle f,x_n\rangle$ converge vers $\langle f,x\rangle$ (en particulier, elle est bornée). Soit $f\in E'$, on a : \[|\langle f,x_n\rangle\leq \|f\|\|x_n\|\]
 et à la limite : \[|\langle f,x\rangle\leq \|f\|\liminf \|x_n\|\]
 Par conséquent : \[\|x\|=\sup_{\|f\|\leq 1} |\langle f,x\rangle|\leq \liminf \|x_n\|\]

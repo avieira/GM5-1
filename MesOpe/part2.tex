@@ -92,11 +92,11 @@ Donc $\|Tu_n-Tu_m\|\geq\frac{1}{2}$ - ce qui est absurde puisque $T$ est compact
 \textit{Inversement}, supposons que $R(I-T)=E$. Alors par corollaire précédent, $N(I-T^*)=R(I-T)^\perp=\{0\}$. Puisque $T^*\in\mathscr{H}(E')$, on peut appliquer ce qui précède à $T^*$ et conclure que $R(I-T^*)=E'$. Or, par le même corollaire, $N(I-T)=R(I-T^*)^\perp=\{0\}$.
 
 	\item Soit $d=$dim $N(I-T)$ et $d^*=$dim $N(I-T^*)$. On va d'abord montrer que $d^*\leq d$. Raisons par l'absurde et supposons que $d<d^*$. Comme $N(I-T)$ est de dimension finie, il admet un supplémentaire topologique dans $E$; il exuste donc un projecteur continue $P$ de $E$ sur $N(I-T)$.\\
-D'autre part, $R(I-T)=N(I-T)^\perp$ est de codomension finie $d^*$ et par conséquent, $R(I-T)$ admet dans $E$ un supplémentaire topologique, noté $F$ de dimension $d^*$. Comme $d<d^*$, il existe une application linéaire $\Lambda:N(I-T)\to F$ qui est injective et non surjective. POsons $S=T+(\Lambda\circ P)$; alors $R\in\mathscr{H}(E)$ puisque $\Lambda\circ P$ est de rang fini.\\
+D'autre part, $R(I-T)=N(I-T)^\perp$ est de codomension finie $d^*$ et par conséquent, $R(I-T)$ admet dans $E$ un supplémentaire topologique, noté $F$ de dimension $d^*$. Comme $d<d^*$, il existe une application linéaire $\Lambda:N(I-T)\to F$ qui est injective et non surjective. Posons $S=T+(\Lambda\circ P)$; alors $R\in\mathscr{H}(E)$ puisque $\Lambda\circ P$ est de rang fini.\\
 Montrons que $N(I-S)=\{0\}$. En effet, si \[0=u-Su=(u-Tu)-(\Lambda\circ Pu)\]
 alors \[u-Tu=0 \text{ et } \Lambda\circ Pu=0\]
 ie $u\in N(I-T)$ et $\Lambda u=0$, donc $u=0$\\
-En appliquant (3) à l'opérateur $S$, on voit que $R(I-S)=E$. Ceci est absurde puisqu'uk existe $f\in F$, $f\not\in R(\Lambda)$; l'équation $u-Su=f$ n'admet pas de solution.\\
+En appliquant (3) à l'opérateur $S$, on voit que $R(I-S)=E$. Ceci est absurde puisqu'il existe $f\in F$, $f\not\in R(\Lambda)$; l'équation $u-Su=f$ n'admet pas de solution.\\
 Par conséquent, on a prouvé que $d^*\leq d$. En appliquant ce résultat à $T^*$, on voit que \[\text{dim }N(I-T^{**})\leq \text{ dim }N(I-T^*)\leq \text{ dim }N(I-T)\]
 Or, $N(I-T^{**})\supset N(I-T)$ - ce qui permet de conclure que $d=d^*$.
 \end{enumerate}
@@ -169,14 +169,14 @@ Si $\lambda_n\to\lambda$, on aboutit à une contradiction, puisque $(Tu_n)$ adme
 
 \bigskip
 \textit{Retour à la démonstration du théorème :} Pour tout entier $n\geq 1$, l'ensemble \[\sigma(T)\cap\{\lambda\in\mathbb{R}, |\lambda|\geq\frac{1}{n}\}\]
-est vide ou fini (s'il contenait une infinité de points distincts, on aurait un point d'accumulation - puisque $\sigma(T)$ est compact - et on aboutirai à une contradiction avec le lemme démontré précédemment). Lorsque $\sigma(T)\backslash\{0\}$ contient une infinité de points distincts, on peut donc les ranger en une suite qui tend vers $0$.
+est vide ou fini (s'il contenait une infinité de points distincts, on aurait un point d'accumulation - puisque $\sigma(T)$ est compact - et on aboutirait à une contradiction avec le lemme démontré précédemment). Lorsque $\sigma(T)\backslash\{0\}$ contient une infinité de points distincts, on peut donc les ranger en une suite qui tend vers $0$.
 \end{enumerate}
 \end{dem}
 
 \subsubsection{Décomposition spectrale des opérateurs autoadjoints}
-n suppose dans la suite que $E=H$ est un espace de Hilbert et que $T\in\mathscr{L}(H)$. En identifiant $H$ et $H'$ (grâce au théorème de représentation de Riesz), on peut considérer que $T^*\in\mathscr{L}(H)$.
+On suppose dans la suite que $E=H$ est un espace de Hilbert et que $T\in\mathscr{L}(H)$. En identifiant $H$ et $H'$ (grâce au théorème de représentation de Riesz), on peut considérer que $T^*\in\mathscr{L}(H)$.
 
-\Def{Autoadjoint}{On dit qu'un opérateur $T\in\mathscr{L}(H)$ est autoadjoint su $T^*=T$, ie \[(Tu,v)=(u,Tv)\ \forall u,v\in H\]}
+\Def{Autoadjoint}{On dit qu'un opérateur $T\in\mathscr{L}(H)$ est autoadjoint si $T^*=T$, ie \[(Tu,v)=(u,Tv)\ \forall u,v\in H\]}
 
 \Propo{}{Soit $T\in\mathscr{L}(H)$ un opérateur autoadjoint. On pose :
 	\[m=\inf_{u\in H,\ |u|=1}(Tu,u) \text{ et } M=\sup_{u\in H,\ |u|=1}(Tu,u)\]
@@ -197,7 +197,7 @@ Les propriétés de $m$ s'obtiennent en remplaçant $T$ par $-T$
 \begin{dem}
 	D'après la proposition précédente, on sait que \[(Tu,u)=0\ \forall u\in H\]
 Il en résulte que :
-	\[2(Tu,v)=(T(u+v),u+v)-(Tu,u)-(Tv,v)=0 \forall u,v\in H\]
+	\[2(Tu,v)=(T(u+v),u+v)-(Tu,u)-(Tv,v)=0\ \forall u,v\in H\]
 Donc $T=0$
 \end{dem}
 
@@ -262,7 +262,7 @@ On voit alors que si $\left| 1-\frac{\lambda_0}{\lambda}\right|<1$, ie $\lambda>
 Si $A$ est maximal monotone, alors $I+A$ est surjectif. D'après ce qui précède, $I+\lambda A$ est surjectif pour $\lambda>\frac{1}{2}$ donc aussi pour $\lambda>\frac{1}{4}$, etc. Par récurrence on voit que $I+\lambda A$ est surjectif pour tout $\lambda>0$.
 \end{enumerate}\end{dem}
 
-\Def{Résolvante et résgularisée}{Soit $A$ un opérateur maximal monotone. On pose, pour tout $\lambda>0$, 
+\Def{Résolvante et régularisée}{Soit $A$ un opérateur maximal monotone. On pose, pour tout $\lambda>0$, 
 	\[J_\lambda=(I+\lambda A)^{-1} \text{ et } A_\lambda=\frac{1}{\lambda}(I-J_\lambda)\]
 $J_\lambda$ est la résolvante de $A$ et $A_\lambda$ est la régularisée Yosida de $A$.}
 
@@ -357,7 +357,7 @@ Alors $v$ vérifie
 \end{enumerate}}
 
 \subsubsection{Régularité}
-\Def{}{On définition par récurrence l'espace \[D(A^k)=\{v\in D(A^{k-1});\ Av\in D(A^{k-1})\},\ k \text{ entier }\geq 2\]
+\Def{}{On définit par récurrence l'espace \[D(A^k)=\{v\in D(A^{k-1});\ Av\in D(A^{k-1})\},\ k \text{ entier }\geq 2\]
 On vérifie aisément que $D(A^k)$ est un espace de Hilbert pour le produit scalaire
 	\[(u,v)_{D(A^k)}=\sum_{j=0}^k (A^ju,A^jv)\]
 }
