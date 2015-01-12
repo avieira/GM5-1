@@ -248,10 +248,10 @@ Donc $v_0=0$ et par suite $f=0$.
 D'autre part, on a $|u|^2+(Au,u)=(f,u)$ et par suite, $|u|\leq |f|$. L'opérateur $f\mapsto u$ noté $(I+A)^{-1}$ est donc un opérateur linéaire borné de $H$ dans $H$ et $\|(I+A)^{-1}\|_{\mathscr{L}(H)}\leq 1$.\\
 Montrons que $A$ est fermé. Soit $(u_n)\subset D(A)$ une suite telle que $u_n\to u$ et $Au_n\to f$. Il faut vérifier que $u\in D(A)$ et que $Au=f$. On a $u_n+Au_n\to u+f$ et donc
 	\[u_n=(I+A)^{-1}(u_n+Au_n)\to(I+A)^{-1}(u+f)\]
-Par conséquent, $u=(I+1)^{-1}(u+f)$, ie $u\in D(A)$ et $u+Au=f$.
+Par conséquent, $u=(I+A)^{-1}(u+f)$, ie $u\in D(A)$ et $Au=f$.
 
 	\item Supposons que pour un certain $\lambda_0>0$, on ait $R(I+\lambda_0 A)=H$. On va montrer que pour tout $\lambda>\frac{\lambda_0}{2}$, on a $R(I+\lambda A)=H$. \\
-Commençons par notrer que pour tout $f\in H$ il existe $u\in D(A)$ unique tel que $u+\lambda_0 Au=f$ ; l'opérateur $f\mapsto u$ est noté $(I+\lambda_0A)^{-1}$ et l'on a $\|(I+\lambda_0A)^{-1}\|_{\mathscr{L}(H)}\leq 1$. On cherche à résoudre l'équation
+Commençons par noter que pour tout $f\in H$ il existe $u\in D(A)$ unique tel que $u+\lambda_0 Au=f$ ; l'opérateur $f\mapsto u$ est noté $(I+\lambda_0A)^{-1}$ et l'on a $\|(I+\lambda_0A)^{-1}\|_{\mathscr{L}(H)}\leq 1$. On cherche à résoudre l'équation
 \[u+\lambda Au=f \text{ avec } \lambda >0\]
 On réécrit l'équation sous la forme
 	\[u+\lambda_0Au=\frac{\lambda_0}{\lambda}f+\left(1-\frac{\lambda_0}{\lambda}\right)u\]
@@ -334,7 +334,7 @@ Alors pour tout $u_0\in E$, il existe $u\in \mathscr{C}^1([0,\infty[;E)$ unique 
 %\end{dem}
 
 \Theo{Hille-Yosida}{Soit $A$ un opérateur maximal monotone dans un espace de Hilbert $H$. Alors pour tout $u_0\in D(A)$, il existe une fonction \[u\in\mathscr{C}^1([0,+\infty[;H)\cap\mathscr{C}([0,+\infty[;D(A))\]
-unique vérifiant (\ref{PbEv}). De plus, on a \[|u(t)\leq |u_0| \text{ et } \left| \frac{du}{dt}(t)\right|=|Au(t)|\leq |Au_0|\ \forall t\geq 0\]}
+unique vérifiant (\ref{PbEv}). De plus, on a \[|u(t)|\leq |u_0| \text{ et } \left| \frac{du}{dt}(t)\right|=|Au(t)|\leq |Au_0|\ \forall t\geq 0\]}
 
 \Rem{}{\begin{enumerate}
 	\item Soit $t\geq 0$; on considère l'application linéaire $S_A(t):u_0\mapsto u(t)$ de $D(A)$ dans $D(A)$ où $u(t)$ est la solution de (\ref{PbEv}). Étant donné que $|S_A(t)u_0|\leq|u_0|$, on peut prolonger $S_A(t)$ par continuité et densité en un opérateur linéaire continue de $H$ dans lui-même, qu'on désigne toujours par $S_A(t)$. On vérifie facilement que $S_A(t)$ possède les propriétés suivantes :
@@ -369,6 +369,6 @@ Soit $E$ un espace de Banach.
 \Def{m-accrétif}{Soit $A:D(A)\subset E\to E$ un opérateur linéaire non-borné. On dit que $A$ est m-accrétif si $\overline{D(A)}=E$ et si pour tout $\lambda>0$, $I+\lambda A$ est bijectif de $D(A)$ sur $E$, avec $\|(I+\lambda A)^{-1}\|_{\mathscr{L}(E)}\leq 1$}
 
 \Theo{Hille-Yosida dans les espaces de Banach}{Soit $A$ un opérateur m-accrétif dans $E$. Alors pour tout $u_0\in D(A)$, il existe une fonction \[u\in\mathscr{C}^1([0,+\infty[;H)\cap\mathscr{C}([0,+\infty[;D(A))\]
-unique vérifiant (\ref{PbEv}). De plus, on a \[|u(t)\leq |u_0| \text{ et } \left| \frac{du}{dt}(t)\right|=|Au(t)|\leq |Au_0|\ \forall t\geq 0\]}
+unique vérifiant (\ref{PbEv}). De plus, on a \[|u(t)|\leq |u_0| \text{ et } \left| \frac{du}{dt}(t)\right|=|Au(t)|\leq |Au_0|\ \forall t\geq 0\]}
 
 \Theo{}{On suppose que $A$ est m-accrétif. Alors pour tout $u_0\in D(A)$, la solution $u$ de (\ref{PbEv}) est donnée par la formule exponentielle \[u(t)=\lim_{n\to+\infty} \left[\left(I+\frac{t}{n} A\right)^{-1}\right]^n u_0\]}
