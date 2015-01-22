@@ -1,0 +1,219 @@
+\part{Mesures}
+\section{Mesures - premières propriétés}
+\subsection{$\sigma$-algèbre ou tribu}
+
+\Def{Tribu}{Une algèbre $\mathcal{A}$ est un ensemblede parties d'un espace $\Omega$ telle que :
+\begin{enumerate}
+	\item $\Omega$ et $\emptyset\in \mathcal{A}$
+	\item Si $A,B\in\mathcal{A}$, alors $A\cap B$, $A\cup B$ et $A\backslash B\in\mathcal{A}$
+\end{enumerate}
+$\mathcal{A}$ est une $\sigma$-algèbre ou tribu si pour tout suite $A_n\in\mathcal{A}$, on a $\bigcup_{n=1}^\infty A_n\in\mathcal{A}$}
+
+\Def{Espace mesurable}{Un espace mesurable $(\Omega,\mathcal{A})$ est un ensemble $\Omega$ munie d'une tribu $\mathcal{A}$.}
+
+Exemples de tribus :\begin{enumerate}
+	\item $\mathcal{A}=\{\emptyset,\Omega\}$
+	\item $\mathcal{A}=2^\Omega=\mathcal{P}(\Omega)$ l'ensemble de toutes les parties de $\Omega$
+	\item Si $(\mathcal{A}_i)_{i\in I}$ est une famille quelconque indexée sur un ensemble $I$ (fini ou infini, dénombrable ou non), alors $\mathcal{A}=\bigcap_{i\in I} \mathcal{A}_i$ est une tribu.
+\end{enumerate}
+
+\Def{}{Si $\mathcal{C}$ est un ensemble quelconque de parties de $\Omega$, on pose : \[\sigma(\mathcal{C})=\bigcap_{\mathcal{A} \sigma-algèbre de \Omega,\ \mathcal{C}\subset A} \mathcal{A}\]
+$\sigma(\mathcal{C})$ est une $\sigma$-algèbre de $\Omega$, appelée $\sigma$-algèbre engendrée par $\mathcal{C}$. C'est la plus petite tribu au sens de l'inclusion contenant $\mathcal{C}$.}
+
+\subsection{Mesures}
+\Def{}{Soit $\mu$ une fonction définie sur une classe $\mathcal{A}$ de partie de $\Omega$ à valeur dans $\mathbb{R}$ ou $[0,+\infty]$.
+\begin{enumerate}
+	\item $\mu$ est additive si pour tout suite finie d'ensembles $A_1,...,A_n\in\mathcal{A}$ deux à deux disjoints, on a \[\mu\left( \bigcup_{i=1}^n A_i\right)=\sum_{i=1}^n \mu(A_i)\]
+	\item $\mu$ est $\sigma$-additive si pour tout suite d'ensembles $(A_i)_{i\in\mathbb{N}^*}\subset\mathcal{A}$ deux à deux disjoints, on a \[\mu\left( \bigcup_{i=1}^\infty A_i\right)=\sum_{i=1}^\infty \mu(A_i)\]
+\end{enumerate}}
+
+\Propo{}{Soit $\mu$ une fonction définie sur une classe $\mathcal{A}$ de partie de $\Omega$ à valeur dans $[0,+\infty]$
+\begin{enumerate}
+	\item Si $\mu$ est additive ou $\sigma$-additive, alors $\mu$ est monotone, ie : \[\forall A,B\in\mathcal{A},\ A\subset B\Rightarrow \mu(A)\leq \mu(B)\]
+	\item Si $\mu$ est additive, alors $\mu$ est sous-additive, ie pour toute suite finie d'ensembles $A_1,...,A_n\in\mathcal{A}$, on a : \[\mu\left( \bigcup_{i=1}^n A_i\right)\leq\sum_{i=1}^n \mu(A_i)\]
+	\item Si $\mu$ est $\sigma$-additive, alors $\mu$ est $\sigma$-sous-additive, ie pour toute suite d'ensembles $(A_i)_{i\in\mathbb{N}^*}\subset\mathcal{A}$, on a : \[\mu\left( \bigcup_{i=1}^\infty A_i\right)\leq\sum_{i=1}^\infty \mu(A_i)\]
+\end{enumerate}}
+
+\Propo{}{Soit $\mu$ une fonction $\sigma$-additive réelle (en excluant un des infinis au moins) ou positive, définie sur une $\sigma$-algèbre $\mathcal{A}$ (avec $\mu(\emptyset)=0$).
+\begin{enumerate}
+	\item Continuité à gauche : si $A_1\subset A_2\subset ...$ est une suite croissante de $\mathcal{A}$, alors \[\lim_{n\to+\infty} \mu(A_n)=\mu\left(\bigcup_{i=1}^\infty A_i\right)\]
+	\item Continuité à droite : si $A_1\supset A_2\supset ...$ est une suite décroissante de $\mathcal{A}$ telle que $\bigcap_{i=1}^\infty A_i=\emptyset$ et telle que l'un des $A_n$ soit de mesure finie, alors \[\lim_{n\to+\infty} \mu(A_n)=0\]
+\end{enumerate}}
+
+Contre-exemple dans le cas où la mesure de tout $A_n$ n'est pas finie : On prend dans $\mathbb{R}$ : $A_n=[n,+\infty[$. On a pour tout $n$ $\mu(A_n)=+\infty$. Alors $\bigcap_n A_n=\emptyset$, et 
+\[\mu\left( \bigcap_n A_n\right)=0\]
+Donc \[\mu(A_n)\not\to\mu\left( \bigcap_n A_n \right)\]
+
+\Def{}{Soit $\mathcal{A}$ une tribu sur un ensemble $\Omega$ :\begin{enumerate}
+	\item Une mesure réelle $\mu$ sur $\mathcal{A}$ est une fonction $\sigma$-additive telle que $\mu:\mathcal{A}\to\mathbb{R}$
+	\item Une mesure positive $\mu$ sur $\mathcal{A}$ est une fonction $\sigma$-additive telle que $\mu:\mathcal{A}\to[0,+\infty]$ et telle que $\mu(\emptyset)=0$
+\end{enumerate}
+On dit que $\mu$ est $\sigma$-finie si de plus, on a \[\Omega=\bigcup_{i=1}^\infty \Omega_i \text{ avec } \Omega_n\in\mathcal{A} \text{ et } \mu(\Omega_i)<\infty\]}
+
+\Def{}{Un espace mesuré $(\Omega,\mathcal{A},\mu)$ est un ensemble $\Omega$ munie d'une $\sigma$-algèbre $\mathcal{A}$ et d'une mesure $\mu$ positive définie sur $\mathcal{A}$. Si $\mu(\Omega)=1$, alors $(\Omega,\mathcal{A},\mu)$ est appelé un espace probabilisé.}
+
+\Def{}{Soit $(\Omega,\mathcal{A},\mu)$ un espace mesuré.
+\begin{enumerate}
+	\item Une partie $N$ de $\Omega$ est dite négligeable lorsqu'il existe un $A\in\mathcal{A}$ contenant $N$ et de mesure nulle.
+	\item $\mu$ est une mesure complète lorsque tout ensemble négligeable pour $\mu$ appartient à la tribu $\mathcal{A}$.
+\end{enumerate}}
+
+\Def{}{Soit $\mu$ une fonction positive définie sur une partie $\mathcal{A}$ d'un ensemble $\Omega$. On appelle mesure extérieure la fonction définie pour tout sous-ensemble $A$ de $\Omega$ par :
+	\[\mu^*(A)=\inf \left\{ \sum_{i=1}^\infty \mu(A_n);\ A_n\in\mathcal{A},\ A\subset\bigcup_{i=1}^\infty A_i\right\}\]}
+
+\Prop{de la mesure extérieure}{\begin{enumerate}
+	\item $\mu^*$ est monotone
+	\item $\mu^*$ est $\sigma$-sous-additive
+\end{enumerate}}
+
+\textbf{Remarque : } En général, $\mu^*$ n'est pas additive.
+
+\Def{}{Soit $\mu$ une fonction positive définie sur une partie $\mathcal{A}$ d'un ensemble $\Omega$. Un sous-ensemble $A$ de $\Omega$ est dit $\mu$-mesurable si : \[\forall \varepsilon>0,\ \exists A_\varepsilon\in\mathcal{A} \text{ tel que } \mu^*(A\Delta A_\varepsilon)<\varepsilon\]
+où $A\Delta A_\varepsilon=(A\cup A_\varepsilon)\backslash(A\cap A_\varepsilon)$\\
+On note $\mathcal{A}_\mu$ la classe des ensembles $\mu$-mesurable.}
+
+\Theo{}{Soit $\mu$ une fonction réelle positive, $\sigma$-additive, définie sur une algèbre $\mathcal{A}$. Alors : \begin{enumerate}
+	\item On a $\mathcal{A}\subset\sigma(\mathcal{A})\subset \mathcal{A}_\mu$ et la mesure extérieure $\mu^*$ coïncide avec $\mu$ sur $\mathcal{A}$
+	\item La famille d'ensemble $\mathcal{A}_\mu$ est une $\sigma$-algèbre sur $\Omega$
+	\item La restriction de $\mu^*$ à $\mathcal{A}_\mu$ est $\sigma$-additive et est une mesure complète
+	\item La fonction $\mu^*$ est l'unique extension positive $\sigma$-additive à $\sigma(\mathcal{A})$ (et aussi à $\mathcal{A}_\mu$).
+\end{enumerate}}
+
+\Propo{}{Soit $\mu$ une fonction réelle $\sigma$-additive, définie sur une algèbre $\mathcal{A}$ et $A\subset\Omega$. Alors il y a équivalence des propositions : \begin{enumerate}
+	\item $A$ est $\mu$-mesurable ($A\in\mathcal{A}_\mu$)
+	\item $\forall \varepsilon>0$, $\exists A_{\varepsilon}\in\mathcal{A}$ tel que $\mu^*(A\Delta A_\varepsilon)<\varepsilon)$
+	\item Il existe deux ensembles mesurables $A'$, $A''\in\sigma(\mathcal{A})$ tels que \[A'\subset A\subset A'' \text{ tels que } \mu^*(A''\backslash A')=0\]
+	\item $\mu^*(A)+\mu^*(\Omega\backslash A)=\mu^*(\Omega)$
+	\item Pour tout $E\subset \Omega$, \[\mu^*(E\cap A)+\mu^*(E\backslash A)=\mu^*(E)\]
+\end{enumerate}}
+
+\subsection{Décomposition de Hahn}
+\Def{}{Soit $A\in\mathcal{A}$. On dit que $A\geq 0$ si $\forall B\subset A$, $B\in\mathcal{A}$, $\mu(B)\geq 0$.}
+
+\Theo{Décomposition de Hahn}{Soit $\mu$ une mesure $\sigma$-additive à valeurs réelles définie sur un espace mesurable $(\Omega,\mathcal{A})$. Alors il existe des ensembles disjoints $\Omega^+$ et $\Omega^-$ de $\mathcal{A}$ tels que $\Omega^+\cup\Omega^-=\Omega$ et tels que pour tout $A\in\mathcal{A}$, on a \[\mu(A\cap\Omega^+)\geq 0 \text{ et } \mu(A\cap\Omega^-)\leq 0\]}
+
+\begin{dem}
+On suppose que $\mu$ ne prend pas comme valeur $-\infty$ (sinon, il suffirait de faire le raisonnement avec $-\mu$).\\
+On commence par le lemme suivant :\\
+\textbf{Lemme :} On suppose que $D\in\mathcal{A}$ est tel que $\mu(D)\leq 0$. Alors il existe $A\subset D$, $A\leq 0$, tel que $\mu(A)\leq \mu(D)$.\\
+En effet, définissons $A_0=D$. En considérant que pour un certain entier $n$, $A_n\subset D$ a été construit, on pose 
+	\[t_n=\sup\{\mu(B);\ B\in\mathcal{A}, B\subset A_n\}\]
+Ce supremum pourrait être a priori infini. Puisque $B$ pourrait éventuellement être l'ensemble vide, et que $\mu(\emptyset)=0$, on a $t_n\geq 0$. Par définition de $t_n$, il existe $B_n\subset A_n\in\mathcal{A}$ tel que 
+	\[\mu(B_n)\geq\min\left\{1,\frac{t_n}{2}\right\}\]
+On pose $A_{n+1}=A_n\backslash B_n$ pour terminer cette phase de construction. Soit \[A=D\backslash\bigcup_{n=0}^\infty B_n\]
+Puisque les ensembles $(B_n)_{n\geq 0}$ sont des ensembles disjoints de $D$, il résulte de la $\sigma$-additivité de la mesure signée $\mu$ que
+	\[\mu(A)=\mu(D)-\sum_{n=0}^\infty \mu(B_n)\leq \mu(D)-\sum_{n=0}^\infty \underbrace{\min\left\{1,\frac{t_n}{2}\right\}}_{\geq 0}\]
+Cela montre que $\mu(A)\leq \mu(D)$.\\
+Supposons par l'absurde que $A$ n'est pas un ensemble négatif (ie $\neg (A\leq 0)$). Il existe donc $B\in\mathcal{A}$, sous-ensemble de $A$, tel que $\mu(B)>0$. Alors $t_n\geq \mu(B)$ pour tout $n$, et donc la série à droite de l'égalité doit diverger. Cela implique que $\mu(A)=-\infty$, ce qui est exclu. Donc $A$ doit être un ensemble négatif, ie $A\leq 0$.
+
+\bigskip
+\textit{Construction de la décomposition :} Soit $\Omega_0^-=\emptyset$. Constructivement, pour $\Omega_n^-$ donné, on définit \[s_n=\inf\{\mu(D);\ D\in\mathcal{A}, D\subset \Omega\backslash\Omega_n^-\}\]
+Cet infimum pourrait a priori être $-\infty$. Puisque l'ensemble vide est un $D$ possible dans la définition de l'infimum, et que $\mu(\emptyset)=0$, on a $s_n\leq 0$. Donc il existe $D_n\in\mathcal{A}$, $D_n\subset\Omega\backslash \Omega_n^-$ et \[\mu(D_n)\leq\max\left\{\frac{s_n}{2},-1\right\}\leq 0\]
+D'après le lemme précédent, il existe $A_n\subset D_n$, $A_n\leq 0$ tel que $\mu(A_n)\leq \mu(D_n)$. On définit $\Omega_{n+1}^-=\Omega^-_n\cup A_n$ pour terminer la phase de construction.\\
+Soit \[\Omega^-=\bigcup_{n=0}^\infty A_n\]
+Puisque les $(A_n)_{n\geq 0}$ sont disjoints, on a pour tout $B\subset\Omega^-$ dans $\mathcal{A}$ que \[\mu(B)=\sum_{n=0}^\infty \mu(B\cap A_n)\]
+par la $\sigma$-additivité de $\mu$. En particulier, cela montre que $\Omega^-\leq 0$. \\
+Soit $\Omega^+=\Omega\backslash\Omega^-$. Si $\Omega^+$ n'était pas un ensemble positif (ie $\neg (\Omega^+\geq 0)$), il existerait un sous-ensemble $D\subset\Omega^+$ dans $\mathcal{A}$ tel que $\mu(D)<0$. Alors $s_n\leq \mu(D)$ pour tout $n$ et 
+	\[\mu(\Omega^-)=\sum_{n=0}^\infty \mu(A_n)\leq \sum_{n=0}^\infty \max\left\{\frac{s_n}{2},-1\right\}=-\infty\]
+ce qui est exclu. Donc $\Omega^+\geq 0$.
+
+\bigskip
+\textit{Preuve de l'unicité :} Supposons que $(\tilde{\Omega}^-,\tilde{\Omega}^+)$ soit une autre décomposition de Hahn de $\Omega$. Alors $\Omega^+\cap\tilde{\Omega}^-\geq 0$ et aussi $\leq 0$. Donc tout sous-ensemble mesurable de cet ensemble sera de mesure nulle. On peut appliquer le même raisonnement à $\Omega^-\cap\tilde{\Omega}^+\geq 0$. Or
+	\[(\Omega^+\Delta\tilde{\Omega}^+)\cup(\Omega^-\Delta\tilde{\Omega}^-)=(\Omega^+\cap\tilde{\Omega}^-)\cup(\Omega^-\cap\tilde{\Omega}^+)\]
+Cela complète donc la démonstration.
+\end{dem}
+
+\Coro{}{Sous les hypothèses du théorème précédent, on pose pour tout $A\in\mathcal{A}$ \[\mu^-(A)=-\mu(A\cap\Omega^-) \text{ et } \mu^+(A)=\mu(A\cap\Omega^+)\]
+\begin{enumerate}
+	\item $\mu^+$ et $\mu^-$ sont des mesures positives à valeurs réelles, $\sigma$-additives et on a l'égalité pour tout $A\in\mathcal{A}$ \[\mu(A)=\mu^+(A)-\mu^-(A)\]
+	\item L'enseble des valeurs de $\mu$ est borné : \[\forall A\in\mathcal{A},\ |\mu(A)|\leq M=\max\{\mu^+(\Omega),\mu^-(\Omega)\}\]
+\end{enumerate}}
+
+\Def{}{Les mesures $\mu^+$ et $\mu^-$ sont appelées la partie positive et négative de $\mu$. La mesure \[|\mu|=\mu^++\mu^-\] est appelée la variation totale de $\mu$.\\
+La quantité \[\|\mu\|=|\mu|(\Omega)=\mu^+(\Omega)+\mu^-(\Omega)\]
+est appelée la norme en variation de $\mu$.}
+
+\Rem{}{\begin{enumerate}
+	\item La décomposition $\mu=\mu^+-\mu^-$ est appelée la décomposition de Jordan ou de Hahn-Jordan de $\mu$
+	\item On peut définir les mesures $\mu^+$ et $\mu^-$ par la formule
+\begin{eqnarray*}
+	\mu^+(A)&=&\sup\{\mu(B);\ B\subset A, B\in\mathcal{A}\}\\
+	\mu^-(A)&=&\sup\{-\mu(B);\ B\subset A, B\in\mathcal{A}\}\\
+\end{eqnarray*}
+
+	\item On a $\|\mu\|\leq 2\sup\{|\mu(A)|; A\in\mathcal{A}\}\leq 2\|\mu\|$
+\end{enumerate}}
+
+\section{Fonctions mesurables, intégrale de Lebesgue}
+Dnas tout ce qui suit, $(\Omega,\mathcal{A},\mu)$ est un espace mesuré.
+\subsection{Fonctions mesurables}
+\Def{}{Une fonction mesurable sur $\Omega$ est une fonction $f:\Omega\to\mathbb{R}$ telle que l'image réciproque de tout borélien de $\mathbb{R}$ est mesurable. On a les mêmes définition pour une fonction à valeur dans $\mathbb{R}$, $\overline{\mathbb{R}}$ ou $\mathbb{R}^N$.\\
+Dans le cas de $\mathbb{R}$, c'est équivalent à : \[\forall c\in\mathbb{R},\ \{x\in\Omega;\ f(x)<c\}\in\mathcal{A}\]}
+
+\Prop{}{On a les propriétés suivantes : \begin{itemize}
+	\item Si $f$ est mesurable et $\phi$ continue, alors $\phi(f)$ est mesurable.
+	\item Si $g$ est mesurable et $g(x)\neq 0$ $\forall x\in\Omega$, alors ${}^1/_g$ est mesurable.
+	\item Si $f$ et $g$ sont mesurables, alors $f+g$, $fg$, $\max(f,g)$ et $\min(f,g)$ sont mesurables.
+	\item Si $(f_n)$ sont mesurables, alors $\sup_{n\geq 0} f_n$, $\inf_{n\geq 0} f_n$, $\limsup_{n\to+\infty} f_n$ et $\liminf_{n\to+\infty} f_n$ sont mesurables.
+	\item Sin $f_n(x)\to f(x)$ pour presque tout $x\in\Omega$, alors $f=\lim_{n\to +\infty} f_n$ est mesurable.
+\end{itemize}}
+
+\Def{}{Soit $A$ une partie de $\Omega$. La fonction indicatrice ou fonction caractéristique de $A$ et est notée $1_A$ est la fonction définie par \[1_A(x)=\left\{\begin{array}{c c c} 
+0 &\text{ si }& x\not\in A\\
+1 &\text{ si }& x\in A
+\end{array}\right.\]
+$1_A$ est mesurable si et seulement si $A$ est mesurable et on pose \[\mu(A)=\int_\Omega 1_A d\mu\]}
+
+\Def{}{Une fonction étagée $s$ est définie par : \[s=\sum_k a_k 1_{A_k}\]
+où les ensembles $A_k$ sont mesurables et $a_k\in\mathbb{C}$. On définit alors l'intégrale de $s$ par : \[\int_\Omega sd\mu=\sum_k a_k\mu(A_k)\]}
+
+\subsection{Intégrale de Lebesgue}
+\Def{}{Si $f$ une fonction positive mesurable définie sur $\Omega$. On pose :
+	\[\int_\Omega fd\mu=\sup_{s\ étagée,\ s\leq f} \int_\Omega sd\mu\]}
+
+\Def{}{Soit $f$ une fonction mesurable définie sur $\Omega$ à valeurs dans $\mathbb{R}$ ou $\mathbb{C}$.\begin{itemize}
+	\item On dit que $f$ est intégrable si $\int_\Omega |f|d\mu<\infty$
+	\item Si $f$ est à valeurs réelles, on pose $f=f^+-f^-$ et \[\int_\Omega fd\mu=\int_\Omega f^+d\mu-\int_\Omega f^-d\mu\]
+	\item Si $f$ est à valeurs complexes et $f=g+ih$ avec $g$ et $h$ à valeurs réelles, \[\int_\Omega fd\mu=\int_\Omega gd\mu+i\int_\Omega hd\mu\]
+\end{itemize}}
+
+\Prop{}{\begin{itemize}
+	\item Si $f$ et $g$ sont des fonctions intégrables et $a$ et $b$ sont des nombres complexes, alors $af+bg$ est intégrable et $\int (af+bg)d\mu=a\int fd\mu+b\int gd\mu$
+	\item Si $f\leq g$ aors $\int fd\mu\leq \int gd\mu$
+	\item Deux fonctions qui diffèrent seulement sur un ensemble de mesure $\mu$ nulle ont la même intégrale : si $\mu(\{f(x)\neq g(x)\})=0$, alors $f$ est intégrable si et seulement si $g$ est intégrable, et dans ce cas, $\int fd\mu=\int gd\mu$
+\end{itemize}}
+
+\Theo{Convergence monotone}{Soit $(f_n)$ une suite de fonctions mesurables positives telles que pour tout $n$, $f_n\leq f_{n+1}$. On pose $f=\lim_{n\to+\infty} f_n$. Alors on a \[0\leq \lim_{n\to\infty} \int f_nd\mu=\int d\mu\leq\infty\]}
+
+\Lem{de Fatou}{Soit $(f_n)_n$ une suite de fonctions mesurables positives. On pose $f=\liminf_{n\to +\infty} f_n$. On a alors \[0\leq\int fd\mu\leq \liminf_{n\to+\infty} f_nd\mu\leq\infty\]}
+
+\Theo{convergence dominée}{Soit $(f_n)_n$ une suite fonctions mesurables. On suppose que : \begin{enumerate}
+	\item $f_n(x)\xrightarrow[n\to+\infty]{} f(x)$ p.p.
+	\item $\exists g$ intégrable telle que pour tout $n$, \[|f_n(x)\leq g(x) \text{ p.p.}\]
+\end{enumerate}
+Alors $f$ est intégrable et \[\lim_{n\to+\infty} \int f_nd\mu=\int fd\mu\]}
+
+\subsection{Inégalités}
+\textbf{Inégalité de convexité} Soit $f$ une fonction convexe, $(x_1,...,x_n)$ une famille de réels dans l'intervalle de définition de $f$, $(\lambda_1,...,\lambda_n)$ une famille de réels de l'intervalle $[0,1]$ tels que : \[\sum_{i=1}^n \lambda_i =1\]
+Alors on a : \[f\left(\sum_{i=1}^n \lambda_ix_i\right)\leq\sum_{i=1}^n \lambda_i f(x_i)\]
+
+\bigskip
+\textbf{Inégalité de Young} Pour $1\leq p,q\leq \infty$, $\frac{1}{p}+\frac{1}{q}+1$, $a,b\geq 0$, $\varepsilon>0$ :
+	\[2ab\leq a^2+b^2\]
+	\[ab\leq \frac{a^p}{p}+\frac{b^q}{q}\]
+	\[ab\leq\frac{(\varepsilon a)^p}{p}+\frac{b^q}{q\varepsilon^q}\]
+
+\bigskip
+\textbf{Inégalité de Jensen} Si $\mu(\Omega)=1$, $g$ est une fonction à valeurs réelles intégrable et si $\phi$ est une fonction convexe réelle mesurable, alors :
+	\[\phi\left(\int_\Omega gd\mu\right)\leq \int_\Omega \phi\circ gd\mu\]
+
+\bigskip
+\textbf{Inégalité de Cauchy-Schwarz} \begin{itemize}
+\item Dans $(E,\langle \bullet, \bullet \rangle)$, espace préhilbertien réelle ou complexe : 
+	\[\langle x,y\rangle\leq \|x\|\|y\|\]
+De plus, les deux membres sont égaux si et seulement si $x$ et $y$ sont linéairement indépendants
+\item Dans $\mathbb{C}^n$ : \[\left|\sum_{i=1}^n x_iy_i \right|\leq \left( \sum_{i=1}^n x_i^2\right)^{\frac{1}{2}}\left( \sum_{i=1}^n y_i^2\right)^{\frac{1}{2}}\]
+\item Dans $L^2(\Omega)$ : \[\left|\int f\bar{g}\right|\leq \left( \int |f|^2\right)^{\frac{1}{2}}\left( \int |g|^2\right)^{\frac{1}{2}}\]
+\end{itemize}
+
+Et le reste, j'ai la flemme.
