@@ -1,0 +1,55 @@
+\documentclass{article}
+
+\input{../../../preambule}
+
+\newtheorem{theorem}{Théorème}[subsection]
+
+\title{Thresholds and Travelling Waves for the Geographical Spread of Infection\\\small{O. Diekmann}}
+\author{Alexandre \bsc{Vieira}}
+\date{\today}
+
+\hypersetup{colorlinks=true, urlcolor=bleu, linkcolor=red}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section*{Introduction}
+But de l'article : étude des équations de convolution non linéaire sur la droite réelle.
+
+\section{Le modèle}
+On considère une population dans un domaine $\Omega$ (sous-ensemble fermé de $\mathbb{R}^n$) et sensible à une maladie contagieuse. On commence par donner une équation donnant l'évolution de l'épidémie en partant de quelques hypothèses simples. On ne s'intéresse qu'à l'infection, on ignore donc tous les effets dûs aux naissances, migrations, etc. On ajoute également une dépendance spatiale qui se manifeste par le fait qu'un individu infecté en $x_1$ peut infecter d'autres individus en $x_2$.
+
+\bigskip
+On note $S(t,x)$ et $I(t,x)$ la densité de \textit{susceptibles} et d'\textit{infectés} respectivement, au moment $t$ et à la position $x$. Soit $i(t,\tau,x)d\tau$ la densité d'infectés entre le temps $t-\tau$ et $t-\tau-d\tau$. Alors :
+\begin{equation} \label{2.1} I(t,x)=\int_0^\infty i(t,\tau,x)d\tau \end{equation}
+On suppose que la taille de la population est assez grande, de sorte qu'on puisse considérer $S$, $I$ et $i$ comme continues, et même continuement différentiables, à valeurs réelles.\\
+On note $B=B(t,x)$ l'infectiosité féfinie comme la \textit{vitesse} à laquelle les susceptibles deviennent infectés. On pose comme hypothèses :
+\begin{enumerate}
+	\item La maladie induit une immunité permanente, telle que la transition de $I$ à $S$ soit impossible
+	\item Il existe une fonction positive $A=A(\tau,x,\xi)$ telle que :
+\begin{equation} \label{2.2} B(t,x)=\int_0^\infty \int_\Omega i(t,\tau,\xi)A(\tau,x,\xi)d\xi d\tau \end{equation}
+Ainsi, $A$ décrit l'infectiosité au point $x$ dû à un infecté malade depuis le temps $\tau$ au point $\xi$. De  nombreuses caractéristiques sont incorporées dans $A$.
+\end{enumerate}
+On en arrive ainsi au système dynamique d'équations suivant :
+\begin{eqnarray}
+\label{2.3} \derPar{S}{t}(t,x) &=& -S(t,x)B(t,x)\\
+\label{2.4} i(t,0,x) &=& \derPar{S}{t}(t,x) \\
+\label{2.5} i(t,\tau,x)&=&i(t-\tau,0,x)
+\end{eqnarray}
+
+En éliminant $i$ dans (\ref{2.2}) grâce à (\ref{2.4}) et (\ref{2.5}), et en remplaçant $B$ par sa nouvelle expression dans (\ref{2.3}), on obtient :
+	\begin{equation} \label{2.6} \derPar{S}{t}(t,x)=S(t,x)\int_0^\infty\int_\Omega \derPar{S}{t}(t-\tau,\xi)A(\tau,x,\xi)d\xi d\tau \end{equation}
+(Et miraculeusement, le signe négatif disparaît)\\
+Une solution $S$ de (\ref{2.6}) doit être définie au moins pour $-\infty<t\leq T$ pour un $T$ fini.\\
+Un problème aux valeurs limites approprié serait obtenu en ajoutant :
+	\[i(0,\tau,x)=i_0(\tau,x) \text{ et } S(0,x)=S_0(x)\]
+et de restreindre la validité du système dynamique (\ref{2.3})-(\ref{2.5}) à $t>0$. Ainsi, on obtient à la place de (\ref{2.6}) :
+	\begin{equation} \label{2.7} \derPar{S}{t}(t,x)=S(t,x)\left(\int_0^t \int_\Omega \derPar{S}{t}(t-\tau,\xi)A(\tau,x,\xi)d\xi d\tau -h(t,x)\right)\end{equation}
+où :
+	\begin{equation} \label{2.8} h(t,x)=\int_0^\infty \int_\Omega i_0(\tau,\xi)A(t+\tau,x,\xi)d\xi d\tau \end{equation}
+(Reprendre le $B$, le découper pour $\tau$ avant $t$ ou après $t$, voir ce que ça fait)
+\end{document}
