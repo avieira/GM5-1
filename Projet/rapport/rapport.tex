@@ -57,6 +57,7 @@ Il existe également d'autres individus, comme le modèle d'infectieux distribu�
 où $D$ est le taux auquel les individus change de position dans $\Omega$. Nous ne nous intéresserons pas à ce genre de modèle et nous nous concentrerons uniquement sur le modèle (\ref{eqKot})
 
 \subsection{Étude de la vitesse de propagation}
+\label{refVit}
 Medlock \cite{KotMedlock03} a montré que la vitesse de propagation de la solution du modèle (\ref{eqKot}) $I_n$ est bornée par la solution du modèle linéaire $I_0$, linéarisé autour du point d'équilibre $I=0$ :
 \begin{equation}\label{modLin}
 \derPar{I}{t}=\beta(x)N\int_{\mathbb{R}}k(x,y)I(y,t) dt
@@ -82,6 +83,7 @@ Pour avoir la borne supérieure, on doit prendre l'infimum :
 \end{equation}
 
 \subsection{Étude de la forme du front d'onde}
+\label{refForm}
 On se limite ici à un front d'onde sur la droite réelle vérifiant l'équation (\ref{eqKot}) et se propageant vers $+\infty$.\\
 Le front d'onde connecte les deux points d'équilibre $I=0$ et $I=1$. Par un raisonnement par perturbations, Medlock \cite{KotMedlock03} propose une approximation de la forme de la solution de l'onde propagatrice.\\
 On commence par définir $z=x-ct$ avec $c>0$ et on pose $I(x,t)=I(z)$. Ainsi, (\ref{eqKot}) devient :
@@ -249,14 +251,72 @@ Sous ces considérations, on arrive donc au problème suivant :
 où $x_{\mu}$ désigne la largeur de bande et $R$ le ratio de présence des deux variétés :
 	\[R=\frac{\int_{\Omega} \mathds{1}_{\{\beta(x)=\beta_1\}}(x)dx}{\int_{\Omega} \mathds{1}_{\{\beta(x)=\beta_2\}}(x)dx}\]
 
-Ce problème est très difficilement résolvable : $I$ ne dépendra pas simplement de $t$, et dépend même de $R$ et de $x_{\mu}$ qui seront variables dans ce problème.
+Ce problème est très difficilement résolvable : $I$ ne dépendra pas simplement de $t$, et dépend même de $R$ et de $x_{\mu}$ qui seront variables dans ce problème. Mais nous pouvons quand même essayer d'avoir une approche pouvant nous donner une solution meilleure que l'autre. Dans notre cas : quelle serait la meilleure disposition entre bande et damier, et comment choisir la largeur pour que le pathogène aille le moins vite possible ?
 
-\subsection{Techniques d'optimisation}
-Le problème n'est pas tellement d'avoir la solution optimale mais au moins une solution assez satisfaisante. Pour cela, il existe plusieurs méthodes d'optimisation basées sur une approche heuristique, comme par exemple le recuit simulé. 
+\subsection{Considérations théoriques}
+Reprenons ce que nous avons vu dans les parties \ref{refVit} et \ref{refForm}. Comme nous l'avons vu, la vitesse du front d'onde peut être majorée par l'expression :
+\begin{equation}
+	c=\beta\underbrace{\inf_{\theta>0} \frac{M(\theta)}{\theta} }_{=K}= \beta K
+\end{equation}
+De même, une première approximation à l'ordre 0 de la forme du front d'onde est donnée par :
+\begin{equation}
+	I(z)=\frac{1}{1+\exp\left(\frac{\beta}{c}z\right)}
+\end{equation}
+On a ainsi accès à la largeur du front d'onde :
+\begin{equation}
+	w=\frac{c}{\beta}=\frac{\beta K}{\beta}=K \text{ constante indépendante de }\beta
+\end{equation}
 
-\subsection{Résultats numériques}
+On pourrait donc penser que si la largeur de chaque bande est supérieure à la largeur du front, le front pourra être ralenti. Des bandes de largeur inférieure à celle du front devraient en quelque sorte moyenner les défauts.\\
+Le fait que la largeur du front est indépendante de $\beta$ semble être vérifié par nos simulations, comme on le voit figure \ref{figLarg}. Ce test a été effecté avec deux valeurs de $\beta$, identique sur tout le domaine (ie $\beta=1$ et $\beta=0.25$) et les calculs ont été arrêtés dès que la moitié du domaine était recouvert. La valeur de $w$ lue était à peu près de $12$.
+
+\begin{figure}[!h]
+\centering
+	\includegraphics[scale=0.75]{img/plot1-larg.pdf}
+	\includegraphics[scale=0.75]{img/plot25-larg.pdf}
+\caption{Propagation du front pour deux valeurs de $\beta$ uniforme sur le domaine}
+\label{figLarg}
+\end{figure}
+
+\subsection{Simulation numérique}
+Nous avons relancé nos simulations avec différentes valeurs pour la largeur de bande tournant autour de 12. Les résultats sont visibles figure \label{figProp1}. Nous avons pris une répartition en damier ou en bande de $\beta$, avec une valeur de 1 ou de 0.25. On trace enfin l'intégrale suivante en fonction du temps :
+\begin{equation}\label{integral}
+	\frac{1}{mes(\Omega)}\int_\Omega I(x,t) dx
+\end{equation}
+Ce qui nous intéresse est le temps $t$ où cette intégrale dépasse $0.5$.
+\begin{figure}[!h]
+\centering
+	\includegraphics[scale=0.75]{img/plot1.pdf}
+	\includegraphics[scale=0.75]{img/plot2.pdf}
+\caption{Valeur de l'intégrale \ref{integral} pour différentes valeurs de $x_{\mu}$ en fonction du temps, avec une répartition en bande puis en damier.}
+\label{figProp1}
+\end{figure}
+
+Les figures \ref{figProp1} présentent déjà un certain avantage pour la répartition en damier. Le résultat est encore plus frappant si on ne regarde que par exemple deux valeurs autour de la valeur estimée de la largeur du front, comme on le voit figure \ref{figProp2}
+
+\begin{figure}[!h]
+\centering
+	\includegraphics[scale=0.75]{img/plot1-2.pdf}
+	\includegraphics[scale=0.75]{img/plot2-2.pdf}
+\caption{Valeur de l'intégrale \ref{integral} pour différentes valeurs de $x_{\mu}$ en fonction du temps, avec une répartition en bande puis en damier.}
+\label{figProp2}
+\end{figure}
+
+Comme on le voit (et cela est clairement plus visible dans la répartition en damier, mais l'observation reste vraie pour la répartition en bande dans une moindre mesure), les valeurs inférieures à 12 représentent un avantage : le pathogène progresse moins rapidement. Cela est contraire à notre intuition, mais cela reste une piste à suivre.
+
+%\subsection{Techniques d'optimisation}
+%Le problème n'est pas tellement d'avoir la solution optimale mais au moins une solution assez satisfaisante. Pour cela, il existe plusieurs méthodes d'optimisation basées sur une approche heuristique, comme par exemple le recuit simulé. 
+%
+%\subsection{Résultats numériques}
+\clearpage
 
 \section*{Conclusion}
+Nous avons avancé par rapport à ce problème : nous avons un premier code, tournant rapidement, et nous donnant des résulats assez satisfaisant. Grâce aux premiers résulats théoriques et numériques que nous avions à disposition, nous avons été capables d'explorer une partie du problème, et les résulats sont assez encourageants.\\
+Il reste encore beaucoup à faire avec ce problème. La résolution du problème (\ref{pblmOptiTot}) reste encore à être observée, mais ces premières observations peuvent donner une première indication sur la direction dans laquelle nous pouvons continuer les recherches.
+
+\bigskip
+D'un point de vue plus personnel, ce projet m'a permis d'avoir une approche physique des problèmes que je rencontre, assez éloigné des problèmes plus mathématiques que j'ai l'habitude d'analyser. Cela m'a donné une vision assez nouvelle des problèmes que je pourrai rencontrer, et de la façon dont je pourrais les aborder.\\
+Je tiens à remercier M. Caputo et Mme Laroche pour leur suivi et leur aide précieuse durant ces travaux. Ces heures de travail ont été un grand plaisir pour moi.
 
 \bibliographystyle{plain}
 \bibliography{pfe}
