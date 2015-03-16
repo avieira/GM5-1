@@ -5,7 +5,8 @@
 \usepackage[utf8x]{inputenc}
  
 \usetheme{Berkeley}
-\usecolortheme{crane}
+\usecolortheme{dove}
+\usecolortheme{seahorse}
 \useinnertheme{rounded}
 
 \newcommand{\derPar}[2]{\frac{\partial #1}{\partial #2}}
@@ -58,7 +59,7 @@ Modèle avec mouvement de population
 \begin{frame}
 	\frametitle{Vitesse de propagation}
 Vitesse bornée par le modèle linéaire :
-\[\derPar{I}{t}=\beta(x)N\int_{\mathbb{R}}k(x,y)I(y,t) dt\]
+\[\derPar{I}{t}=\beta(x)N\int_{\mathbb{R}}k(x,y)I(y,t) dy\]
 Condition initiale bornée par une exponentielle :
 \[I_0(x,0)\leq Ae^{-\theta x}\]	
 Vitesse bornée par
@@ -147,8 +148,27 @@ $\Rightarrow$ Largeur du front d'onde :
 	\frametitle{Résulats}
 \begin{figure}[!h]
 \centering
+	\includegraphics[scale=0.75]{img/plot2.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Résulats}
+\begin{figure}[!h]
+\centering
 	\includegraphics[scale=0.75]{img/plot2-2.pdf}
 \end{figure}
+\end{frame}
+
+\section*{Conclusion}
+
+\begin{frame}
+	\frametitle{Conclusion}
+\begin{itemize}
+	\item Premiers résultats encourageants
+	\item Une compléxité à augmenter : toujours les mêmes résultats avec 3, 4, + d'espèces ?
+	\item Une approche différente dans ce projet
+\end{itemize}
 \end{frame}
 
 \end{document}

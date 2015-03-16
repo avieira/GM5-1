@@ -17,6 +17,9 @@
 \newpage
 
 \section*{Introduction}
+La propagation de maladies est un problème d'ordre mondial, et les mécanismes sous-jacents peuvent prendre différentes formes. Les modélisations mathématiques en resultant fournissent donc un nombre assez grand de systèmes d'équations différentielles ordinaires ou partielles. Traditionnelement, on modèlise cela par des équations de réaction-diffusion ou, plus récemment, avec des équations à opérateurs intégraux.\\
+Ces modèles, qui ont déjà été bien testés, peuvent à présent nous aider à répondre à d'autres problematiques. Un problème récurrent est de limiter la propagation de maladies à travers un habitat, comme un champ de blé par exemple. L'utilisation de certains produits, comme des pesticides par exemple, répond déjà à certains besoins, mais peuvent également poser d'autres problèmes. Il peut donc être utile de chercher d'autres moyens de limiter les propagations, en utilisant par exemple la dynamique même de la propagation. C'est ce que nous cherchons à analyser dans ce projet.\\
+Après une première analyse des modèles décrivant la propagation du pathogène, on présentera la simulation numérique faite en utilisant une simplification du modèle. En utilisant ces deux premières parties, on tentera de voir comment limiter la propagation du pathogène dans un cadre posé.
 
 \section{Modèle mathématique étudié}
 Les modèles mathématiques présentés ici viennent tous de \cite{KotMedlock03}. 
@@ -60,7 +63,7 @@ où $D$ est le taux auquel les individus change de position dans $\Omega$. Nous 
 \label{refVit}
 Medlock \cite{KotMedlock03} a montré que la vitesse de propagation de la solution du modèle (\ref{eqKot}) $I_n$ est bornée par la solution du modèle linéaire $I_0$, linéarisé autour du point d'équilibre $I=0$ :
 \begin{equation}\label{modLin}
-\derPar{I}{t}=\beta(x)N\int_{\mathbb{R}}k(x,y)I(y,t) dt
+\derPar{I}{t}=\beta(x)N\int_{\mathbb{R}}k(x,y)I(y,t) dy
 \end{equation}
 \[I_n(x,t)\leq I_0(x,t)\]
 Si de plus, la condition initiale est bornée par une exponentielle \[I_0(x,0)\leq Ae^{-\theta x}\] on aura une borne supérieure pour la vitesse de propagation :
@@ -74,7 +77,7 @@ Mollison \cite{mollison1991dependence} avance la conjecture suivante : la vitess
 \end{itemize}
 Sous cette conjecture, on peut facilement calculer la vitesse de propagation du front : en prenant $I$ sous la forme d'une onde propagatrice de vitesse $c$ :
 	\[I(x,t)=Ae^{-\theta(x-ct)}\]
-et en réinjectant cela dans (\ref{eqKot}), on obtient :
+et en réinjectant cela dans (\ref{modLin}), on obtient :
 	\[c=\beta(x)\frac{M(\theta)}{\theta}\]
 où $M(\theta)$ est la fonction génératrice des moments :
 Pour avoir la borne supérieure, on doit prendre l'infimum :
@@ -267,7 +270,7 @@ On a ainsi accès à la largeur du front d'onde :
 	w=\frac{c}{\beta}=\frac{\beta K}{\beta}=K \text{ constante indépendante de }\beta
 \end{equation}
 
-On pourrait donc penser que si la largeur de chaque bande est supérieure à la largeur du front, le front pourra être ralenti. Des bandes de largeur inférieure à celle du front devraient en quelque sorte moyenner les défauts.\\
+On pourrait donc penser que si la largeur de chaque bande est inférieure à la largeur du front, le front pourra être ralenti. Des bandes de largeur inférieure à celle du front devraient en quelque sorte moyenner les défauts, tandis que des bandes de largeur supérieure vont plutôt déformer le front et l'accélerer dans certaines directions.\\
 Le fait que la largeur du front est indépendante de $\beta$ semble être vérifié par nos simulations, comme on le voit figure \ref{figLarg}. Ce test a été effecté avec deux valeurs de $\beta$, identique sur tout le domaine (ie $\beta=1$ et $\beta=0.25$) et les calculs ont été arrêtés dès que la moitié du domaine était recouvert. La valeur de $w$ lue était à peu près de $12$.
 
 \begin{figure}[!h]
@@ -278,6 +281,7 @@ Le fait que la largeur du front est indépendante de $\beta$ semble être vérif
 \label{figLarg}
 \end{figure}
 
+\clearpage
 \subsection{Simulation numérique}
 Nous avons relancé nos simulations avec différentes valeurs pour la largeur de bande tournant autour de 12. Les résultats sont visibles figure \label{figProp1}. Nous avons pris une répartition en damier ou en bande de $\beta$, avec une valeur de 1 ou de 0.25. On trace enfin l'intégrale suivante en fonction du temps :
 \begin{equation}\label{integral}
@@ -292,7 +296,7 @@ Ce qui nous intéresse est le temps $t$ où cette intégrale dépasse $0.5$.
 \label{figProp1}
 \end{figure}
 
-Les figures \ref{figProp1} présentent déjà un certain avantage pour la répartition en damier. Le résultat est encore plus frappant si on ne regarde que par exemple deux valeurs autour de la valeur estimée de la largeur du front, comme on le voit figure \ref{figProp2}
+Les figures \ref{figProp1} présentent déjà un certain avantage pour la répartition en damier. 
 
 \begin{figure}[!h]
 \centering
@@ -302,7 +306,8 @@ Les figures \ref{figProp1} présentent déjà un certain avantage pour la répar
 \label{figProp2}
 \end{figure}
 
-Comme on le voit (et cela est clairement plus visible dans la répartition en damier, mais l'observation reste vraie pour la répartition en bande dans une moindre mesure), les valeurs inférieures à 12 représentent un avantage : le pathogène progresse moins rapidement. Cela est contraire à notre intuition, mais cela reste une piste à suivre.
+Comme on le voit (et cela est clairement plus visible dans la répartition en damier, mais l'observation reste vraie pour la répartition en bande dans une moindre mesure), les valeurs inférieures à 12 représentent un avantage : le pathogène progresse moins rapidement. Cependant, il n'est pas utile de trop baisser la valeur de $x_{\mu}$, comme on le voit figure \ref{figProp2}. Le résultat ne semble pas vraiment changer, qualitativement parlant.
+
 
 %\subsection{Techniques d'optimisation}
 %Le problème n'est pas tellement d'avoir la solution optimale mais au moins une solution assez satisfaisante. Pour cela, il existe plusieurs méthodes d'optimisation basées sur une approche heuristique, comme par exemple le recuit simulé. 
