@@ -154,16 +154,27 @@ On suppose, et nous garderons cette hypothèse dans toute la suite, que nous avo
 \[k(x,y)=\frac{1}{\sqrt{\alpha^2\pi}}\exp\left(\frac{(x-y)^2}{2\alpha^2}\right)\]
 Formellement, on écrit le taux d'infectés $I$ sous la forme d'une série sous l'intégrale :
 \begin{eqnarray*}
-\frac{\partial I}{\partial t}(x,t) &=& \beta(x)N\int_{\mathbb{R}} k(y)I(x-y,t)dy\\
-				&=&\beta(x)N\int_{\mathbb{R}} k(y)\sum_{n=0}^{+\infty} \frac{1}{n!} \frac{\partial^n I}{\partial x^n}(x,t)(-y)^n dy\\
-				&=&\beta(x)N\sum_{n=0}^{+\infty} \frac{(-1)^n}{n!} \frac{\partial^n I}{\partial x^n}(x,t) \underbrace{\int_{\mathbb{R}} y^n k(y) dy}_{=\mu_n}\\
-				&=&\beta(x)N\sum_{n=0}^{+\infty} \frac{(-1)^n\mu_n}{n!} \frac{\partial^n I}{\partial x^n}(x,t)
+\frac{\partial I}{\partial t}(x,t) &=& \beta(x)(N-I)\int_{\mathbb{R}} k(y)I(x-y,t)dy\\
+				&=&\beta(x)(N-I)\int_{\mathbb{R}} k(y)\sum_{n=0}^{+\infty} \frac{1}{n!} \frac{\partial^n I}{\partial x^n}(x,t)(-y)^n dy\\
+				&=&\beta(x)(N-I)\sum_{n=0}^{+\infty} \frac{(-1)^n}{n!} \frac{\partial^n I}{\partial x^n}(x,t) \underbrace{\int_{\mathbb{R}} y^n k(y) dy}_{=\mu_n}\\
+				&=&\beta(x)(N-I)\sum_{n=0}^{+\infty} \frac{(-1)^n\mu_n}{n!} \frac{\partial^n I}{\partial x^n}(x,t)
 \end{eqnarray*}
 Les $\mu_i$ étant les moments d'ordre $i$ du noyau. On normalise notre équation pour avoir $N=1$, et on garde en mémoire que pour la plupart des noyaux (dont le noyau gaussien), le moment d'ordre 0 vaut 1 et le moment d'ordre 1 s'annule. En gardant seulement les trois premiers termes, on a ainsi :
 \begin{equation}\label{approx}
-	\derPar{I}{t}(x,t)=\beta(x)\left(I(x,t)+\frac{\mu_2}{2}\derPar{{}^2I}{x^2}\right)
+	\derPar{I}{t}(x,t)=\beta(x)(1-I)\left(I(x,t)+\frac{\mu_2}{2}\derPar{{}^2I}{x^2}\right)
 \end{equation}
-Il reste ainsi à voir en quel sens cette équation approxime le modèle de départ.
+Il reste ainsi à voir en quel sens cette équation approxime le modèle de départ. Pour cela, considérons la droite réelle et $I\in W^{4,\infty}(\mathbb{R})\cap W^{1,\infty}(\mathbb{R})$ et $\beta\in L^\infty(\mathbb{R})$. En prenant la formule avec reste de Taylor-Lagrange, et en notant $\tilde{I}$ l'approximation obtenue précédemment, on obtient :
+\begin{eqnarray*}
+	\derPar{I}{t}(x,t)&=&\beta(x)(1-I(x,t))\left( I(x,t)+\frac{\mu_2}{2}\derPar{{}^2I}{x^2}(x,t)+\int_{\mathbb{R}}\frac{k(u)}{4!} \derPar{{}^4I}{x^4}(\xi_u,t)u^4 du \right)\\
+			&\leq&\underbrace{\beta(x)(1-I(x,t))\left( I(x,t)+\frac{\mu_2}{2}\derPar{{}^2I}{x^2}(x,t)\right.}_{=\derPar{\tilde{I}}{t}}+\frac{\mu_4}{4!} \left. \left\|\derPar{{}^4I}{x^4}\right\|_{\infty} \right)\\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+\Rightarrow	\derPar{(I-\tilde{I})}{t}(x,t)&\leq&\beta(x)(1-\underbrace{I(x,t)}_{>0})\frac{\mu_4}{4!}\left\|\derPar{{}^4I}{x^4}\right\|_{\infty} \\
+			&\leq& \beta(x)\frac{\mu_4}{4!}\left\|\derPar{{}^4I}{x^4}\right\|_{\infty} \\
+\Rightarrow I(x,t)-\tilde{I}(x,t)&\leq& \beta(x) \frac{\mu_4}{4!} \left\|\derPar{{}^4I}{x^4}\right\|_{\infty} t \\
+	\|I-\tilde{I}\|_{\infty}&\leq& \|\beta\|_{\infty}\frac{\mu_4}{4!} \left\|\derPar{{}^4I}{x^4}\right\|_{\infty} T \\
+\end{eqnarray*}
 
 \subsection{Cadre de la simulation}
 Pour nos simluations, nous nous sommes placé sur un carré 2D maillé avec un pas constant. Ce carré représente un champ contenant deux variétés différentes, dont nous supposons que la sensibilité au pathogène est constante par rapport à la variété. Ainsi, notre $\beta$ dépendra uniquement de la variété présente en $x$, ce qui donnera une fonction constante par morceaux sur notre domaine.\\
@@ -282,6 +293,13 @@ Le fait que la largeur du front est indépendante de $\beta$ semble être vérif
 \end{figure}
 
 \clearpage
+Comme dit plus tôt, nous nous sommes principalement interessé au noyau gaussien. On peut donc calculer explicitement la constante $K$.\\
+Pour le noyau gaussien, la fonction génératrice des moments s'écrit :
+	\[M(\theta)=\exp\left( \frac{\sigma^2\theta^2}{2}\right)\]
+On cherche le minimum en calculant le zéro de la dérivée :
+\[\left( \frac{M(\theta)}{\theta}\right)'=\sigma^2 \exp\left( \frac{\sigma^2\theta^2}{2}\right) - \frac{1}{\theta^2} \exp\left( \frac{\sigma^2\theta^2}{2}\right) = 0 \Rightarrow \theta=\frac{1}{\sigma}\]
+D'où \[K=\inf_{\theta>0} \frac{M(\theta)}{\theta} = \sigma e^{\frac{1}{2}}= \sqrt{\mu_2}e^{\frac{1}{2}}\]
+
 \subsection{Simulation numérique}
 Nous avons relancé nos simulations avec différentes valeurs pour la largeur de bande tournant autour de 12. Les résultats sont visibles figure \label{figProp1}. Nous avons pris une répartition en damier ou en bande de $\beta$, avec une valeur de 1 ou de 0.25. On trace enfin l'intégrale suivante en fonction du temps :
 \begin{equation}\label{integral}

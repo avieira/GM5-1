@@ -59,12 +59,12 @@ Modèle avec mouvement de population
 \begin{frame}
 	\frametitle{Vitesse de propagation}
 Vitesse bornée par le modèle linéaire :
-\[\derPar{I}{t}=\beta(x)N\int_{\mathbb{R}}k(x,y)I(y,t) dy\]
+\[\derPar{I}{t}=\beta N\int_{\mathbb{R}}k(x,y)I(y,t) dy\]
 Condition initiale bornée par une exponentielle :
 \[I_0(x,0)\leq Ae^{-\theta x}\]	
 Vitesse bornée par
 \begin{equation}\label{bornVit}
-	c=\beta(x)\inf_{\theta>0}\frac{M(\theta)}{\theta}
+	c=\beta \inf_{\theta>0}\frac{M(\theta)}{\theta}
 \end{equation}
 Conjecture : sous certaines hypothèses, vitesse du modèle complet = vitesse du modèle linéaire.
 \end{frame}
@@ -86,10 +86,10 @@ Conjecture : sous certaines hypothèses, vitesse du modèle complet = vitesse du
 \section[Simulation]{Simulation numérique}
 \subsection[Simplification]{Simplification de l'équation}
 \begin{frame}
-	\frametitle{Forme du front d'onde}
-\[\frac{\partial I}{\partial t}(x,t) =\beta(x)N\sum_{n=0}^{+\infty} \frac{(-1)^n\mu_n}{n!} \frac{\partial^n I}{\partial x^n}(x,t)\]
+	\frametitle{Simplification}
+\[\frac{\partial I}{\partial t}(x,t) =\beta(x)(N-I)\sum_{n=0}^{+\infty} \frac{(-1)^n\mu_n}{n!} \frac{\partial^n I}{\partial x^n}(x,t)\]
 \begin{equation}\label{approx}
-	\derPar{I}{t}(x,t)=\beta(x)\left(I(x,t)+\frac{\mu_2}{2}\derPar{{}^2I}{x^2}\right)
+	\derPar{I}{t}(x,t)=\beta(x)(1-I)\left(I(x,t)+\frac{\mu_2}{2}\derPar{{}^2I}{x^2}\right)
 \end{equation}
 
 \end{frame}
@@ -143,12 +143,33 @@ $\Rightarrow$ Largeur du front d'onde :
 \begin{center}$x_{\mu}<w$ ou $x_{\mu}>w$ ? \end{center}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Vitesse de propagation}
+\begin{figure}[!h]
+\centering
+	\includegraphics[scale=0.7]{img/timelog.pdf}
+	\caption{Temps où $<I>=0.5$ pour différentes valeurs de $\beta$ (échelle logarithmique)}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Largeur de front}
+\begin{figure}[!h]
+\centering
+	\includegraphics[scale=0.42]{img/1d0.pdf}
+	\includegraphics[scale=0.42]{img/50d0.pdf}
+	\caption{Front pour deux valeurs de beta (1 et 50)}
+\end{figure}
+\end{frame}
+
+
 \subsection[Numérique]{Simulation numérique}
 \begin{frame}
 	\frametitle{Résulats}
 \begin{figure}[!h]
 \centering
-	\includegraphics[scale=0.75]{img/plot2.pdf}
+	\includegraphics[scale=0.75]{img/bande1.pdf}
+	\caption{<I> pour différents $x_\mu$ : répartition en bande}
 \end{figure}
 \end{frame}
 
@@ -156,7 +177,25 @@ $\Rightarrow$ Largeur du front d'onde :
 	\frametitle{Résulats}
 \begin{figure}[!h]
 \centering
-	\includegraphics[scale=0.75]{img/plot2-2.pdf}
+	\includegraphics[scale=0.75]{img/damier1.pdf}
+	\caption{<I> pour différents $x_\mu$ : répartition en damier}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Résulats}
+\begin{figure}[!h]
+\centering
+	\includegraphics[scale=0.7]{img/bande_damier.pdf}
+	\caption{Valeur de <I> pour deux valeurs de $x_\mu$ et répartition en bande (b) ou damier (d)}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Explication de cette évolution}
+\begin{figure}[!h]
+\centering
+	\includegraphics[scale=0.45]{img/propag.png}
 \end{figure}
 \end{frame}
 
